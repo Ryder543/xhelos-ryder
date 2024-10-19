@@ -1,0 +1,41 @@
+/*****************************
+ *  LOGIN
+ *****************************/
+	
+
+	
+	/* Tabs Activo*/
+	
+
+	ul.grindyMenu li.hide{
+		display:none;
+	}
+
+	/*****************************
+	 *  Contenedor de Paneles
+	 *****************************/
+	.loginItem{
+		background:#4FBADF;
+		margin:0px 0px 10px;
+		padding:10px 0px 10px;
+		border-top:1px solid #4FBADF;
+		border-bottom :3px solid #4FBADF;
+		border-left:3px solid #4FBADF;
+		border-right:3px solid #4FBADF;
+		font-size:1em;
+		-moz-border-radius-bottomleft:5px;
+		-moz-border-radius-bottomright:5px;
+		-moz-border-radius-topleft:10px;
+		-moz-border-radius-topright:10px;	
+	}
+	
+	.loginItem li{list-style:none;}
+	.loginItem p{padding:0px;margin:0px;color:black;}
+	.loginItem a{color:white;font-weight:bolder;}
+	.loginItem p.loginInfo{	margin-bottom:10px; padding:0px 5px;}
+	.loginItem img{	vertical-align:middle;	display:inline;*padding-bottom:10px;/*HACK para IE6, lamentable*/}
+	.loginItem input.textInput{margin-bottom:10px;width:60%;padding:8px;margin-left:5px;}
+	.loginItem input.buttonInput{width:80%;margin-bottom:10px;padding:8px;}
+	.loginItem input{font-size:1em;}
+	
+	

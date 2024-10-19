@@ -1,0 +1,412 @@
+diff --git a/handlers/views_handler_area_text.inc b/handlers/views_handler_area_text.inc
+index 93c5834..56ddbc2 100644
+--- a/handlers/views_handler_area_text.inc
++++ b/handlers/views_handler_area_text.inc
+@@ -80,7 +80,7 @@ class views_handler_area_text extends views_handler_area {
+     }
+   }
+ 
+-  function options_submit(&$form, &$form_state) {
++  function options_submit($form, &$form_state) {
+     $form_state['values']['options']['format'] = $form_state['values']['format'];
+     parent::options_submit($form, $form_state);
+   }
+diff --git a/handlers/views_handler_argument.inc b/handlers/views_handler_argument.inc
+index 3da811e..8845e51 100644
+--- a/handlers/views_handler_argument.inc
++++ b/handlers/views_handler_argument.inc
+@@ -255,7 +255,7 @@ class views_handler_argument extends views_handler {
+     );
+   }
+ 
+-  function options_validate(&$form, &$form_state) {
++  function options_validate($form, &$form_state) {
+     if (empty($form_state['values']['options'])) {
+       return;
+     }
+diff --git a/handlers/views_handler_field_serialized.inc b/handlers/views_handler_field_serialized.inc
+index 75ca19a..5cef94c 100644
+--- a/handlers/views_handler_field_serialized.inc
++++ b/handlers/views_handler_field_serialized.inc
+@@ -38,7 +38,7 @@ class views_handler_field_serialized extends views_handler_field {
+     );
+   }
+ 
+-  function options_validate(&$form, &$form_state) {
++  function options_validate($form, &$form_state) {
+     // Require a key if the format is key.
+     if ($form_state['values']['options']['format'] == 'key' && $form_state['values']['options']['key'] == '') {
+       form_error($form['key'], t('You have to enter a key if you want to display a key of the data.'));
+diff --git a/handlers/views_handler_sort.inc b/handlers/views_handler_sort.inc
+index d703b5e..ba4b205 100644
+--- a/handlers/views_handler_sort.inc
++++ b/handlers/views_handler_sort.inc
+@@ -76,7 +76,7 @@ class views_handler_sort extends views_handler {
+   /**
+    * Simple validate handler
+    */
+-  function options_validate(&$form, &$form_state) {
++  function options_validate($form, &$form_state) {
+     $this->sort_validate($form, $form_state);
+     if (!empty($this->options['exposed'])) {
+       $this->expose_validate($form, $form_state);
+@@ -87,7 +87,7 @@ class views_handler_sort extends views_handler {
+   /**
+    * Simple submit handler
+    */
+-  function options_submit(&$form, &$form_state) {
++  function options_submit($form, &$form_state) {
+     unset($form_state['values']['expose_button']); // don't store this.
+     $this->sort_submit($form, $form_state);
+     if (!empty($this->options['exposed'])) {
+diff --git a/includes/handlers.inc b/includes/handlers.inc
+index 35fac39..7cf73a2 100644
+--- a/includes/handlers.inc
++++ b/includes/handlers.inc
+@@ -648,8 +648,12 @@ class views_handler extends views_object {
+    * Add this handler into the query.
+    *
+    * If we were using PHP5, this would be abstract.
++   *
++   * @param bool $group_by
++   *   (optional) Whether the view is using an aggregation query. If you
++   *    override this method you can specify $group_by as optional parameter.
+    */
+-  function query($group_by = FALSE) { }
++  function query() { }
+ 
+   /**
+    * Ensure the main table for this handler is in the query. This is used
+diff --git a/includes/plugins.inc b/includes/plugins.inc
+index c636e27..3d7ffb4 100644
+--- a/includes/plugins.inc
++++ b/includes/plugins.inc
+@@ -488,7 +488,7 @@ class views_plugin extends views_object {
+   /**
+    * Validate the options form.
+    */
+-  function options_validate(&$form, &$form_state) { }
++  function options_validate($form, &$form_state) { }
+ 
+   /**
+    * Handle any special handling on the validate form.
+diff --git a/includes/view.inc b/includes/view.inc
+index 48e503f..54e8ac0 100644
+--- a/includes/view.inc
++++ b/includes/view.inc
+@@ -1203,7 +1203,7 @@ class view extends views_db_object {
+   /**
+    * Unset the current view, mostly.
+    */
+-  function post_execute() {
++  function post_execute(&$result = array()) {
+     // unset current view so we can be properly destructed later on.
+     // Return the previous value in case we're an attachment.
+ 
+diff --git a/modules/comment/views_plugin_row_comment_view.inc b/modules/comment/views_plugin_row_comment_view.inc
+index 5541e4c..1a94b21 100644
+--- a/modules/comment/views_plugin_row_comment_view.inc
++++ b/modules/comment/views_plugin_row_comment_view.inc
+@@ -25,7 +25,7 @@ class views_plugin_row_comment_view extends views_plugin_row {
+     );
+   }
+ 
+-  function pre_render($result) {
++  function pre_render(&$result) {
+     $cids = array();
+     $this->comments = array();
+ 
+diff --git a/modules/node/views_plugin_argument_validate_node.inc b/modules/node/views_plugin_argument_validate_node.inc
+index 723c5ef..09e029e 100644
+--- a/modules/node/views_plugin_argument_validate_node.inc
++++ b/modules/node/views_plugin_argument_validate_node.inc
+@@ -55,7 +55,7 @@ class views_plugin_argument_validate_node extends views_plugin_argument_validate
+     );
+   }
+ 
+-  function options_submit(&$form, &$form_state, &$options = array()) {
++  function options_submit($form, &$form_state, &$options = array()) {
+     // filter trash out of the options so we don't store giant unnecessary arrays
+     $options['types'] = array_filter($options['types']);
+   }
+diff --git a/modules/taxonomy/views_plugin_argument_default_taxonomy_tid.inc b/modules/taxonomy/views_plugin_argument_default_taxonomy_tid.inc
+index 6356398..26fa54c 100644
+--- a/modules/taxonomy/views_plugin_argument_default_taxonomy_tid.inc
++++ b/modules/taxonomy/views_plugin_argument_default_taxonomy_tid.inc
+@@ -70,7 +70,7 @@ class views_plugin_argument_default_taxonomy_tid extends views_plugin_argument_d
+     );
+   }
+ 
+-  function options_submit(&$form, &$form_state, &$options) {
++  function options_submit($form, &$form_state, &$options = array()) {
+     // Clear checkbox values.
+     $options['vids'] = array_filter($options['vids']);
+   }
+diff --git a/modules/taxonomy/views_plugin_argument_validate_taxonomy_term.inc b/modules/taxonomy/views_plugin_argument_validate_taxonomy_term.inc
+index febc17d..3513b4a 100644
+--- a/modules/taxonomy/views_plugin_argument_validate_taxonomy_term.inc
++++ b/modules/taxonomy/views_plugin_argument_validate_taxonomy_term.inc
+@@ -52,7 +52,7 @@ class views_plugin_argument_validate_taxonomy_term extends views_plugin_argument
+     );
+   }
+ 
+-  function options_submit($form, &$form_state, &$options) {
++  function options_submit($form, &$form_state, &$options = array()) {
+     // filter trash out of the options so we don't store giant unnecessary arrays
+     $options['vids'] = array_filter($options['vids']);
+   }
+diff --git a/modules/user/views_plugin_argument_validate_user.inc b/modules/user/views_plugin_argument_validate_user.inc
+index 2671b20..45eb618 100644
+--- a/modules/user/views_plugin_argument_validate_user.inc
++++ b/modules/user/views_plugin_argument_validate_user.inc
+@@ -50,7 +50,7 @@ class views_plugin_argument_validate_user extends views_plugin_argument_validate
+     );
+   }
+ 
+-  function options_submit($form, &$form_state, &$options) {
++  function options_submit($form, &$form_state, &$options = array()) {
+     // filter trash out of the options so we don't store giant unnecessary arrays
+     $options['roles'] = array_filter($options['roles']);
+   }
+diff --git a/plugins/views_plugin_access.inc b/plugins/views_plugin_access.inc
+index e2518db..cc8e80d 100644
+--- a/plugins/views_plugin_access.inc
++++ b/plugins/views_plugin_access.inc
+@@ -39,7 +39,7 @@ class views_plugin_access extends views_plugin {
+   /**
+    * Provide the default form form for validating options
+    */
+-  function options_validate(&$form, &$form_state) { }
++  function options_validate($form, &$form_state) { }
+ 
+   /**
+    * Provide the default form form for submitting options
+diff --git a/plugins/views_plugin_access_role.inc b/plugins/views_plugin_access_role.inc
+index ed42cba..6a54f36 100644
+--- a/plugins/views_plugin_access_role.inc
++++ b/plugins/views_plugin_access_role.inc
+@@ -45,13 +45,13 @@ class views_plugin_access_role extends views_plugin_access {
+     );
+   }
+ 
+-  function options_validate(&$form, &$form_state) {
++  function options_validate($form, &$form_state) {
+     if (!array_filter($form_state['values']['access_options']['role'])) {
+       form_error($form['role'], t('You must select at least one role if type is "by role"'));
+     }
+   }
+ 
+-  function options_submit(&$form, &$form_state) {
++  function options_submit($form, &$form_state) {
+     // I hate checkboxes.
+     $form_state['values']['access_options']['role'] = array_filter($form_state['values']['access_options']['role']);
+   }
+diff --git a/plugins/views_plugin_argument_default.inc b/plugins/views_plugin_argument_default.inc
+index 6c5e65f..ed2b2b1 100644
+--- a/plugins/views_plugin_argument_default.inc
++++ b/plugins/views_plugin_argument_default.inc
+@@ -51,7 +51,7 @@ class views_plugin_argument_default extends views_plugin {
+   /**
+    * Provide the default form form for validating options
+    */
+-  function options_validate(&$form, &$form_state) { }
++  function options_validate($form, &$form_state) { }
+ 
+   /**
+    * Provide the default form form for submitting options
+diff --git a/plugins/views_plugin_argument_validate.inc b/plugins/views_plugin_argument_validate.inc
+index 5e019a3..4730e43 100644
+--- a/plugins/views_plugin_argument_validate.inc
++++ b/plugins/views_plugin_argument_validate.inc
+@@ -46,12 +46,12 @@ class views_plugin_argument_validate extends views_plugin {
+   /**
+    * Provide the default form form for validating options
+    */
+-  function options_validate(&$form, &$form_state) { }
++  function options_validate($form, &$form_state) { }
+ 
+   /**
+    * Provide the default form form for submitting options
+    */
+-  function options_submit(&$form, &$form_state) { }
++  function options_submit($form, &$form_state) { }
+ 
+   /**
+    * Convert options from the older style.
+diff --git a/plugins/views_plugin_display.inc b/plugins/views_plugin_display.inc
+index 9ad2c99..430d7df 100644
+--- a/plugins/views_plugin_display.inc
++++ b/plugins/views_plugin_display.inc
+@@ -1975,7 +1975,7 @@ class views_plugin_display extends views_plugin {
+   /**
+    * Validate the options form.
+    */
+-  function options_validate(&$form, &$form_state) {
++  function options_validate($form, &$form_state) {
+     switch ($form_state['section']) {
+       case 'display_title':
+         if (empty($form_state['values']['display_title'])) {
+diff --git a/plugins/views_plugin_display_attachment.inc b/plugins/views_plugin_display_attachment.inc
+index b251ab8..4801597 100644
+--- a/plugins/views_plugin_display_attachment.inc
++++ b/plugins/views_plugin_display_attachment.inc
+@@ -14,7 +14,7 @@
+  * @ingroup views_display_plugins
+  */
+ class views_plugin_display_attachment extends views_plugin_display {
+-  function option_definition () {
++  function option_definition() {
+     $options = parent::option_definition();
+ 
+     $options['attachment_position'] = array('default' => 'before');
+diff --git a/plugins/views_plugin_display_extender.inc b/plugins/views_plugin_display_extender.inc
+index c2cc488..45f74d5 100644
+--- a/plugins/views_plugin_display_extender.inc
++++ b/plugins/views_plugin_display_extender.inc
+@@ -22,12 +22,12 @@ class views_plugin_display_extender extends views_plugin {
+   /**
+    * Validate the options form.
+    */
+-  function options_validate(&$form, &$form_state) { }
++  function options_validate($form, &$form_state) { }
+ 
+   /**
+    * Handle any special handling on the validate form.
+    */
+-  function options_submit(&$form, &$form_state) { }
++  function options_submit($form, &$form_state) { }
+ 
+   /**
+    * Set up any variables on the view prior to execution.
+diff --git a/plugins/views_plugin_display_page.inc b/plugins/views_plugin_display_page.inc
+index 1eecacb..f740274 100644
+--- a/plugins/views_plugin_display_page.inc
++++ b/plugins/views_plugin_display_page.inc
+@@ -463,7 +463,7 @@ class views_plugin_display_page extends views_plugin_display {
+     }
+   }
+ 
+-  function options_validate(&$form, &$form_state) {
++  function options_validate($form, &$form_state) {
+     // It is very important to call the parent function here:
+     parent::options_validate($form, $form_state);
+     switch ($form_state['section']) {
+diff --git a/plugins/views_plugin_pager.inc b/plugins/views_plugin_pager.inc
+index 1131bb4..b943366 100644
+--- a/plugins/views_plugin_pager.inc
++++ b/plugins/views_plugin_pager.inc
+@@ -99,7 +99,7 @@ class views_plugin_pager extends views_plugin {
+   /**
+    * Provide the default form form for validating options
+    */
+-  function options_validate(&$form, &$form_state) { }
++  function options_validate($form, &$form_state) { }
+ 
+   /**
+    * Provide the default form form for submitting options
+@@ -170,7 +170,7 @@ class views_plugin_pager extends views_plugin {
+   /**
+    * Perform any needed actions just after the query executing.
+    */
+-  function post_execute(&$result) { }
++  function post_execute(&$result = array()) { }
+ 
+   /**
+    * Perform any needed actions just before rendering.
+diff --git a/plugins/views_plugin_pager_full.inc b/plugins/views_plugin_pager_full.inc
+index f97c6a4..b7300bd 100644
+--- a/plugins/views_plugin_pager_full.inc
++++ b/plugins/views_plugin_pager_full.inc
+@@ -146,7 +146,7 @@ class views_plugin_pager_full extends views_plugin_pager {
+     );
+   }
+ 
+-  function options_validate(&$form, &$form_state) {
++  function options_validate($form, &$form_state) {
+     // Only accept integer values.
+     $error = FALSE;
+     $exposed_options = $form_state['values']['pager_options']['expose']['items_per_page_options'];
+diff --git a/plugins/views_plugin_pager_none.inc b/plugins/views_plugin_pager_none.inc
+index 49e3022..015e05f 100644
+--- a/plugins/views_plugin_pager_none.inc
++++ b/plugins/views_plugin_pager_none.inc
+@@ -56,7 +56,7 @@ class views_plugin_pager_none extends views_plugin_pager {
+     // If we are displaying all items, never count. But we can update the count in post_execute.
+   }
+ 
+-  function post_execute($result) {
++  function post_execute(&$result = array()) {
+     $this->total_items = count($result);
+   }
+ 
+diff --git a/plugins/views_plugin_query.inc b/plugins/views_plugin_query.inc
+index a82749e..e87bc05 100644
+--- a/plugins/views_plugin_query.inc
++++ b/plugins/views_plugin_query.inc
+@@ -84,9 +84,9 @@ class views_plugin_query extends views_plugin {
+    */
+   function options_form(&$form, &$form_state) { }
+ 
+-  function options_validate(&$form, &$form_state) { }
++  function options_validate($form, &$form_state) { }
+ 
+-  function options_submit(&$form, &$form_state) { }
++  function options_submit($form, &$form_state) { }
+ 
+   function summary_title() {
+     return t('Settings');
+diff --git a/plugins/views_plugin_row.inc b/plugins/views_plugin_row.inc
+index 45029fd..fe0f39d 100644
+--- a/plugins/views_plugin_row.inc
++++ b/plugins/views_plugin_row.inc
+@@ -98,13 +98,13 @@ class views_plugin_row extends views_plugin {
+   /**
+    * Validate the options form.
+    */
+-  function options_validate(&$form, &$form_state) { }
++  function options_validate($form, &$form_state) { }
+ 
+   /**
+    * Perform any necessary changes to the form values prior to storage.
+    * There is no need for this function to actually store the data.
+    */
+-  function options_submit(&$form, &$form_state) { }
++  function options_submit($form, &$form_state) { }
+ 
+   function query() {
+     if (isset($this->base_table)) {
+@@ -124,7 +124,7 @@ class views_plugin_row extends views_plugin {
+    * @param $result
+    *   The full array of results from the query.
+    */
+-  function pre_render($result) { }
++  function pre_render(&$result) { }
+ 
+   /**
+    * Render a row object. This usually passes through to a theme template
+diff --git a/plugins/views_plugin_row_fields.inc b/plugins/views_plugin_row_fields.inc
+index f152240..c2e452b 100644
+--- a/plugins/views_plugin_row_fields.inc
++++ b/plugins/views_plugin_row_fields.inc
+@@ -76,7 +76,7 @@ class views_plugin_row_fields extends views_plugin_row {
+    * Perform any necessary changes to the form values prior to storage.
+    * There is no need for this function to actually store the data.
+    */
+-  function options_submit(&$form, &$form_state) {
++  function options_submit($form, &$form_state) {
+     $form_state['values']['row_options']['inline'] = array_filter($form_state['values']['row_options']['inline']);
+   }
+ }
+diff --git a/plugins/views_plugin_style.inc b/plugins/views_plugin_style.inc
+index 385f3a5..ebf50a5 100644
+--- a/plugins/views_plugin_style.inc
++++ b/plugins/views_plugin_style.inc
+@@ -218,7 +218,7 @@ class views_plugin_style extends views_plugin {
+    * @param $result
+    *   The full array of results from the query.
+    */
+-  function pre_render($result) {
++  function pre_render(&$result) {
+     if (!empty($this->row_plugin)) {
+       $this->row_plugin->pre_render($result);
+     }

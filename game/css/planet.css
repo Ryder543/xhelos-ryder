@@ -1,0 +1,576 @@
+/*******************************************************
+ * GENERAL
+ ***************************************************** */
+
+
+/*******************************************************
+ *Contenedores
+ ***************************************************** */
+#Content{
+    width:700px;
+    float:right;
+}
+
+/*Barra Lateral e Hijos*/
+#SideBarLeft {
+    float: left;
+    text-shadow: 1px 1px 1px black;
+    width: 255px;
+}
+#SideBarLeft h4{
+    margin:0px 0px 10px;
+    color:white;
+    font-weight: bold;
+    font-size:14px;
+    text-shadow: 1px 1px 1px black;
+}
+
+.ui-effects-transfer {
+    /*border: 2px solid green;*/
+    background-image:url('../img/action/movement.png');
+}
+
+body#Upgrade {
+    text-align:left;
+}
+
+
+div.datos{
+    float:left;
+    width:500px;
+}
+/*Container de fotos en upgrades*/
+div.container{
+    margin:10px auto 4px;
+    width:90%;
+}
+div.container img{
+    margin:2px auto;
+}
+img.logo{
+    float:right;
+}
+
+div.sponsor{
+    margin-right:50px;
+    margin-left:50px;
+    margin-top:20px;
+}
+div.item{
+    float:left;
+    margin:30px 10px 10px 10px;
+    background:#FFFFFF none repeat scroll 0 0;
+    border:1px solid #FFFFFF;
+}
+div.item a{
+    color:black;
+    display:block;
+}
+
+a{
+    /*color:#AA55FF;*/
+    color:#AAF;
+    font-family:Arial;
+    font-size:1.1em;
+}
+
+/*******************************************************
+ * Colonia
+ ***************************************************** */
+img.colony {
+    border-radius: 25px;
+    box-shadow: 0 0 2px black;
+    margin-left: 0px;
+    margin-top: 0px;
+    opacity: 1;
+    /*position: absolute;*/
+    z-index: 9;
+    margin:3px;
+}
+
+
+/*******************************************************
+ * HEADER
+ ***************************************************** */
+
+#Options h1{
+    padding:0;
+    margin:0;
+    display:inline;
+}
+#Options img{
+    vertical-align:text-bottom;
+}
+
+/*******************************************************
+ * BOTONES DE TERRENO
+ ***************************************************** */
+.region_action_wrapper{
+    text-align:center;
+}
+.planet_map .actions{
+    background-image:url('../img/action/atacar.png');
+    background-position:center;
+    /*width:50px;
+    height:50px;
+    cursor:pointer;
+    border:3px solid #2377F5;
+    margin:5px auto;*/
+}
+
+/*******************************************************
+ * TERRENO
+ ***************************************************** */
+.planet_map {
+    border-bottom:1px solid #2277F5;
+    border-right:1px solid #2277F5;  
+    float: left;
+    margin: 0;
+    padding: 0;
+
+    /*width:600px;*/
+}
+.planet_map .region{
+    border-top:1px solid #2277F5;
+    border-left:1px solid #2277F5;  
+    float:left;
+    position:relative;
+}
+
+.planet_map .region.enemy{
+    background:rgba(255,5,1,0.4);
+}
+.planet_map .region.AI{
+    background:rgba(153, 0, 102,0.4);
+}
+.planet_map .region.myself {
+    background: none repeat scroll 0 0 rgba(33, 127, 232, 0.6);
+}
+
+.planet_map .region:hover{
+    /*background:rgba(35, 119, 245,0.2);*/
+    background:rgba(255, 255, 255, 0.40);
+}
+.planet_map .region.active,
+.planet_map .region.active:hover{
+    background:rgba(0, 255, 0, 0.6);
+}
+
+
+.planet_map .resource{
+    position: absolute;
+    top: 0;
+    z-index: 10;
+    left: 0;
+    height: 15px;  
+    width: 15px;  
+}
+
+.planet_map .arriving {
+    background-image: url("../img/action/planet_movement.png");
+    display: block;
+    font-size: 9px;
+    height: 42px;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    width: 42px;
+    z-index: 100;
+}
+
+.planet_map .arriving .count {
+  display: block;
+  left: 16px;
+  margin: 15px auto 0;
+  text-shadow: 1px 1px 1px black;
+  top: 15px;
+}
+
+.planet_map .arriving.enemy.top {
+    background-position: -42px 0;
+    left: -19%;
+    top: -37%;
+}
+.planet_map .arriving.enemy.bottom {
+    background-position: -42px -42px;
+    left: -18%;
+    top: 70%;
+}
+.planet_map .arriving.enemy.left{
+    background-position: -42px -84px;
+    left:-45%;
+    top:-19%;
+}
+.planet_map .arriving.enemy.right{
+    background-position: -42px -126px;
+    left:76%;
+    top:-19%;  
+    
+}
+/*ENEMY***********************************/
+.planet_map .arriving.myself.top{
+    background-position: 0 0px;  
+    top: -37%;
+    left: 17%;
+}
+.planet_map .arriving.myself.bottom {
+    background-position: 0 -42px;
+    left: 17%;
+    top: 70%;
+}
+.planet_map .arriving.myself.left {
+    background-position: 0 -84px;
+    left:-45%;
+    top: 17%;
+}
+.planet_map .arriving.myself.right{
+    background-position: 0 -126px;
+    left:76%;
+    top: 17%;
+}
+
+/*AI************************************/
+.planet_map .arriving.AI.top{
+    background-position: -84px 0px;  
+    top: -37%;
+    left: 53%;
+}
+.planet_map .arriving.AI.bottom {
+    background-position: -84px -42px;
+    left: 54%;
+    top: 70%;
+}
+.planet_map .arriving.AI.left {
+    background-position: -84px -84px;
+    left:-45%;
+    top: 53%;
+}
+.planet_map .arriving.AI.right{
+    background-position: -84px -126px;
+    left:76%;
+    top: 53%;
+}
+
+
+
+.planet_map .biome {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.planet_map .biome span {
+    display: block;
+    left: -25px;
+    position: absolute;
+}
+.planet_map .biome img{
+    float:left;
+}
+.planet_map .armyInMap{
+    position:absolute;
+    left:12px;
+    top:10px;
+    z-index: 1000;
+    border:1px solid black;
+    border-radius:4px;
+    padding:3px;
+}
+/*******************************************************
+/*MENUS
+ ***************************************************** */
+
+/************************************
+/*INFO MENU
+***********************************/
+
+/*INFORMACION DE LA REGION*/
+#RegionInfo .basicResourceWrapper{
+    text-align: center;
+    width: 100%;
+}
+
+#RegionInfo .basicResource {
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0.5);
+    border: 1px solid black;
+    border-radius: 5px 5px 5px 5px;
+    display: inline;
+    margin: 0 10px;
+    padding: 4px;
+    vertical-align: middle;
+}
+#RegionInfo .basicResource span{
+    font-size: 12px;
+    text-shadow:1px 1px 1px black;
+    font-weight: bold;
+    margin:0px 5px;
+}
+#RegionInfo .basicResource img{
+    vertical-align: middle;    
+}
+
+#RegionInfo.type0{
+    background-image: url("../img/region/regionbgA.jpg");
+    background-position: center bottom;
+}
+
+#RegionInfo.type1{
+    background-image: url("../img/region/regionbgB.jpg");
+    background-position: center bottom;
+}
+
+#RegionInfo.type2{
+    background-image: url("../img/region/regionbgC.jpg");
+    background-position: center bottom;
+} #RegionInfo.type3{
+    background-image: url("../img/region/regionbgD.jpg");
+    background-position: center bottom;
+} #RegionInfo.type4{
+    background-image: url("../img/region/regionbgE.jpg");
+    background-position: center bottom;
+} #RegionInfo.type5 {
+    background-image: url("../img/region/regionbgF.jpg");
+    background-position: center bottom;
+}
+
+/*RESOURCES INFO*/
+#BuildingsInfo .buildingInfo {
+    height: 50px;
+}
+
+#BuildingsInfo .buildingInfo img{
+    float:left;
+}
+#BuildingsInfo .buildingInfo h4 {
+    display: table-cell;
+    height: 50px;
+    padding: 0 10px;
+    vertical-align: middle;
+}
+/*RESOURCES INFO*/
+#ResourcesInfo img{
+    padding:0px;
+    margin:0px;
+    vertical-align:middle;
+}
+
+
+
+/*ABILITIES MENU*/
+#Abilities li{
+    padding:8px 8px 8px;
+    margin:0px 0px 8px;
+    list-style:none;
+    cursor:pointer;
+
+}
+#Abilities li:hover{
+    background:rgba(35, 119, 245,0.2);
+}
+#Abilities li.active,#Abilities li.active:hover{
+    background:rgba(35, 119, 245,0.5);
+}
+#Abilities li img{
+    float:left;
+    border:2px solid #2277F5;
+    margin-right:5px;
+    margin-bottom:5px;
+}
+#Abilities .title{
+    font-weight:bold;
+    font-size:0.9em;
+    color:white;
+}
+#Abilities .energy{
+    color:#2277F5;
+    font-weight:bold;
+}
+#Abilities .desc{
+    color:white;
+    font-weight:normal;
+    font-size:0.8em;
+}
+#ResourcesInfo .biome{
+    display: inline;
+}
+#ResourcesInfo{
+    /*position:relative;*/
+}
+
+
+/****************************************************************
+Recursos Y Biomas en General
+*****************************************************************/
+.biome {
+    height: 24px;
+    width: 24px;
+}
+.biome span {
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0.8);
+    border: 1px solid black;
+    border-radius: 10px 0 0 10px;
+    font-weight: bold;
+    margin: 0 0 0 10px;
+    padding: 4px 3px 3px;    
+    text-shadow: 1px 1px 1px black;
+}
+
+.resource {
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0.8);
+    border: 1px solid black;
+    border-radius: 0 0 10px 10px;
+    box-shadow: 0 0 1px white;
+    padding: 4px 3px 3px;
+
+}
+
+/****************************************************************
+Jugadores - Players
+*****************************************************************/
+#ArmyInfoInner{
+    /*width: 155px;*/
+}
+#ArmyInfo{
+    width:100%;
+}
+/*******************************************************
+ * Tag de Batalla
+ ***************************************************** */
+.battle_tag,.region_tag{
+    padding:5px;
+    margin:15px 0px;
+
+}
+.battle_tag a,.region_tag a{
+    color:white;
+    font-weight:bold;     
+}
+
+.battle_tag.phaseT{
+    background:#119966;
+}
+.battle_tag.phaseB{
+    background:red;
+}
+
+.region_tag{
+    /*border:1px solid white;
+    background:rgba(0,0,0,0.5);*/
+}
+
+/*VARIOS*/
+.team{
+    /*border-left: 1px solid #888;
+    border-right: 1px solid #888;
+    border-bottom: 1px solid #888;*/
+    margin-bottom: 1px;
+    min-height: 50px;
+    *height: 50px;    
+
+}
+.armyWrapper{
+    cursor: move;
+}
+.armyPlaceholder{
+    float:left;
+    height: 45px;
+    margin-bottom: 5px;
+    margin-right: 2px;
+    text-align: center;
+    width: 30px;
+}
+
+.button.deleteTeam{
+    float:right;
+    padding:1px;
+    margin:0;
+    line-height: 1;
+
+}
+
+.ui-state-highlight.teamWrapper{
+    border:1px solid #aaa;
+    margin-bottom: 5px;
+}
+
+.teamWrapper{
+    border:1px solid #111;
+    margin-bottom: 5px;
+    cursor:pointer;
+}
+
+/*
+*VENTANAS MODALES
+*/
+#AttackRegionModal{
+    display:none;
+}
+
+.actions {
+    background-color:#619CF8;
+    border-color: #2377F3;
+    border-radius: 5px 5px 5px 5px;
+    border-style: solid;
+    border-width: 1px;
+    box-shadow: 0 0 3px black inset;
+    float: left;
+    height: 50px;
+    margin-left: 9px;
+    padding: 5px;
+    width: 50px;
+    cursor:pointer;
+}
+.planet_map .actions{
+    margin-left: 0px;   
+}
+
+.actions span {
+    bottom: 3px;
+    display: block;
+    font-size: 11px;
+    margin-top: -9px;
+    text-align: center;
+    text-shadow: 1px 1px 1px black;
+}
+.actions a {
+    color: white;
+    display: block;
+    height: 50px;
+    text-decoration: none;
+    width: 50px;
+}
+
+.actions:hover{
+    background:rgba(35, 119, 245,0.5);
+}
+
+.planet_map .armies {
+    bottom: 0;
+    margin: 0;
+    position: absolute;
+    text-shadow: 1px 1px 1px black;
+    width: 100%;
+}
+
+.planet_map .army {
+    border-color: black;
+    border-style: solid;
+    float: left;
+    font-size: 10px;
+    padding: 1px 2px;
+    width: 15px;
+}
+.planet_map .army.myself{
+    border-radius: 0px 10px 0px 0px;
+    border-width:1px 1px 0px 0px;   
+}
+.planet_map .army.enemy {
+    border-radius: 10px 10px 0px 0px;  
+    border-width:1px 1px 0px 1px;
+}
+.planet_map .army.AI{
+    border-radius: 10px 0px 0px 0px;
+    float:right;
+    border-width:1px 0px 0px 1px;
+
+}

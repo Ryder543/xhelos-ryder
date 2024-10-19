@@ -1,0 +1,82 @@
+ /*******************************************************
+ * INFORMACION DEL PLANETA
+ ******************************************************/
+ 
+ /*******************************************************
+ * MAPA GALAXIA
+ ******************************************************/
+ #GalaxySystem{
+   padding:0;
+   margin:0;
+   list-style:none;
+   float:left;
+   /*background:#30302F;*/
+   background-image:url('../img/galaxy/2365.png');
+   width:750px;
+   height:620px;
+   border:2px solid #123F72;
+   
+ }
+ #StarInfo{
+   float:right;
+   width:200px;
+   /*height:400px;*/
+ }
+ 
+ /*******************************************************
+ * Estrella
+ ******************************************************/
+ .star .name{
+   /*background-color:rgba(0,0,0,0.5);*/
+   padding:1px 4px;
+ }
+ .star .name a{
+   font-weight:bold;
+   /*font-size:116%;*/
+   color:white;
+}
+
+.star.active .name a{
+    /*text-decoration: underline;*/
+}
+
+/*******************************************************
+ * OBJETOS DENTRO DE ORBITA
+ ******************************************************/
+ #Galaxy{
+   /*padding:10px 10px 25px 20px;*/
+   padding:0 0 0px 0px;
+   /*padding:0;*/
+   margin:0;
+   list-style:none;
+   /*background:black; */ 
+ } 
+ #Galaxy .star, #Galaxy .column{
+    cursor:pointer;
+    float:left;
+    height:86px;
+    margin-right:1px;
+    margin-bottom:1px;
+    width:73px;
+ }
+ 
+ #GalaxySystemInner{
+   position:relative;
+   top:-602px;
+   left:1px;
+   /*width:750px;*/
+ }
+ 
+ #Galaxy .star:hover{
+    background:rgba(34, 134, 245,0.4);
+    outline:1px solid #123F72;
+ }
+ #Galaxy .star.active{
+    background:rgba(34, 134, 245,0.7);
+    outline:1px solid #123F72;
+ }
+ 
+
+#Galaxy .row{
+  float:left;
+}

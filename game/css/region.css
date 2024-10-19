@@ -1,0 +1,587 @@
+/*******************************************************
+ * GENERAL
+ ***************************************************** */
+.ui-effects-transfer {
+    /*border: 2px solid green;*/
+    background-image:url('../img/action/movement.png');
+    background-repeat:no-repeat;
+    background-position:center;
+}
+
+body#Upgrade {
+    text-align:left;
+}
+
+
+div.datos{
+    float:left;
+    width:500px;
+}
+/*Container de fotos en upgrades*/
+div.container{
+    margin:10px auto 4px;
+    width:90%;
+}
+div.container img{
+    margin:2px auto;
+}
+img.logo{
+    float:right;
+}
+div.logo{
+    /*float:right;*/
+    /*display:block;
+	margin-right:50px;
+	margin-left:50px;*/
+}
+div.sponsor{
+    margin-right:50px;
+    margin-left:50px;
+    margin-top:20px;
+}
+div.item{
+    float:left;
+    margin:30px 10px 10px 10px;
+    background:#FFFFFF none repeat scroll 0 0;
+    border:1px solid #FFFFFF;
+}
+div.item a{
+    color:black;
+    display:block;
+}
+
+a{
+    color:#AAF;
+}
+
+.ui-state-active a.link,
+a.link{
+    text-decoration: underline;
+}
+
+.players{
+    padding:3px 5px;
+    margin:5px 0px 5px 0px;
+    /*background:#DDD;*/
+}
+
+/*******************************************************
+ * HEADER
+ ***************************************************** */
+#Options{
+    text-align:left;
+    display: block;
+    position: absolute;
+    width: 460px;
+    top:40px;
+    border-radius:0px 5px 5px 5px;
+    -moz-border-radius:0px 0px 5px 5px;
+   
+}
+#Options h1{
+    padding:0;
+    margin:0 0px 10px 0;
+
+}
+#Options h2{
+    display:inline;
+}
+
+#Options img{
+    vertical-align:text-bottom;
+}
+#Options .last{padding:0px 0px 0px 0px}
+
+/*******************************************************
+ * TERRENO
+ ***************************************************** */
+table.battle_map{
+    /*border:1px solid #555555;*/
+    margin:0px;
+    padding:0px;
+    border-collapse:collapse;
+    /*margin-right:10px;*/
+    /*border:1px solid black;*/
+    zoom:1;
+
+}
+
+table.battle_map tr{
+}
+table.battle_map td{
+    width:60px;
+    height:60px;
+    position:relative;
+    /*font-size:0.7em;*/
+    /*border:2px solid #555555;*/
+    /*background:#ffffff;*/
+}
+
+.t1{
+    background:url(../img/terrain/grass.jpg);
+}
+.t2{
+    background:url(../img/terrain/rock.jpg);
+}
+.t3{
+    background:url(../img/terrain/dirt.jpg);
+}
+.t4{
+    background:url(../img/terrain/sea.jpg);
+}
+.t5{
+    background:url(../img/terrain/snow.jpg);
+}
+.tE{
+    background:white;
+}
+
+/*******************************************************
+/*PATHFINDING
+ ***************************************************** */
+table.battle_map .path1{
+    background:url(../img/terrain/grass_path.jpg);
+
+}
+table.battle_map .path3{
+    background:url(../img/terrain/dirt_path.jpg);
+}
+table.battle_map .path4{
+    background:url(../img/terrain/sea_path.jpg);
+}
+table.battle_map .path2{
+    background:url(../img/terrain/rock_path.jpg);
+}
+table.battle_map .path5{
+    background:url(../img/terrain/snow_path.jpg);
+}
+/*
+table.battle_map .t1.path{
+	background:url(../img/terrain/grass_path.jpg);
+}
+table.battle_map .t2.path{
+	background:url(../img/terrain/dirt_path.jpg);
+}
+table.battle_map .t3.path{
+	background:url(../img/terrain/sea_path.jpg);
+}
+table.battle_map .t4.path{
+	background:url(../img/terrain/rock_path.jpg);
+}*/
+
+/*******************************************************
+/*MENUS
+ ***************************************************** */
+
+/*BATTLE REPORT*/
+div#SecondaryPanel{
+    float:left;
+    width:165px;
+    min-height:100px;
+    /*height:540px;*/
+    /*border:1px solid black;
+	background:#333322;*/
+    margin-right:10px;
+    overflow:hidden;;
+}
+/***************************************************************************
+**************************************************************************** 
+************************** Report MENU *************************************
+****************************************************************************
+***************************************************************************/
+
+/****************************************
+* Turns
+****************************************/
+#ArmiesTurn{
+    list-style:none;
+    margin:0;
+    text-align:left;
+    padding:0 0;
+}
+#ArmiesTurn li{
+    border-bottom: 1px solid black;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    float:left;
+    width:45px;
+    height: 43px;
+    text-align: center;
+    /*margin-bottom:10px;*/
+    margin-right: 4px;
+    /*margin: 5px 0;*/
+}
+#ArmiesTurn li.actual{
+  width:65px; 
+  border :2px solid green;
+  /*border-color:-moz-linear-gradient(center top , #FFD700 0%, #664400) repeat scroll 0 0 transparent;*/
+}
+
+
+#ArmiesTurn li:hover{
+    /*padding:5px 5px;*/
+    /*border:1px solid #2286F5;*/
+    background:rgba(0, 0, 0,0.3);
+    /*margin:10px 0;*/
+}
+
+
+#ArmiesTurn li.actual{
+    
+    
+}
+
+#ArmiesTurn li .info{
+    /*padding:3px 5px;*/
+    cursor:pointer;
+    margin:0px 0px;
+}
+
+
+/*
+#ArmiesTurn li .info:hover{
+    background:rgba(0, 0, 0,0.3);
+}*/
+/*
+#ArmiesTurn li .info.actual{
+    padding:5px 5px;
+    border:1px solid #2286F5;
+    background:rgba(34, 134, 245,0.5);
+    margin:10px 0;
+}*/
+#BattleTurnsWrapper #ArmiesTurn li .info.selected{
+    /*padding:5px 5px;*/
+    /*border:3px outset #11FF11;*/
+    
+
+     background:rgb(0, 255, 0) transparent;
+     background:rgba(0, 255, 0, 0.3);
+     filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#4C00FF00, endColorstr=#4C00FF00);
+    
+    /* Replace 0.6 with your desired alpha level
+  Math.floor(0.6 * 255).toString(16);*/
+  /*This dude is awesome http://robertnyman.com/2010/01/11/css-background-transparency-without-affecting-child-elements-through-rgba-and-filters/*/
+}
+
+#ArmiesTurn img{
+    vertical-align:middle;
+    /*margin:3px 0px 5px 5px;*/
+}
+
+#TurnosTitle{
+    /*width: 1em;*/
+    float:left;
+    font-size: 0.9em;
+    padding:15px 5px;
+}
+
+#BattleTurnsWrapper .inner{
+    padding:0px;
+}
+
+/***************************************************************************
+**************************************************************************** 
+************************** Army MENU ***************************************
+****************************************************************************
+***************************************************************************/
+div#BattleMenu{
+    width:170px;
+    float:right;
+    margin-left:10px;
+}
+#slider{
+    margin-top:10px;
+    margin-bottom:10px;
+    margin-left:10px;
+    margin-right:10px;
+
+}
+
+/****************************************
+* Army Info
+****************************************/
+#ArmyInfo .statscontainer{float:left;width:44px;text-align:center}
+ #ArmyInfo .Stats{background-color:transparent; margin:0px 0px 0px 13px;padding:0px 0px 0px 0px;border-bottom:2px solid #111;vertical-align:middle;}
+ .Stats{
+    float:left;
+    width:20px;
+    height:20px;
+}
+#ArmyInfo .statsdata{
+    /*float:left;*/
+    margin-top:2px;
+    clear:both;
+}
+
+ .Attack{background-image:url(../img/stat/stats.png);background-position:0px 0px;background-repeat:no-repeat;}
+ .Armor{background-image:url(../img/stat/stats.png);background-position:-21px 0px;background-repeat:no-repeat;}
+ .Life{background-image:url(../img/stat/stats.png);background-position:-41px 0px;background-repeat:no-repeat;}
+#ArmyInfo .portrait{margin:10px 0 10px;}
+#ArmyInfo .portrait span{font-size:40px;}
+#ArmyInfo .barWrapper{text-align: center;margin-bottom:5px; /*padding-left:26px; background-image:url(../img/stat/lifebar.gif);background-repeat: no-repeat;background-position: 5px center;*/}
+#ArmyInfo .lifebar{width:130px;height:1.4em;background:red; }
+#ArmyInfo .lifebar .ui-progressbar-value{background: green; border:1px solid #339933;}
+
+#ArmyInfo .energybar{width:130px;height:1.1em;background:#123F99; }
+#ArmyInfo .energybar .ui-progressbar-value{
+    /*background: #3871C2;
+    border:1px solid blue;*/
+}
+
+
+
+#ArmiesTurn .mediumLifeBar{
+    margin-top:4px;
+    margin-right:5px;
+    width:110px;
+    height:1.4em;
+    background:red;
+    float:right;
+}
+#ArmiesTurn .mediumLifeBar .ui-progressbar-value{background: green;}
+
+#ArmiesTurn img.myself{background:transparent;border:none}
+#ArmiesTurn img.enemy{background:transparent;border:none}
+#ArmiesTurn img.AI{background:transparent;border:none}
+
+/****************************************
+* Army Actions
+****************************************/  
+#ArmyInfo{
+    
+}
+#ArmyInfoContainer{
+    position:relative;
+}
+#ArmyActions{
+    /*position:absolute;/**/
+    /*left: 183px;
+    top: -179px;*/
+    /*width: 60px;*/
+    /*float:left;*/
+    /*display: block;*/
+    /*right: 0;
+    bottom: 0;*/
+    /*background-color: #bcd5e6;*/
+    /*text-align: center;*/
+    /*left:186px;
+    top:0px;*/
+}
+#ArmyActions .actionWrapper{
+    margin-bottom:10px;
+    border-left: none;
+}
+
+#ArmyActions .button{
+    margin:5px 3px;
+}
+
+#ArmyActions img{
+    vertical-align:top;
+}
+
+div#ArmyActions .selected{
+    /*border:5px solid #823568;*/
+    background:#000086;
+}
+
+#ArmyActionsWrapper li{
+    float:left;
+    width:55px;
+}
+
+
+/*ARMY ACTIONS*/
+div#Sword.animation{
+    position:absolute;
+    /*background:red;*/
+}	
+/*animation*/
+div.animation{
+    border:#f00 solid 1px;
+    background:black;
+    height:25px;
+    width:25px;
+}			
+
+/*coutndown*/
+div.countdown_wrapper{
+    position:absolute;
+    /*left:-45px;*/
+    /*top:-50px;*/
+    z-index:99;
+    width:50px;
+    height:50px;
+    /*display:inline;*/
+}
+div.false_wrapper{
+    position:absolute;
+    left:0px;
+    top:0px;
+    z-index:99;
+    float:left;
+    /*display:inline;*/
+    background:black;
+    border-left:1px solid red;
+    border-bottom:1px solid red;
+    border-top:none;
+    border-right:none;
+}
+
+div.countdown{
+    /*position:absolute;*/
+    border:#f00 solid 1px;
+    background:black;
+    font-size:0.6em;
+}
+
+span.demoA{
+    display:block;
+    width:10px;
+    height:10px;
+    left:1px;
+    top:1px;
+    color:#FF0000;
+}
+/*UNITS ACTIONS*/
+img.army{
+    cursor:pointer;
+    padding:1px;
+    /*background: none repeat scroll 0 0 rgba(255, 255, 255, 0.5);*/
+}
+img.army.myself{
+    border:2px ridge #2286F5;   
+    /*background: none repeat scroll 0 0 rgba(34, 134, 245, 0.7);*/
+}
+/*body img.army.myself.selected,
+body img.army.enemy.selected,
+body img.army.AI.selected*/
+
+/*Hack para IE */
+/*body #BattleMap img.selected*/
+body img.army.myself.selected,
+body img.army.enemy.selected,
+body img.army.AI.selected
+{
+    /*outline:3px ridge green;
+    *border:3px ridge green;*/   
+  /*  background: none repeat scroll 0 0 rgba(0, 255, 0, 0.7);*/
+  background:rgb(0, 255, 0) transparent;
+  background:rgba(0, 255, 0, 0.7);
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#B200FF00, endColorstr=#B200FF00);
+  /* Replace 0.6 with your desired alpha level
+  Math.floor(0.6 * 255).toString(16);*/
+  /*This dude is awesome http://robertnyman.com/2010/01/11/css-background-transparency-without-affecting-child-elements-through-rgba-and-filters/*/
+  
+  color:white;
+}
+    
+img.army.enemy.iluminate,img.army.AI.iluminate,img.army.myself.iluminate{
+    -moz-border-radius:10px;
+    outline-width:20px;
+    outline-style: dashed;
+}    
+    
+img.army.enemy{
+    border:2px ridge red;
+   /* background: none repeat scroll 0 0 rgba(255,1, 1, 0.7);*/
+}
+
+img.army.AI{
+    border:2px ridge #990066;/*Morado*/
+    /*background: none repeat scroll 0 0 rgba(153,0, 102, 0.7);*/ /*Morado*/
+}
+
+
+img.army.my_highlight{
+    background:green;
+}
+img.army.enemy_highlight{
+    background:red;
+}
+
+
+
+div.doodad{
+    position:absolute;
+    left:1px;
+    top:1px;
+    z-index:100;
+    /*float:left;*/
+}
+
+/*UNITS ACTIONS*/
+div.unitInfo{
+    border:2px solid #AAA;
+    background:white;
+    -moz-border-radius:10px;
+    -webkit-border-radius:10px;
+    font-weight:bolder;
+    padding-bottom:10px;
+    text-align:center;
+    width:140px;
+    color:black;
+    position:absolute;
+    left:1px;
+    right:1px;
+    z-index:100;	
+    opacity: 0.75;
+    -moz-opacity: 0.75; /* older Gecko-based browsers */
+    filter:alpha(opacity=75); /* For IE6&7 */
+}
+
+
+/*Minimap*/
+#Minimap{
+    /*width:140px;
+    height:140px;*/
+    padding:0;
+    margin:auto;
+    background:#45423E;
+    border:0px;
+    position:relative;
+    
+}
+
+#MinimapViewPort{
+    position:absolute;
+    left:0px;
+    top:0px;
+    z-index:999px;
+      background:rgb(34, 134, 245) transparent;
+      background:rgba(34, 134, 245, 0.3);
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#4C2286F5, endColorstr=#4C2286F5);
+  /* Replace 0.6 with your desired alpha level
+  Math.floor(0.6 * 255).toString(16);*/
+  /*This dude is awesome http://robertnyman.com/2010/01/11/css-background-transparency-without-affecting-child-elements-through-rgba-and-filters/*/
+  
+  color:white;
+    
+    
+    
+    
+    /*background:url(../img/web/minimap.png);*/
+    outline : 4px solid #2286F5;
+    cursor:move;
+}
+
+#Minimap .tile{
+    float:left;
+    margin:0;
+    padding:0;
+}
+#ViewPort{
+    height:450px;
+    width:600px;
+    width:auto;
+    overflow: hidden;
+    position:relative;
+}
+#BattleMap{
+    position:absolute;
+}
+
+/* TUTORIAL */
+#Tutorial11 .Stats{
+    margin-right: 10px;
+}

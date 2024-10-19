@@ -1,0 +1,14 @@
+; $Id: tf_cloud.info,v 1.1 2008/07/13 22:52:33 styro Exp $
+name = "Cloud Menu"
+description = "Provides a tag cloud style menu template."
+dependencies[] = taxonomy_filter
+dependencies[] = tf_count
+package = Taxonomy Filter
+core = 6.x
+
+; Information added by drupal.org packaging script on 2010-10-17
+version = "6.x-1.x-dev"
+core = "6.x"
+project = "taxonomy_filter"
+datestamp = "1287274971"
+

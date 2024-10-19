@@ -1,0 +1,14 @@
+; $Id: views_showcase.info,v 1.5 2010/05/03 06:58:13 khaledzaidan Exp $
+name = Views Showcase
+description = Display a view like a showcase to highlight items.
+core = 6.x
+package = Views
+dependencies[]  = views
+
+
+; Information added by drupal.org packaging script on 2010-07-15
+version = "6.x-2.1"
+core = "6.x"
+project = "views_showcase"
+datestamp = "1279194611"
+

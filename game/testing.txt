@@ -1,0 +1,33 @@
+$.ajax({
+   type:'post',
+   data:{'ajax_action':'action','action_id':1,'region_id':2,'battle_id':1,'ox':3,'oy':3,'tx':3,'ty':3},
+   url:'lib/ajaxRegion.php?random=',
+   dataType:'json',
+   error:function(XMLHttpRequest, textStatus, errorThrown){
+     console.log(XMLHttpRequest,'callExecAction error');
+     console.log(textStatus,'callExecAction error');
+     console.log(errorThrown,'callExecAction error');
+     var error = [];
+     error['text']= 'Error de Coneccion';
+     error['type']= 'error';
+     msg(error);
+     continueMsg();
+   },
+   success:function(data){
+     if(data == 1){
+       var error = [];
+       error['text']= 'Error de Coneccion [2]';
+       error['type']= 'error';
+       msg(error);
+       continueMsg();
+     }
+     else{
+       xeno = json_parse(data);
+       xeno['time'] = iGlobalTime;
+       phaseManager();
+       msg(xeno['msg']);
+       continueMsg();          
+     }
+
+     },
+ });

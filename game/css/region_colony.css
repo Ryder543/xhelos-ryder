@@ -1,0 +1,44 @@
+/* 
+    Document   : colony_region
+    Created on : 23/12/2012, 11:53:50 PM
+    Author     : windows7
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+img.colony {
+  border-radius: 90px 90px 90px 90px;
+  box-shadow: 0 0 2px white;
+  margin-left: -90px;
+  margin-top: -90px;
+  position: absolute;
+  z-index: 9;
+  opacity: 1;
+}
+img.colony.minimap {
+  border-radius: 15px 15px 15px 15px;
+  box-shadow: none;
+  margin-left: -7.5px;
+  margin-top: -5px;
+  opacity: 1;
+  position: absolute;
+  z-index: 9;
+}
+
+img.colony:hover {
+  /*opacity:1.5;*/
+  border-radius: 90px 90px 90px 90px;
+  box-shadow: 0 0 20px rgba(0, 255, 0, 1);
+  margin-left: -90px;
+  margin-top: -90px;
+  position: absolute;
+  z-index: 9;
+  opacity: 1.5;
+  
+}
+
+img.colony.selected{
+  background:rgb(0, 255, 0) transparent;
+  background:rgba(0, 255, 0, 0.7);
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#B200FF00, endColorstr=#B200FF00);
+}

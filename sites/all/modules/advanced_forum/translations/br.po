@@ -1,0 +1,513 @@
+# $Id: br.po,v 1.1.2.1 2010/01/14 18:44:04 michellec Exp $
+# LANGUAGE translation of Drupal (general)
+# Copyright YEAR NAME <EMAIL@ADDRESS>
+# Generated from files:
+#  advanced_forum.module,v 1.21.2.128 2009/02/20 17:47:21 michellec
+#  advf-forum-list.tpl.php,v 1.1.2.21 2009/01/27 23:31:11 michellec
+#  advanced_forum-forum-legend.tpl.php,v 1.1.2.3 2009/02/04 04:59:37 michellec
+#  advanced_forum-topic-legend.tpl.php,v 1.1.2.3 2009/02/04 04:59:37 michellec
+#  advf-forum-topic-list.tpl.php,v 1.1.2.10 2009/01/27 23:31:11 michellec
+#  advanced_forum.info,v 1.4.2.6 2008/12/21 22:41:41 michellec
+#  advf-author-pane.tpl.php,v 1.1.2.7 2009/02/04 04:06:09 michellec
+#  advf-author-pane.tpl.php,v 1.1.2.6 2009/02/04 04:06:09 michellec
+#  advf-author-pane.tpl.php,v 1.1.2.7 2009/01/27 04:54:53 michellec
+#  advf-author-pane.tpl.php,v 1.1.2.9 2009/02/04 04:06:09 michellec
+#  advf-forum-post.tpl.php,v 1.1.2.21 2009/02/07 04:40:48 michellec
+#  advf-forum-statistics.tpl.php,v 1.1.2.3 2009/02/04 17:22:18 michellec
+#  advf-forum-submitted.tpl.php,v 1.1.2.6 2009/01/27 23:31:11 michellec
+# , 2009.
+msgid ""
+msgstr ""
+"Project-Id-Version: pt_br\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-02-21 14:20-0500\n"
+"PO-Revision-Date: 2009-07-02 11:33-0300\n"
+"Last-Translator: \n"
+"Language-Team: Brazilian Portuguese <kde-i18n-doc@kde.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 0.3\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: advanced_forum.module:171
+msgid "General"
+msgstr "Geral"
+
+#: advanced_forum.module:185
+msgid "Advanced forum style"
+msgstr "Estilo do Advanced Forum"
+
+#: advanced_forum.module:187
+msgid "Choose which style to use for your forums. This will apply independent of site theme."
+msgstr "Selecione o estilo a ser utilizado pelos seus fóruns. Eles serão aplicados independentemente do tema do site."
+
+#: advanced_forum.module:194
+msgid "Image directory"
+msgstr "Diretório de imagens"
+
+#: advanced_forum.module:196
+msgid "Images are assumed to be in the \"images\" subdirectory of your style. If you need images to be somewhere else, put the full path here."
+msgstr "Espera-se que as imagens estejam no subdiretório \"images\" do seu estilo. Caso seja necessário colocar as imagens em outro lugar, coloque o caminho completo aqui."
+
+#: advanced_forum.module:203
+msgid "Use graphical buttons for links"
+msgstr "Usar botões com imagens para os links"
+
+#: advanced_forum.module:205
+msgid "Included buttons are in English. Uncheck this to use translatable links instead."
+msgstr "Existem botões em outros idiomas além do inglês. Desabilite essa opção caso não tenha botões no seu idioma."
+
+#: advanced_forum.module:211
+msgid "Treat all site comments like forum posts"
+msgstr "Considere todos os comentários do site como publicações do fórum"
+
+#: advanced_forum.module:213
+msgid "Choosing yes causes advanced forum to consider every comment a forum comment and attempt to theme it that way. Some changes to your theme may be required."
+msgstr "Caso isso seja selecionado, o Advanced Forum considerará todos os comentários do site como comentários de fórum e tentará aplicar o tema correspondente neles. Podem ser necessárias algumas alterações no seu tema."
+
+#: advanced_forum.module:219
+msgid "Forum and topic lists"
+msgstr "Listas de fóruns e tópicos"
+
+#: advanced_forum.module:227
+msgid "Hide the created column on the topic list"
+msgstr "Esconde a coluna \"Criado\" na lista de tópicos"
+
+#: advanced_forum.module:229
+msgid "This allows you to hide the created column on the topic list. Useful if you want to move the created by information to underneath the topic title."
+msgstr "Isso permite esconder a coluna \"Criado\" na lista de tópicos. Útil caso deseje mover a informação de criação abaixo do título do tópico."
+
+#: advanced_forum.module:235
+msgid "Maximum number of pages to show on per title pager"
+msgstr "Número máximo de páginas a serem exibidas no paginador por título"
+
+#: advanced_forum.module:237
+msgid "Used on the pager under topic titles in topic list. e.g. entering 5 will get you 1,2,3,4 ... 10"
+msgstr "Usado pelo paginador abaixo dos títulos dos tópicos, na lista de tópicos. Ex. se for digitado \"5\", será exibido \"1,2,3,4 ... 10\"."
+
+#: advanced_forum.module:244
+msgid "Get the number of new comments per forum on the forum list"
+msgstr "Obter o número de novos comentários por fórum na lista de fóruns"
+
+#: advanced_forum.module:246
+msgid "Core forum shows the number of new topics. If checked, Advanced Forum will get the number of new comments as well and show it under \"posts\" on the forum overview. Slow query not recommended on large forums."
+msgstr ""
+"O fórum do Drupal exibe o número de novos tópicos. Se marcado, o Advanced Forum também obterá o número de novos comentários e exibirá sob \"publicações\" na visão geral do fórum. É um procedimento lento, que não é "
+"recomendável em fóruns muito grandes."
+
+#: advanced_forum.module:252
+msgid "Number of characters to display for the topic title"
+msgstr "Número de caracteres a serem exibidos no título do tópico"
+
+#: advanced_forum.module:254
+msgid "Used on main forum page. Enter 0 to use the full title."
+msgstr "Usado na página principal do fórum. Digite 0 para utilizar o título completo."
+
+#: advanced_forum.module:261
+msgid "Number of hours before switching to date posted in displays"
+msgstr "Número de horas transcorridas antes de mudar para data nas publicações"
+
+#: advanced_forum.module:263
+msgid "Will show \"time ago\" until this cutoff and then switch to actual date posted."
+msgstr "Exibirá \"segundos/minutos/horas/dias atrás\" até atingir esse limite de horas. A partir daí, exibirá a data em que a publicação foi feita."
+
+#: advanced_forum.module:270
+#: styles/naked/advf-forum-list.tpl.php:41
+msgid "Topics"
+msgstr "Tópicos"
+
+#: advanced_forum.module:278
+msgid "Use topic navigation"
+msgstr "Usar a navegação por tópicos"
+
+#: advanced_forum.module:280
+msgid "Core forum gets the next and previous topics and shows links to them under the top post. This is turned off by default as the query has performance issues and the placement of the links is poor."
+msgstr ""
+"O fórum do Drupal obtém os tópicos seguinte e anterior e exibe links para eles abaixo da publicação da publicação principal. Isso é desligado por padrão, uma vez que seu processamento possui problemas de performance e "
+"a localização dos links é ruim."
+
+#: advanced_forum.module:293
+msgid "User picture preset"
+msgstr "Conjunto de imagens para os usuários"
+
+#: advanced_forum.module:295
+msgid "Imagecache preset to use for forum avatars. Leave blank to not use this feature."
+msgstr "Conjunto de imagens a serem utilizadas como avatares do fórum. Deixe em branco para não usar esse recurso."
+
+#: advanced_forum.module:336
+msgid "No replies"
+msgstr "Sem respostas"
+
+#: advanced_forum.module:351;361
+msgid "Post Reply"
+msgstr "Publicar resposta"
+
+#: advanced_forum.module:353;363
+msgid "Share your thoughts and opinions related to this posting."
+msgstr "Compartilhe seus pensamentos e opiniões relacionados a essa publicação."
+
+#: advanced_forum.module:371
+msgid "post-reply.png"
+msgstr "post-reply.png"
+
+#: advanced_forum.module:371
+msgid "Post reply"
+msgstr "Publicar reposta"
+
+#: advanced_forum.module:378
+msgid "Topic Locked"
+msgstr "Tópico travado"
+
+#: advanced_forum.module:379
+msgid "This topic is locked"
+msgstr "Este tópico está travado"
+
+#: advanced_forum.module:384
+msgid "locked-topic.png"
+msgstr "locked-topic.png"
+
+#: advanced_forum.module:384
+msgid "Locked"
+msgstr "Travado"
+
+#: advanced_forum.module:431
+msgid "Reply"
+msgstr "Responder"
+
+#: advanced_forum.module:546
+msgid "(permalink)"
+msgstr "(permalink)"
+
+#: advanced_forum.module:598
+msgid "new-topic.png"
+msgstr "new-topic.png"
+
+#: advanced_forum.module:598
+msgid "New topic"
+msgstr "Novo tópico"
+
+#: advanced_forum.module:604
+msgid "new-poll.png"
+msgstr "new-poll.png"
+
+#: advanced_forum.module:604
+msgid "New poll"
+msgstr "Nova enquete"
+
+#: advanced_forum.module:615
+msgid "Mark all topics read"
+msgstr "Marcar todos os tópicos como lidos"
+
+#: advanced_forum.module:619
+msgid "Mark all forums read"
+msgstr "Marcar todos os fóruns como lidos"
+
+#: advanced_forum.module:625
+msgid "mark-read.png"
+msgstr "mark-read.png"
+
+#: advanced_forum.module:625
+msgid "Mark read"
+msgstr "Marcar como lido"
+
+#: advanced_forum.module:662;748
+msgid "forum-folder-new-posts.png"
+msgstr "forum-folder-new-posts.png"
+
+#: advanced_forum.module:662
+#: styles/naked/advanced_forum-forum-legend.tpl.php:13
+msgid "Forum Contains New Posts"
+msgstr "O fórum contém novas publicações"
+
+#: advanced_forum.module:663
+msgid "/forum-folder.png"
+msgstr "/forum-folder.png"
+
+#: advanced_forum.module:663
+#: styles/naked/advanced_forum-forum-legend.tpl.php:15
+msgid "Forum Contains No New Posts"
+msgstr "O fórum não contém nenhuma publicação nova"
+
+#: advanced_forum.module:664
+msgid "forum-folder-locked.png"
+msgstr "forum-folder-locked.png"
+
+#: advanced_forum.module:664
+#: styles/naked/advanced_forum-forum-legend.tpl.php:17
+msgid "Forum is Locked"
+msgstr "O fórum está travado"
+
+#: advanced_forum.module:670
+msgid "topic-new.png"
+msgstr "topic-new.png"
+
+#: advanced_forum.module:670
+#: styles/naked/advanced_forum-topic-legend.tpl.php:18
+msgid "New Posts"
+msgstr "Novas publicações"
+
+#: advanced_forum.module:671
+msgid "topic-hot-new.png"
+msgstr "topic-hot-new.png"
+
+#: advanced_forum.module:671
+#: styles/naked/advanced_forum-topic-legend.tpl.php:28
+msgid "Hot Thread (New)"
+msgstr "Discussão popular (Nova)"
+
+#: advanced_forum.module:672
+msgid "topic-hot.png"
+msgstr "topic-hot.png"
+
+#: advanced_forum.module:672
+#: styles/naked/advanced_forum-topic-legend.tpl.php:24
+msgid "Hot Thread (No New)"
+msgstr "Discussão popular (Sem novas)"
+
+#: advanced_forum.module:673
+msgid "topic-default.png"
+msgstr "topic-default.png"
+
+#: advanced_forum.module:673
+#: styles/naked/advanced_forum-topic-legend.tpl.php:14
+msgid "No New Posts"
+msgstr "Nenhuma publicação nova"
+
+#: advanced_forum.module:674
+msgid "topic-sticky.png"
+msgstr "topic-sticky.png"
+
+#: advanced_forum.module:674
+#: styles/naked/advanced_forum-topic-legend.tpl.php:34
+msgid "Sticky Thread"
+msgstr "Discussão fixa"
+
+#: advanced_forum.module:675
+msgid "topic-closed.png"
+msgstr "topic-closed.png"
+
+#: advanced_forum.module:675
+#: styles/naked/advanced_forum-topic-legend.tpl.php:38
+msgid "Locked Thread"
+msgstr "Discussão travada"
+
+#: advanced_forum.module:748
+msgid "new post folder"
+msgstr "pasta de novas publicações"
+
+#: advanced_forum.module:751
+msgid "forum-folder.png"
+msgstr "forum-folder.png"
+
+#: advanced_forum.module:751
+msgid "folder"
+msgstr "pasta"
+
+#: advanced_forum.module:841
+msgid "Views"
+msgstr "Visualizações"
+
+#: advanced_forum.module:884
+msgid "This topic has been moved to !forum"
+msgstr "Esse tópico foi movido para !forum"
+
+#: advanced_forum.module:1077
+msgid "All content in this forum has been marked as read"
+msgstr "Todo o conteúdo deste fórum foi marcado como lido"
+
+#: advanced_forum.module:1110
+msgid "All forum content been marked as read"
+msgstr "Todo o conteúdo do fórum foi marcado como lido"
+
+#: advanced_forum.module:1259
+msgid "@user's picture"
+msgstr "Imagem do @user"
+
+#: advanced_forum.module:1273
+msgid "View user profile."
+msgstr "Ver o perfil do usuário."
+
+#: advanced_forum.module:1289;1294
+msgid "reply.png"
+msgstr "reply.png"
+
+#: advanced_forum.module:1289;1294
+msgid "reply"
+msgstr "responder"
+
+#: advanced_forum.module:1299
+msgid "edit.png"
+msgstr "edit.png"
+
+#: advanced_forum.module:1299
+msgid "edit"
+msgstr "editar"
+
+#: advanced_forum.module:1304
+msgid "delete.png"
+msgstr "delete.png"
+
+#: advanced_forum.module:1304
+msgid "delete"
+msgstr "excluir"
+
+#: advanced_forum.module:1504
+#: styles/naked/advf-forum-list.tpl.php:43
+msgid "Last post"
+msgstr "Última publicação"
+
+#: advanced_forum.module:1575
+#: styles/naked/advf-forum-topic-list.tpl.php:64
+msgid "new"
+msgstr "nova"
+
+#: advanced_forum.module:1599
+msgid "1"
+msgstr "1"
+
+#: advanced_forum.module:1632
+msgid "Last Page"
+msgstr "Última página"
+
+#: advanced_forum.module:1637
+msgid "Page"
+msgstr "Página"
+
+#: advanced_forum.module:332
+msgid "1 reply"
+msgid_plural "@count replies"
+msgstr[0] "1 resposta"
+msgstr[1] "@count respostas"
+
+#: advanced_forum.module:738
+msgid "1 new"
+msgid_plural "@count new"
+msgstr[0] "1 nova"
+msgstr[1] "@count novas"
+
+#: advanced_forum.module:15
+msgid "administer advanced forum"
+msgstr "administrar o Advanced Forum"
+
+#: advanced_forum.module:16
+msgid "view forum statistics"
+msgstr "ver estatísticas do fórum"
+
+#: advanced_forum.module:30
+msgid "Configure Advanced Forum with these settings."
+msgstr "Configura o Advanced Forum com estes parâmetros."
+
+#: advanced_forum.module:33
+#: advanced_forum.info:0
+msgid "Advanced Forum"
+msgstr "Advanced Forum"
+
+#: advanced_forum.module:0
+msgid "advanced_forum"
+msgstr "advanced_forum"
+
+#: advanced_forum.info:0
+msgid "Enables the look and feel of other popular forum software."
+msgstr "Habilita o estilo de outro popular software de fórum."
+
+#: styles/blue_lagoon_stacked/advf-author-pane.tpl.php:78
+#: styles/boxy_stacked/advf-author-pane.tpl.php:77
+#: styles/naked/advf-author-pane.tpl.php:75
+#: styles/naked_stacked/advf-author-pane.tpl.php:78
+msgid "Title"
+msgstr "Título"
+
+#: styles/blue_lagoon_stacked/advf-author-pane.tpl.php:95
+#: styles/boxy_stacked/advf-author-pane.tpl.php:94
+#: styles/naked/advf-author-pane.tpl.php:119
+#: styles/naked_stacked/advf-author-pane.tpl.php:95
+msgid "IP"
+msgstr "IP"
+
+#: styles/blue_lagoon_stacked/advf-author-pane.tpl.php:109
+#: styles/boxy_stacked/advf-author-pane.tpl.php:108
+#: styles/naked/advf-author-pane.tpl.php:92
+#: styles/naked_stacked/advf-author-pane.tpl.php:109
+msgid "Joined"
+msgstr "Associou-se"
+
+#: styles/blue_lagoon_stacked/advf-author-pane.tpl.php:115
+#: styles/boxy_stacked/advf-author-pane.tpl.php:114
+#: styles/naked/advf-author-pane.tpl.php:98
+#: styles/naked/advf-forum-list.tpl.php:42
+#: styles/naked_stacked/advf-author-pane.tpl.php:115
+msgid "Posts"
+msgstr "Publicações"
+
+#: styles/blue_lagoon_stacked/advf-author-pane.tpl.php:121
+#: styles/boxy_stacked/advf-author-pane.tpl.php:120
+#: styles/naked/advf-author-pane.tpl.php:104
+#: styles/naked_stacked/advf-author-pane.tpl.php:121
+msgid "!Points"
+msgstr "!Points"
+
+#: styles/blue_lagoon_stacked/advf-author-pane.tpl.php:147
+#: styles/boxy_stacked/advf-author-pane.tpl.php:126
+#: styles/naked/advf-author-pane.tpl.php:110
+#: styles/naked_stacked/advf-author-pane.tpl.php:147
+msgid "Groups"
+msgstr "Grupos"
+
+#: styles/naked/advf-forum-list.tpl.php:40
+msgid "Forum"
+msgstr "Fórum"
+
+#: styles/naked/advf-forum-post.tpl.php:78
+msgid "Top"
+msgstr "Alto da página"
+
+#: styles/naked/advf-forum-statistics.tpl.php:22
+msgid "What's Going On?"
+msgstr "O que está acontecendo?"
+
+#: styles/naked/advf-forum-statistics.tpl.php:25
+msgid "Currently active users: !current_total (!current_users users and !current_guests guests)"
+msgstr "Usuários ativos atualmente: !current_total (!current_users usuários e !current_guests convidados)"
+
+#: styles/naked/advf-forum-statistics.tpl.php:33
+msgid "Statistics"
+msgstr "Estatísticas"
+
+#: styles/naked/advf-forum-statistics.tpl.php:37
+msgid "Topics: !topics, Posts: !posts, Users: !users"
+msgstr "Tópicos: !topics, Publicações: !posts, Usuários: !users"
+
+#: styles/naked/advf-forum-statistics.tpl.php:38
+msgid "Welcome to our latest member, !user"
+msgstr "As boas vindas ao nosso mais novo membro, !user."
+
+#: styles/naked/advf-forum-submitted.tpl.php:26
+msgid "!title<br />by !author<br />@date_posted"
+msgstr "!title<br />por !author<br />@date_posted"
+
+#: styles/naked/advf-forum-submitted.tpl.php:33
+msgid "!title<br />by !author<br />@time ago"
+msgstr "!title<br />por !author<br />@time atrás"
+
+#: styles/naked/advf-forum-submitted.tpl.php:42
+msgid "by !author<br />@date_posted"
+msgstr "por !author<br />@date_posted"
+
+#: styles/naked/advf-forum-submitted.tpl.php:48
+msgid "by !author<br />@time ago"
+msgstr "por !author<br />@time atrás"
+
+#: styles/naked/advf-forum-submitted.tpl.php:56
+msgid "n/a"
+msgstr "n/a"
+
+#: styles/naked/advf-forum-topic-list.tpl.php:52
+msgid "Sticky"
+msgstr "Fixo"
+
+#: styles/naked/advf-forum-topic-list.tpl.php:61
+msgid "updated"
+msgstr "atualizado"
+
+

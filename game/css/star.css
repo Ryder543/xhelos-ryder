@@ -1,0 +1,165 @@
+ /*******************************************************
+ * INFORMACION DEL PLANETA
+ ******************************************************/
+ #StarInfo{
+  width:300px;
+  float:right;  
+}
+
+#StarInfo .planetinfo{
+  padding:15px;
+}
+#StarInfo .planetinfo p{
+  color:black;
+  font-weight:normal;
+  text-align:justify;
+  padding:0;
+  margin:0;
+}
+
+#StarInfo .planetinfo img{
+  float:left;
+  margin:0 10px 10px;
+}
+
+
+/*Recursos*/
+ #PlanetTotalResources{
+   /*padding:5px 15px;*/
+   margin:0;
+   list-style:none;
+   /*color:black;*/
+ }
+#PlanetTotalResources img{
+   padding:0;
+   margin:0;
+   vertical-align:middle;
+   float:none;
+   
+ }
+ 
+ #PlanetTotalResources li{
+   float:left;
+ }
+
+
+ /*******************************************************
+ * COLONIAS
+ ******************************************************/
+.planetcolonies{
+}
+
+ /*******************************************************
+ * ORBITAS
+ ******************************************************/
+ #StarSystem{
+   padding:0;
+   margin:0;
+   list-style:none;
+   width:650px;
+   *width:630px;
+   float:left;
+ }
+ .orbit{
+   /*background:rgba(0,0,0,0.2);
+   border:2px solid #2286F5;
+   */
+   margin-bottom:20px;
+   display:block;
+   
+ }
+ .orbit.sizeA{
+   /*height:85px;*/
+}
+ .orbit.sizeB{
+   /*height:110px;*/
+}
+ .orbit.sizeC{
+   /*height:135px;*/
+}
+ .orbit.sizeD{
+   /*height:155px;*/
+}
+
+/*******************************************************
+ * OBJETOS DENTRO DE ORBITA
+ ******************************************************/
+
+ #StarSystem .orbitname{
+   font-size:1em;
+   font-weight:bold;
+   
+  /*background:none repeat scroll 0 0 #2286F5;*/
+  float:left;
+  margin:0;
+  padding:10px;
+   
+ }
+ 
+ #StarSystem  div .name{
+    overflow: visible;
+    white-space: nowrap;
+    /*padding: 1px 4px;*/
+ }
+ #StarSystem  div .name a{
+     font-weight:bold;
+     /*font-size:116%;*/
+     color:white;
+     text-decoration: none;
+     padding: 1px 5px;
+}
+
+ #StarSystem  div .inner-object{ 
+   /*padding: 7px 10px 0;*/
+   cursor:pointer;
+   zoom:1;
+   text-align: center;
+   margin:10px 0px 0px;
+ }
+ 
+ #StarSystem  div.object{
+    float:left;
+    margin: 5px 5px 5px;
+ }
+ 
+ #StarSystem  div.clear{
+     float:none;
+     clear:both;
+     /*padding:1px;
+     margin:5px 0px 15px;*/
+}
+
+ #StarSystem  div:hover{
+    /*background:rgba(34, 134, 245,0.2);*/
+ }
+ #StarSystem  div.active{
+    background:rgb(34, 134, 245) transparent; 
+    background:rgba(34, 134, 245,0.5);
+    filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#7F11437B', endColorstr='#7F11437B');
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#7F11437B', endColorstr='#7F11437B')";
+
+ }
+
+
+  #StarSystem  img{
+   display:inline;
+    margin-bottom: 10px;
+ }
+
+ #StarSystem .sizeA{
+   /*height:25px;*/
+   /*width:96px;*/
+ }
+
+#StarSystem  .sizeB{
+   /*height:40px;*/
+   /*width:96px;*/
+ }
+#StarSystem  .sizeC{
+   /*height:50px;*/
+   /*width:96px;*/
+ }
+#StarSystem  .sizeD{
+   /*height:75px;*/
+   /*width:96px;*/
+ } 

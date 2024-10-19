@@ -1,0 +1,21 @@
+/*****************************
+ *  Paneles
+ *****************************/
+.ui-tabs-hide{
+	display:none;
+}
+
+	/*****************************
+	 *  Contenedor Menu de Tabs
+	 *****************************/
+	
+	ul.grindyMenu{margin:0px;/*width:180px*/;padding:0px;}
+	ul.grindyMenu li{display:inline;list-style:none;padding:1px 15px 1px 15px;width:90px;-moz-border-radius-topleft:10px;-moz-border-radius-topright:10px;}
+	ul.grindyMenu a{text-decoration:none;font-size:0.9em;font-weight:bolder;}
+	ul.grindyMenu a:hover{color:black;}
+	
+	ul.grindyMenu li.ui-state-default{background:white;}
+	ul.grindyMenu li.ui-state-default a{color:#0E318D;}
+		
+	ul.grindyMenu li.ui-state-active{background:#4FBADF;}
+	ul.grindyMenu li.ui-state-active a{color:white;}

@@ -1,0 +1,135 @@
+<?php
+
+/**
+ * @file
+ * Internationalization of Logos (i18nlogo) module
+ *
+ * This module allow you to upload different logos for each languages.
+ *
+ * @author Christian S. Roy, 2009
+ */
+
+/**
+ * Implements hook_help
+ *
+ */
+function i18nlogo_help($path, $arg) {
+  switch ($path) {
+    // Main module help for the block module
+    case 'admin/help#i18nlogo':
+      return '<p>' . t('Once you installed the I18n Logo module, you might want to grant the permission "administer languages" to whomever you want to have the ability to upload logos for a given language.  To upload a new logo, you need to edit the language from the <a href="@languages">Language administration page</a>.  Click on the edit link for a language and you will be presented with a form that will allow you to upload a logo for that language.', array('@languages' => url('admin/settings/language'))) . '</p>';
+  }
+}
+
+
+/**
+ * Implements hook_form_alter
+ *
+ * Modifies two forms.
+ *
+ * The first is the configure themes
+ * which allow you to control the logo for each themes.
+ * This form no longuer allow you to upload a logo. Instead
+ * it tells you where you have to go to configure your logos.
+ *
+ * The second form is the form that allow you to edit each
+ * languages.  This form now shows an upload field so you
+ * can uplaod a custom logo for a given language.
+ */
+function i18nlogo_form_alter(&$form, $form_state, $form_id) {
+  if ($form_id == 'system_theme_settings') {
+    $form['logo'] = array(
+      '#type' => 'fieldset',
+      '#title' => t('Logo image settings'),
+      '#description' => t('You must configure the logos in the !link.', 
+                          array('!link' => l(t('language settings'), 'admin/settings/language'))),
+      '#attributes' => array('class' => 'theme-settings-bottom'),
+    );
+  }
+  elseif ($form_id == 'locale_languages_edit_form') {
+
+    $lang = $form['langcode']['#value'];
+
+    $form['logo'] = array(
+      '#type' => 'fieldset',
+      '#title' => t('Logo image settings'),
+      '#description' => t('Upload a custom logo for the language @lang.', array('@lang' => $form['name']['#default_value'])),
+      '#weight' => 1,
+    );
+    $form['logo']["default_logo"] = array(
+      '#type' => 'checkbox',
+      '#title' => t('Use the default logo'),
+      '#default_value' => (variable_get('i18nlogo_path_'. $lang, NULL)) ? 0 : 1,
+      '#tree' => FALSE,
+      '#description' => t('Check here if you want to use the default logo and not use any custom logo.')
+    );
+
+    if (variable_get('i18nlogo_path_'. $lang, NULL)) {
+      $form['logo']['preview'] = array(
+        '#value' => theme('image', 
+                          variable_get('i18nlogo_path_'. $lang, NULL), 
+                          'logo for language '. $lang,
+                          'logo for language '. $lang,
+                          array('style' => 'width: auto; height: 50px;')
+        ),
+      );
+    }
+
+    $form['logo']['logo_upload'] = array(
+      '#type' => 'file',
+      '#title' => t('Upload logo image'),
+      '#maxlength' => 40,
+      '#description' => t("If you don't have direct file access to the server, use this field to upload your logo.")
+    );
+    $form['submit']['#weight'] = 2;
+    $form['#submit'][] = 'i18nlogo_locale_languages_edit_form_submit';
+    $form['#attributes']['enctype'] = 'multipart/form-data';
+  }
+}
+
+/**
+ * Form submit callback for language edit form.
+ *
+ * Adds an upload form to the existing form to edit a language.
+ * This allow you to specify the logo you want for a language
+ * directly where you edit a language.
+ * You can edit languages at http://example.com/?q=admin/settings/language
+ */
+function i18nlogo_locale_languages_edit_form_submit($form, &$form_state) {
+  // Check for a new uploaded logo, and use that instead.
+  $lang = $form['langcode']['#value'];
+  if ($file = file_save_upload('logo_upload', array('file_validate_is_image' => array()))) {
+    $parts = pathinfo($file->filename);
+    $filename = 'logo_'. $lang .'.'. $parts['extension'];
+
+    // The image was saved using file_save_upload() and was added to the
+    // files table as a temporary file. We'll make a copy and let the garbage
+    // collector delete the original upload.
+    if (file_copy($file, $filename, FILE_EXISTS_REPLACE)) {
+      $_POST['default_logo'] = 0;
+    }
+
+    variable_set('i18nlogo_path_'. $lang, $file->filepath);
+  }
+  else if ($form_state['values']['default_logo']) {
+    variable_del('i18nlogo_path_'. $lang);
+  }
+
+}
+
+/**
+ * Logo substitution.
+ *
+ * Whenever a page is being displayed, we substitute the logo path
+ * to the one for the current language.  If no logo were defined
+ * for the current language, we do not change anything so the default 
+ * logo will be displayed.
+ */
+function i18nlogo_preprocess_page(&$variables) {
+  global $language;
+  $lang = $language->language;
+
+  if (variable_get('i18nlogo_path_'. $lang, NULL)) {
+    $variables['logo'] = file_create_url(variable_get('i18nlogo_path_'. $lang, NULL));
+  }
+}

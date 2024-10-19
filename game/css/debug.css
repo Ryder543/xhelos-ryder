@@ -1,0 +1,15 @@
+body div#Debug {
+	position:absolute;
+	left:1px;
+	top:1px;
+	background:#fff;
+	border:1px solid black;
+	color:black;
+	text-align:left;
+}
+
+body div#Debug ul{
+	list-style:none;
+	margin:0;
+	padding:0;
+}

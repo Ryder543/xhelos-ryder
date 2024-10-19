@@ -1,0 +1,44 @@
+diff --git a/includes/handlers.inc b/includes/handlers.inc
+index 8893c92..f07898f 100644
+--- a/includes/handlers.inc
++++ b/includes/handlers.inc
+@@ -514,7 +514,7 @@ class views_many_to_one_helper {
+     $this->handler = &$handler;
+   }
+ 
+-  function option_definition(&$options) {
++  public static function option_definition(&$options) {
+     $options['reduce_duplicates'] = array('default' => FALSE);
+   }
+ 
+diff --git a/includes/view.inc b/includes/view.inc
+index 34c071c..c571ac2 100644
+--- a/includes/view.inc
++++ b/includes/view.inc
+@@ -91,7 +91,7 @@ class view extends views_db_object {
+    * Note: In PHP5 this should be static, but PHP4 doesn't support static
+    * methods.
+    */
+-  function db_objects() {
++  public static function db_objects() {
+     return array('display');
+   }
+ 
+@@ -1339,7 +1339,7 @@ class view extends views_db_object {
+    *  If TRUE, reset this entry in the load cache.
+    * @return A view object or NULL if it was not available.
+    */
+-  function &load($arg, $reset = FALSE) {
++  public static function &load($arg, $reset = FALSE) {
+     static $cache = array();
+ 
+     // We want a NULL value to return TRUE here, so we can't use isset() or empty().
+@@ -1392,7 +1392,7 @@ class view extends views_db_object {
+    * that would be very slow.  Buiding the views externally from unified queries is
+    * much faster.
+    */
+-  function load_views() {
++  public static function load_views() {
+     $result = db_query("SELECT DISTINCT v.* FROM {views_view} v");
+     $views = array();
+     $vids = array();

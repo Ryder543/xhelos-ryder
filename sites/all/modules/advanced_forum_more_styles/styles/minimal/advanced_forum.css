@@ -1,0 +1,342 @@
+/* $Id: advanced_forum.css,v 1.3 2009/07/30 06:07:33 eigentor Exp $ */ 
+
+.post-info {
+  background:none repeat scroll 0 0 white;
+  border-bottom:2px solid #F7F5EE;
+  border-top:1px solid #CCCCCC;
+  color:#111111;
+  font-size:0.93em;
+}
+ul.forum-links {
+margin:0px 10px;
+}
+ul.forum-links li {
+list-style-type: none;
+list-style-image: none;
+}
+div.forum-post-panel-main,
+div.forum-post-links {
+  border-left:1px solid #e5e5e5;
+}
+
+/****************************************
+***********AUTOR PANE **********
+****************************************/
+
+/************** TOP POST***************/
+div.author-pane {
+  font-size: 0.93em;
+  color: #222;
+}
+.top-post  div.author-pane {
+  color: #ddd;  
+}
+.top-post  div.author-pane a{
+  color: #ddd;
+  font-size:1.2em;
+  font-weight:bold;
+}
+/************ NO TOP POST************/
+div.author-pane a{
+  /*color: white;*/
+  font-size:1.2em;
+  font-weight:bold;
+}
+
+span.author-pane-label {
+ color: #222;
+ font-weight: bold;
+}
+
+.top-post span.author-pane-label{
+  color: #ddd; 
+}
+
+.author-pane-name-status .picture img {
+  padding: 8px;
+  border: 1px solid #ddd;
+}
+div.author-pane .author-pane-online-icon img{
+  vertical-align:text-top;
+}
+/************ BADGES************/
+.badges-floor{
+  padding:1px 0px;
+  margin-top:1px;
+ /* background:#0066D0;*/
+  font-weight:bold;
+  color:white;
+}
+.top-post .badges-floor{
+  color:white;
+}
+
+
+/*** FORUM LIST ******************************************************/
+
+#forum tr.container td {
+  /*background: #0066D0;*/
+  /*background: #2286F5;*/
+}
+#forum tr.container td .description{
+  color:white;
+}
+
+#forum tr.odd,
+#forum tr.even,
+#forum .tfooter
+ {
+  border: 1px solid #ddd;
+}
+#forum tr.even {
+  background: #eee;
+}
+#forum tr.odd {
+  background: #fff;
+}
+
+#forum .forum-topics thead tr,
+#forum .forum-header,
+#forum tr.even.container,
+#forum tr.odd.container {
+  /*border: 1px solid #76A3F0;*/
+  /*border-top:none;*/
+
+        /*Mozilla Firefox 3.6*/
+        background: -moz-linear-gradient(center top , #3871C2 0%, #123F72) repeat scroll 0 0 transparent;
+
+        /*Opera???*/
+        background-image: -o-linear-gradient(rgb(39,129,226),rgb(18,65,117));
+        
+        /*Webkit aka Google Chrome*/
+        background-image: -webkit-gradient(linear,center top,center bottom,color-stop(0, #3871C2),color-stop(1, #123F72));
+
+        /*Internet Explorer 6,7 and 8*/
+        filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#3871C2', endColorstr='#123F72');
+
+        /*Internet Explorer 8 only*/
+        -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#3871C2', endColorstr='#123F72')";
+}
+
+#forum #forum-0 .forum-header{
+background:none;
+}
+
+tr.container a,
+#content tr.container a
+ {
+  color: white;
+  font-weight: bold;
+  font-size:1.2em;
+}
+
+div#forum-statistics {
+  border: 1px solid #ddd;
+  font-size: 0.93em;
+  color: #666;
+}
+.forum-folder-legend,
+.forum-topic-legend {
+  font-size: 0.9em;
+  color: #fff;
+  font-weight:bold;
+  
+}
+.forum-folder-legend dt {
+  float: left;
+  padding-right: 10px;
+}
+.forum-folder-legend dd{
+  float: left;
+  width: 100px;
+  line-height: 1.4;
+}
+
+div#forum-statistics-active-header,
+div#forum-statistics-statistics-header {
+  background: #eee;
+}
+
+/*** TOPIC LIST ******************************************************/
+
+table.forum-topics th,
+table.forum-table th {
+  /* background: #7FBDEF; */
+  padding:3px 5px 3px 5px;
+  font-size: 0.93em;
+}
+#forum table.forum-table.forums-overview th {
+  background: #fff;
+  /*padding:10px 5px 0px 5px;*/
+  font-size: 1em;
+  color: #fff;
+  font-weight:bold;
+}
+#forum table.forum-table.forum-overview th a {
+  color: black;
+}
+
+table.forum-table th
+table.forum-topics td {
+  padding: 0.3em;
+  
+}
+#forum table.forum-topics th,
+#forum table.forum-topics th a,
+#forum table.forum-table th,
+#forum table.forum-table th a {
+  color: white;
+}
+
+.forum-topic-legend img,
+.forum-folder-legend img {
+  -moz-opacity:.65; 
+  filter:alpha(opacity=65); 
+  opacity:.65;
+}
+.forum-topic-legend dl {
+  /*clear: left;*/
+  display: block;
+  padding: 6px 0;
+  float:left;
+  margin:0px;
+}
+.forum-topic-legend dt,
+.forum-topic-legend dd {
+  float: left;
+}
+.forum-topic-legend dd {
+  padding-left: 10px;
+  /*width: 90px;*/
+  line-height: 1.4;
+}
+.forum-topic-legend div.legend-group {
+  padding-right: 20px;
+}
+/*** THREAD ***********************************************************/
+div.post-title {
+  font-weight: bold;
+}
+li.topic_reply.first.last,
+li.comment_add.first.last
+ {
+  list-style-type: none;
+  list-style-image: none;
+  background: none;
+  padding-bottom: 5px;
+}
+
+
+/*************CABECERA*******************/
+#forum thead,.forum-topic-header{
+}
+/*************FOOTER*******************/
+#forum .tfooter{
+        /*Mozilla Firefox 3.6*/
+        background: -moz-linear-gradient(center top , #123F72 0%, #3871C2) repeat scroll 0 0 transparent;
+
+        /*Opera???*/
+        background-image: -o-linear-gradient(rgb(18,65,117),rgb(39,129,226));
+        
+        /*Webkit aka Google Chrome*/
+        background-image: -webkit-gradient(linear,center top,center bottom,color-stop(0,#123F72 ),color-stop(1, #3871C2));
+
+        /*Internet Explorer 6,7 and 8*/
+        filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#123F72', endColorstr='#3871C2');
+
+        /*Internet Explorer 8 only*/
+        -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#123F72', endColorstr='#3871C2')";
+
+}
+#forum .tfooter td{
+  border-bottom:none;  
+}
+
+
+#forum tbody{
+  border:none;
+}
+
+#forum table.forum-table.forums-overview thead.forum-header th{
+  background:none;
+  
+}
+#forum table.forum-table.forums-overview thead.forum-header th{}
+#forum .description{
+  color:#111;
+}
+
+#forum #forum-list-18 td{/*Noticias*/
+  background-image:url('images/notice.png');
+  background-position:20px center;
+  background-repeat:no-repeat;
+  padding-left:70px;
+}
+#forum #forum-list-4 td{
+  background-image:url('images/question.png');
+  background-position:20px center;
+  background-repeat:no-repeat;
+  padding-left:70px;
+}
+
+#forum #forum-list-5 td{
+  background-image:url('images/idea.png');
+  background-position:20px center;
+  background-repeat:no-repeat;
+  padding-left:70px;
+}
+#forum #forum-list-6 td{
+  background-image:url('images/problem.png');
+  background-position:20px center;
+  background-repeat:no-repeat;
+  padding-left:70px;
+}
+#forum #forum-list-7 td{
+  background-image:url('images/praise.png');
+  background-position:20px center;
+  background-repeat:no-repeat;
+  padding-left:70px;
+}
+
+#forum #forum-list-19 td{
+  background-image:url('images/gear.png');
+  background-position:20px center;
+  background-repeat:no-repeat;
+  padding-left:70px;
+}
+
+/* Posteos*/
+.top-post{
+  background-color: rgba(0,0,0,0.7);
+}
+
+/* CELDAS DE LOS FOROS*/
+#forum .topics,#forum .posts,#forum .last-reply{
+  border-left:1px solid #DDDDDD;
+}
+/* BOTONES*/
+.forum-links li {
+  /*border:6px outset #2377F5;
+  background:#0066D0;*/
+  
+}
+.forum-links li:hover {
+  /*border:6px inset white;
+  background:black;
+  color:white;*/
+}
+.forum-links li:hover a{
+/*text-decoration:underline;*/
+}
+
+.forum-links li a{
+ /* text-decoration:none;
+  font-weight:bold;
+  font-size:1.1em;*/
+} 
+
+
+#forum-comments .comment ul.links li a{
+ /*border:none;
+ background:no-repeat; */
+}

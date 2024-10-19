@@ -1,0 +1,122 @@
+
+/*******************************************************
+ * GENERAL
+ ***************************************************** */
+
+
+.ui-effects-transfer {
+	 /*border: 2px solid green;*/
+	 background-image:url('../img/action/movement.png');
+}
+
+body#Upgrade {
+	text-align:left;
+}
+
+div#Wrapper{
+	width:960px;
+	margin:auto;
+}
+div.container{
+	background:#45423E;
+	background-image:url("../img/web/battle-mc.png");
+	background-repeat:repeat-x;
+	background-position:top;
+	padding:10px 10px 10px 10px;
+	border:1px solid black;
+	margin:10px auto 4px;
+	width:90%;
+}
+
+div.datos{
+	float:left;
+	width:500px;
+}
+
+img.logo{
+	float:right;
+}
+div.logo{
+	/*float:right;*/
+	/*display:block;
+	margin-right:50px;
+	margin-left:50px;*/
+}
+div.sponsor{
+	margin-right:50px;
+	margin-left:50px;
+	margin-top:20px;
+}
+div.item{
+	float:left;
+	margin:30px 10px 10px 10px;
+	background:#FFFFFF none repeat scroll 0 0;
+	border:1px solid #FFFFFF;
+}
+div.item a{
+	color:black;
+	display:block;
+}
+
+a{
+	/*color:#AA55FF;*/
+	color:#AAF;
+	font-family:Arial;
+	font-size:1.1em;
+}
+.clear{
+	clear:both;
+}
+
+/*******************************************************
+ * HEADER
+ ***************************************************** */
+/*
+div#Header
+{
+	text-align:left;
+	margin-bottom:10px;
+}
+	div#Header h1{
+	
+		padding:0px;
+		margin:0px;
+		font-size:3.5em;
+	}
+	
+	div#Header img#HeaderTitle
+	{
+		float:right;	
+		display:inline;
+	}
+	div#Header div#UpMenu{
+		float:right;
+		width:310px;
+		
+		margin-top:20px;
+	}
+	div#Header div#PlayerInfo{
+		float:right;
+		width:400px;
+	
+		margin-top:20px;
+	}
+	div#Header div#PlayerInfo img{
+		float:right;
+	}
+	div#UpMenu h1{
+		font-size:1.2em;
+	}
+	div#UpMenu a{
+		text-decoration:none;
+		font-size:1.2em;
+		color:#01000E;
+	}
+	*/	
+.warning{
+	background:#FFE45C;
+	border:3px solid #FED22F;
+	-moz-border-radius:3px;
+	margin:30px 0px;
+	color:black;	
+}

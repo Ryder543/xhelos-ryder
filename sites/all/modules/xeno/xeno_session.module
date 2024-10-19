@@ -1,0 +1,343 @@
+<?php
+// $Id$
+/**
+* @file
+* Lets users rgis,login and logou om  gam.
+*
+* Adds a text field when a node is displayed
+* so that authenticated users may make notewwqwyuwgs.
+
+ * [MODO]Modificaciones
+ * 10ene2013 Separe la validacion a su propia funcion xeno_session_user_register_validate para que se llame
+ * despues de todas las validaciones de otros modulos como por ejemplo el spambot. Si no hacemos esto, entonces
+ * xeno_session_user crea los usuarios en el juego y despues spambot si no acepta un correo, cancela el usuario
+ * de drupal pero el usuario en el juego sigue viviendo. Motherfucker!
+ * 
+ * 
+*/
+//[TODO] Solo los usuarios del tipo player se le aplica la magia
+//[TODO] Enviar de Frente al usuario a la direccion indicada sin necesidad del login tobbogan
+ 
+// Hook_user 
+function xeno_session_user($op, &$edit, &$account, $category = NULL) {
+  //user_profile_form
+  //drupal_set_message(print_r($edit), $type = 'status', '$repeat = FALSE');
+  //debug::log($op,'xeno_session edit'); 
+    switch($op) {  
+      case 'after_update':
+        //Verificamos que no haya errores
+        $errors = form_get_errors();
+        if (!empty($errors)) {$error = TRUE;}
+        //Preguntamos si hay error
+        if(!$error){ 
+          if(in_array('player',$account->roles)) {
+            $xeno_session_dir = getcwd();
+            chdir(dirname ( __FILE__ ));
+            if(!defined('_X_SECURE')){define("_X_SECURE",true);}
+            if(!defined('_X_NO_INIT')){define("_X_NO_INIT",true);}
+            require_once('../../../../game/lib/include.php');
+            require_once('../../../../game/lib/php/obj/player.class.php');
+            chdir($xeno_session_dir);
+            $xid = db_result(db_query("SELECT xid FROM {xeno_session} WHERE uid = %d", $account->uid));
+            $player = new player();
+            $resp = $player->update($account->name,$account->mail,$account->pass,$xid);
+            if($resp['updated']){
+              drupal_set_message($resp['success'], $type = 'status', $repeat = FALSE);
+            }
+            else{
+              drupal_set_message($resp['error'], $type = 'error', $repeat = FALSE);
+            }
+          }
+        }//If account has player rol
+        break;  
+      case 'insert':
+         $xeno_session_dir = getcwd();
+         chdir(dirname ( __FILE__ ));
+         require_once('../../../../game/lib/include.php');
+         require_once('../../../../game/lib/php/obj/player.class.php');
+         chdir($xeno_session_dir);
+         
+         /*debug::log($op,'xeno_session op'); 
+         debug::log($edit,'xeno_session edit'); 
+         debug::log($account,'xeno_session account'); 
+         debug::log($category,'xeno_session category'); 
+         debug::log($edit['roles'],'xeno_session roles'); */
+         
+        $errors = form_get_errors();
+        //debug::log($errors,'xeno_session INSERT errors'); 
+        if (!empty($errors)) {$error = TRUE;}        
+        if(!$error){
+            $edit['roles'] += array('4'=>'player');//Le insertamos un rol al usuario
+            db_query("INSERT INTO {xeno_session} (uid,xid) VALUES (%d, %d)",$account->uid,$_SESSION['xid']); 
+            $db = db::singleton();
+            $db->commit();
+            unset($_SESSION['xid']);   
+        }
+
+        else{
+            $db = db::singleton();
+            $db->rollback();  
+        }
+
+        break;
+          
+      case 'delete':
+        $xeno_session_dir = getcwd();
+        chdir(dirname ( __FILE__ ));
+        define("_X_SECURE",true);
+        define("_X_NO_INIT",true);
+        require_once('../../../../game/lib/include.php');
+        require_once('../../../../game/lib/php/uti/entityutil.class.php');
+        chdir($xeno_session_dir);
+        //debug::log($account,'xeno-session delete account');
+        $xid = db_result(db_query("SELECT xid FROM {xeno_session} WHERE uid = %d", $account->uid));
+        //debug::log($xid,'xeno-session xid');
+        
+        if(!empty($xid)){
+            $entityutil = new entityutil();
+            $dt = $entityutil->removePlayer($xid);
+            if($dt->isValid()){
+                db_query("DELETE FROM {xeno_session} WHERE uid = %d",$account->uid);
+                drupal_set_message($dt->getText(), $type = 'status', $repeat = FALSE);  
+            }
+            else{
+                $dt->setText('No se pudo borrar al usuario['.$xid.'] de Xhelos');
+                drupal_set_message($dt->getText(), $type = 'status', $repeat = FALSE);
+            }
+        }
+        else{
+            drupal_set_message('No hay jugador en Xhelos que corresponda al usuario de Drupal ', $type = 'error', $repeat = FALSE);
+        }
+
+        break;
+
+      case 'login':
+        $xeno_session_dir = getcwd();
+         chdir(dirname ( __FILE__ ));
+        define("_X_SECURE",true);
+        define("_X_NO_INIT",true);
+        require_once('../../../../game/lib/include.php');
+        require_once('../../../../game/lib/php/obj/player.class.php');
+        chdir($xeno_session_dir);
+        
+        unset($_REQUEST['destination'], $_REQUEST['edit']['destination']);//http://drupal.org/node/580144#comment-3424824
+        unset($_SESSION['demo']);
+        unset($_SESSION['xid']);
+
+        $_SESSION['xid'] = db_result(db_query("SELECT xid FROM {xeno_session} WHERE uid = %d", $account->uid));
+
+
+          
+          
+        //drupal_goto('game/main.php');
+        // Record timestamp in database.
+        //db_query("INSERT INTO {login_history} (uid, login) VALUES (%d, %d)",
+        //$account->uid, $account->login);
+        break;
+        // $user object has been created and is given to us as $account parameter.
+
+      case 'load':
+        
+        //user_save($user, array('foo' => $bar))
+        break;
+        // 'My account' page is being created.
+ 
+      case 'view':
+        // Add a field displaying number of logins.
+        if(isset($account->xid)){
+          $ses_temp = $account->xid;
+        }
+        else{
+         $ses_temp = 'No existe su variable de Sesion'; 
+        }
+        
+          $account->content['summary']['xeno'] = array(
+              '#type' => 'user_profile_item',
+              '#title' => t('Xeno User Id'),
+              '#value' => $ses_temp,
+              '#attributes' => array('class' => 'xenouser'),
+              '#weight' => 10,
+            );
+        
+        break;
+
+        case 'logout':
+          /* [15oct2024] Al salir de Drupal necesitamos borrar todas las cookies almacenadas aqui */
+          $session_name = session_name();
+          // Clear the default PHP session cookie
+          if (isset($_COOKIE[$session_name])) {
+            setcookie($session_name, '', time() - 3600, '/');
+          }
+        
+          // Clear custom Drupal session cookies (if any)
+          foreach ($_COOKIE as $key => $value) {
+            if (strpos($key, 'SESS') === 0) {
+              setcookie($key, '', time() - 3600, '/');
+            }
+          }
+          break;
+
+     }
+}
+
+
+function xeno_session_user_register_validate($form, &$form_state) {
+
+    
+    if(isset($form_state['values']['form_id'])&&($form_state['values']['form_id']=='user_profile_form')){
+        //No hacer nada, estas modificando el user_profile
+    }
+    
+      else{
+    $account = (object) $form_state['values'];
+        //Verificamos que no existan errores anteriores
+        $errors = form_get_errors();
+        
+        if (!empty($errors)) {$error = TRUE;}
+        
+        if(!$error){
+              $xeno_session_dir = getcwd();
+              chdir(dirname ( __FILE__ ));
+              if(!defined('_X_SECURE')){define("_X_SECURE",true);}
+              if(!defined('_X_NO_INIT')){define("_X_NO_INIT",true);}
+              require_once('../../../../game/lib/include.php');
+              require_once('../../../../game/lib/php/uti/entityutil.class.php');
+              chdir($xeno_session_dir);
+              $db = db::singleton();
+              $db->begin();
+              //debugVar($account,"Hola");
+              //$entityutil = new entityutil();
+              $entityutil = new entityplayerutil();//20ene2013 Jeeba, ahora es entityplayerutil
+              
+              $dt = $entityutil->registerUser($account->name,$account->mail,$account->pass);
+              //debug::log($dt,'xeno_session validate registrado!');
+              if(!$dt->ok()){
+                    //debug::log($dt,'xeno_session validate NO registrado!');
+                    $position = $dt->getData(); //si hay error devolvemos la posicion
+                    form_set_error($position,$dt->getText());
+                    $edit = null;
+                    $db->rollback();
+              }
+
+             //Verificamos que no exista este ID  en la Bd 
+            if($dt->isValid()){
+                $xid = $dt->getData();
+                $_SESSION['xid'] = $xid;
+                $resp = db_result(db_query("SELECT * FROM {xeno_session} WHERE xid = %d",$xid));
+                if(!empty($resp)){
+                    //debug::log($resp,'xeno_session validate ID DEL BUSCADO!');
+                    $db->rollback();
+                    $edit = null;
+                    form_set_error('xeno','Ya existe un jugador con ese ID en Drupal');
+                    $dt->error('Ya existe un jugador con ese ID en Drupal');
+                }//error=true*/
+            }
+            
+            if($dt->isValid()){
+                //debug::log($dt,'xeno_session validate registrado!');
+                drupal_set_message($dt->getText(), $type = 'status', $repeat = FALSE);
+                //debug::log($dt,'xeno_session_validate dt');
+                
+            }
+
+          } 
+      }
+}
+
+
+/**
+* Implementation of hook_form_alter().
+* We replace the local login validation handler with our own.
+*/
+function xeno_session_form_alter(&$form, $form_state, $form_id) {
+  
+  // In this simple example we authenticate on username only,
+  // so password is not a required field. But we leave it in
+  // in case another module needs it.
+  
+   if ($form_id == 'user_register' || $form_id == 'user_register_block') {
+    $form['#validate'][] = 'xeno_session_user_register_validate';
+  }   
+    
+  if ($form_id == 'user_login' || $form_id == 'user_login_block') {   
+      $form['name']['#title']='<img src="sites/default/files/user_small.png" />';
+      $form['name']['#attributes'] = array('class' => 'textInput');
+      $form['name']['#theme']='xeno_session_user_alt_element_form';
+      $form['pass']['#title']='<img src="sites/default/files/pass_small.png" />';
+      $form['pass']['#attributes'] = array('class' => 'textInput');
+      $form['pass']['#theme']='xeno_session_user_alt_element_form';
+      $form['submit']['#attributes'] = array('class' => 'buttonInput');
+      $form['#theme']='xeno_session_user_alt_form';
+      if($_SERVER['HTTP_HOST'] == 'localhost'){
+        $form['#redirect']=array('https://localhost/xhelos/game/region.php');
+      }
+      elseif(substr($_SERVER['HTTP_HOST'],0,3) == '192'  ){
+        $form['#redirect']=array('https://'.$_SERVER["HTTP_HOST"].'/xhelos/game/region.php');  
+      }
+      else{
+        $form['#redirect']=array('https://'.$_SERVER['HTTP_HOST'].'/game/region.php');
+      }
+      
+     }
+}
+
+
+/**
+* Implementation of hook_theme().
+ * ------------------------------
+ * Aqui l indicamos a dupal qu 
+ * samos gisando una uncion d ma 
+*/
+function xeno_session_theme() {
+  return array(
+    'xeno_session_user_alt_form' => array('arguments' => array(),),
+    'xeno_session_user_alt_element_form' => array('arguments' => array(),),
+  );
+}
+
+//Funcion para modificar nuestro tema
+function theme_xeno_session_user_alt_form($form){
+  // Always put the the color selection at the top.
+$output = '<ul class="loginItem">';
+$output .='<li><span id="loginMessage">'.t('Accede a tu cuenta').'</span></li>';
+$output .='<li>'.drupal_render($form['name']).'</li>';
+$output .='<li>'.drupal_render($form['pass']).'</li>';
+$output .='<li>'.drupal_render($form['submit']).'</li>';
+$output .='<li>'.drupal_render($form['form_build_id']).'</li>';
+$output .='<li>'.drupal_render($form['form_id']).'</li>';
+$output .='<li>Nuevo Usuario? '.l('Registrate aqui','user/register').'</li>';
+$output .='<li id="loginAjax" style="display: none;"><img src="game/img/web/ajax-loader.gif"></li>';
+$output .= '</ul>';
+
+// Then add the rest of the form.
+//$output .= drupal_render($form);
+return $output;
+}
+
+//Funcion para modificar elementos input como text o password de nuestro tema
+function theme_xeno_session_user_alt_element_form($element){
+  $input_type = 'text';
+  if($element['#name']=='pass'){$input_type='password';}  
+    
+  $size = empty($element['#size']) ? '' : ' size="'. $element['#size'] .'"';
+  $maxlength = empty($element['#maxlength']) ? '' : ' maxlength="'. $element['#maxlength'] .'"';
+  $class = array('form-'.$input_type);
+  $extra = '';
+  $output = '';
+
+  _form_set_class($element, $class);
+
+  if (isset($element['#field_prefix'])) {
+    $output .= '<span class="field-prefix">'. $element['#field_prefix'] .'</span> ';
+  }
+  
+    
+  $output .= '<input type="'.$input_type.'"'. $maxlength .' name="'. $element['#name'] .'" id="'. $element['#id'] .'"'. $size .' value="'. check_plain($element['#value']) .'"'. drupal_attributes($element['#attributes']) .' />';
+
+  if (isset($element['#field_suffix'])) {
+    $output .= ' <span class="field-suffix">'. $element['#field_suffix'] .'</span>';
+  }
+
+  //return theme('form_element', $element, $output) . $extra;
+return $element['#title'].$output;
+}

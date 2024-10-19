@@ -1,0 +1,1572 @@
+. /**
+ * $Id: theme.css,v 1.1.2.19 2010/03/23 03:29:25 jmburnz Exp $
+ * adaptivethemes.com
+ *
+ * @file theme.css
+ * theme.css is the file to use when building your theme. 
+ * Make a copy first as a backup.
+ 
+ * Modificado por: Jeeba 28 oct 2012
+ */
+
+/**********************************************************
+ *                   ESTILOS GENERALES
+ **********************************************************/
+ ul.quicktabs_tabs.quicktabs-style-navlist li.active a,
+.nothing,
+h1,h2{
+    margin: 0px 0px 6px;
+    padding: 3px 0px;
+   text-shadow:1px -1px 1px #2286F5;
+}
+#block-views-front_updates-block_1 .nothing{
+margin:0px;
+padding:0px;
+}
+
+
+table{
+width:99%;
+}
+
+/****************
+formularios 
+ ***************/
+form a{
+color:#0066D0
+}
+
+input, textarea { 
+	padding: 9px;
+	border: solid 1px #E5E5E5;
+	outline: 0;
+	box-shadow: 0px 0 1px black inset
+	border-radius:5px;
+	
+	}
+
+textarea { 
+
+	height: 150px;
+	line-height: 150%;
+	border-radius:5px;
+	}
+
+input:hover, textarea:hover,
+input:focus, textarea:focus { 
+	border-color: #C9C9C9; 
+	box-shadow: 0px 0 1px black inset;
+	}
+
+.form label { 
+	margin-left: 10px; 
+	color: #999999; 
+	}
+
+.submit input {
+	width: auto;
+	padding: 9px 15px;
+	background: #617798;
+	border: 0;
+	font-size: 14px;
+	color: #FFFFFF;
+        border-radius: 5px;
+	cursor: pointer;
+	}
+
+
+/*********************HTML Legend******************************/
+html legend {
+  background: none repeat scroll 0 0 #666666;
+  border-radius: 5px 5px 5px 5px;
+  display: block;
+  margin-top: 15px;
+  padding: 4px 20px 3px;
+}
+html legend a{
+color:white;
+}
+
+
+/*********************Calendarios******************************/
+.date{
+   /* width:40px;*/
+    text-align: center;
+}
+.date .year {
+  border-bottom: 1px solid black;
+  border-radius: 0 5px 0 0;
+  border-right: 1px solid black;
+  border-top: 1px solid black;
+  float: right;
+  font-size: 1em;
+  padding: 0 5px;
+}
+
+.date .month {
+  background: none repeat scroll 0 0 white;
+  border-bottom: 1px solid black;
+  border-left: 1px solid black;
+  border-radius: 0 0 0 5px;
+  border-top: 1px solid black;
+  color: black;
+  float: left;
+  padding: 0 0 0 5px;
+}
+.date .day {
+  background: none repeat scroll 0 0 white;
+  border-bottom: 1px solid black;
+  border-radius: 0 0 0 0;
+  border-top: 1px solid black;
+  color: black;
+  float: left;
+  font-weight: bold;
+  padding: 0 5px;
+}
+
+/**********************************************************
+ *                   COLOR ME  - BlackBlue - LighBlue
+ **********************************************************/
+ .at-inline-menu ul.menu li a,
+ input[type="submit"],
+#edit-submit,
+ .pager-item a, .pager li a, #sidebar-first ul.pager li a, #sidebar-first .pager-item a, #sidebar-first li.pager-item a.active, #sidebar-first li.pager-last a.active, #sidebar-first li.pager-next a.active,
+ .xhelosblue,
+.not-front #sidebar-first,
+.views-row-unformatted .title, .views-list-item .subject,
+.badges-floor,
+.submitted,
+.book .note,
+.book .book-navigation .page-links{
+        background: -moz-linear-gradient(center top , #3871C2 0%, #123F72) repeat scroll 0 0 transparent;
+        background-image: -o-linear-gradient(rgb(39,129,226),rgb(18,65,117));
+        background-image: -webkit-gradient(linear,center top,center bottom,color-stop(0, #3871C2),color-stop(1, #123F72));
+        filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#3871C2', endColorstr='#123F72');
+        -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#3871C2', endColorstr='#123F72')";
+}
+
+/**********************************************************
+ *                   COLOR ME  - AntiBlue HOVER
+ **********************************************************/
+ .at-inline-menu ul.menu li a:hover,
+#edit-submit:hover,
+input[type="submit"]:hover,
+.comment_forbidden a:hover,
+a.button:hover,.forum-links li a:hover,.comment ul.links li a:hover,
+.comments-overview ul li a:hover, #block-views-comments_recent-block span.view-node a:hover  {
+background: #87e0fd; /* Old browsers */
+/* IE9 SVG, needs conditional override of 'filter' to 'none' */
+background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzg3ZTBmZCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjQwJSIgc3RvcC1jb2xvcj0iIzUzY2JmMSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMwNWFiZTAiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+background: -moz-linear-gradient(top,  #87e0fd 0%, #53cbf1 40%, #05abe0 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#87e0fd), color-stop(40%,#53cbf1), color-stop(100%,#05abe0)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  #87e0fd 0%,#53cbf1 40%,#05abe0 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  #87e0fd 0%,#53cbf1 40%,#05abe0 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  #87e0fd 0%,#53cbf1 40%,#05abe0 100%); /* IE10+ */
+background: linear-gradient(to bottom,  #87e0fd 0%,#53cbf1 40%,#05abe0 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#87e0fd', endColorstr='#05abe0',GradientType=0 ); /* IE6-8 */
+
+}
+
+/**********************************************************
+ *                   COLOR ME  - AntiBlue
+ **********************************************************/
+
+
+
+
+/**********************************************************
+ *                   COLOR ME  - LightBlack Green Action Button
+ **********************************************************/
+#xenoPlay,
+#xenoDemo{
+background: #8fc800; /* Old browsers */
+/* IE9 SVG, needs conditional override of 'filter' to 'none' */
+background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzhmYzgwMCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMxZTg0MDAiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+background: -moz-linear-gradient(top,  #8fc800 0%, #1e8400 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#8fc800), color-stop(100%,#1e8400)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  #8fc800 0%,#1e8400 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  #8fc800 0%,#1e8400 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  #8fc800 0%,#1e8400 100%); /* IE10+ */
+background: linear-gradient(to bottom,  #8fc800 0%,#1e8400 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#8fc800', endColorstr='#1e8400',GradientType=0 ); /* IE6-8 */
+}
+
+
+/**********************************************************
+ *                   COLOR ME  - HOVER Black Light Green
+ **********************************************************/
+#xenoPlay:hover,
+#xenoDemo:hover{
+background: #84c63d; /* Old browsers */
+/* IE9 SVG, needs conditional override of 'filter' to 'none' */
+background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzg0YzYzZCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiM4ZmM4MDAiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+background: -moz-linear-gradient(top,  #84c63d 0%, #8fc800 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#84c63d), color-stop(100%,#8fc800)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  #84c63d 0%,#8fc800 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  #84c63d 0%,#8fc800 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  #84c63d 0%,#8fc800 100%); /* IE10+ */
+background: linear-gradient(to bottom,  #84c63d 0%,#8fc800 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#84c63d', endColorstr='#8fc800',GradientType=0 ); /* IE6-8 */
+
+}
+ 
+
+/**********************************************************
+ *                   COLOR ME  - Orange
+ **********************************************************/
+#user-login-form a,
+#xenoRegister{ 
+background: #d78500; /* Old browsers */
+/* IE9 SVG, needs conditional override of 'filter' to 'none' */
+background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2Q3ODUwMCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNhYjRiMDAiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+background: -moz-linear-gradient(top,  #d78500 0%, #ab4b00 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#d78500), color-stop(100%,#ab4b00)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  #d78500 0%,#ab4b00 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  #d78500 0%,#ab4b00 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  #d78500 0%,#ab4b00 100%); /* IE10+ */
+background: linear-gradient(to bottom,  #d78500 0%,#ab4b00 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d78500', endColorstr='#ab4b00',GradientType=0 ); /* IE6-8 */
+}
+
+/**********************************************************
+ *                   COLOR ME  - ORANGE hover
+ **********************************************************/
+#user-login-form a:hover,
+#xenoRegister:hover{
+background: #ffba00; /* Old browsers */
+/* IE9 SVG, needs conditional override of 'filter' to 'none' */
+background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmYmEwMCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNhNDQyMDAiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+background: -moz-linear-gradient(top,  #ffba00 0%, #a44200 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffba00), color-stop(100%,#a44200)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  #ffba00 0%,#a44200 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  #ffba00 0%,#a44200 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  #ffba00 0%,#a44200 100%); /* IE10+ */
+background: linear-gradient(to bottom,  #ffba00 0%,#a44200 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffba00', endColorstr='#a44200',GradientType=0 ); /* IE6-8 */
+}
+
+/**********************************************************
+ *                  Boton
+ **********************************************************/
+#xenoPlay,
+#xenoDemo,
+#xenoRegister,
+#edit-submit-1,
+#user-login-form a,
+input[type="submit"],
+#edit-submit,
+.comment_forbidden a,
+a.button,
+ .forum-links li a,
+.comment ul.links li a,
+.comments-overview ul li a,
+#block-views-comments_recent-block span.view-node a
+{
+border-radius:4px;
+box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5), 0 0 1px rgba(255, 255, 255, 0.7) inset;
+color: #FFFFFF;
+text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.3), 0 1px 0 rgba(255, 255, 255, 0.3);
+text-transform: uppercase;
+display: inline-block;
+  cursor: pointer;
+border-radius:4px;
+font-size: 0.846em;
+    /*line-height: 2;*/
+    padding: 1px 10px;
+    text-decoration: none;
+    margin:0px 8px 0px 8px;
+    font-weight:bold;
+    border:1px solid black;
+    text-shadow:1px 1px 1px black;
+
+}
+/*Blue Boton */
+#edit-submit,
+#edit-submit-1
+{
+
+}
+
+/**********************************************************
+ *                   CONTENIDO WYSIG
+ **********************************************************/
+.imagefield img,
+.field-content img {
+    background-color: #3871C2;
+    border: 3px solid #123F72;
+    border-radius: 7px 7px 7px 7px;
+     -moz-border-radius: 7px 7px 7px 7px;
+    -webkit-border-radius: 7px 7px 7px 7px;
+    -khtml-border-radius: 7px 7px 7px 7px;
+    padding: 2px;
+}
+.field-content h1{
+   font-size:1.4em;
+}
+
+/**********************************************************
+ *                   Quicktabs
+ **********************************************************/
+.quicktabs_main.quicktabs-style-navlist {
+  background: none repeat scroll 0 0 white;
+  border: 1px solid #BFD0FF;
+  color: black;
+  float: left;
+  min-height: 250px;
+  padding: 0;
+  position: relative;
+  text-align: left;
+  width: 79%;
+  z-index: 1;
+}
+.quicktabs_main.quicktabs-style-navlist a{
+color:#11437A;
+}
+
+ul.quicktabs_tabs.quicktabs-style-navlist li.active {
+  background: none repeat scroll 0 0 white;
+  border-bottom: 1px solid #BFD0FF;
+  border-top: 1px solid #BFD0FF;
+}
+ul.quicktabs_tabs.quicktabs-style-navlist li.active a{
+color:black;
+}
+.quicktabs_tabpage{
+margin:15px 20px;
+}
+ul.quicktabs_tabs.quicktabs-style-navlist li a {
+  color: #999999;
+}
+
+/**********************************************************
+ *                    HTML & Body
+ **********************************************************/
+html {}
+body {
+  background:black;
+  background-image:url('../../img/fondo3.jpg');
+  background-repeat:repeat-y;
+  background-position:top center;
+  color:white;
+  /*padding:50px 20px 10px;*/
+  font-family:"Century Gothic","Helvetica","DejaVu Sans";
+  font-size:14px;
+  text-align:center;
+}
+/*Todas las demas paginas*/
+body.not-front{
+    text-align:left;
+}
+/* Admin menu */
+body.admin-menu {}
+body.admin-menu #container {}
+.not-front #main-content{
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0.8);
+    border: 2px solid rgba(255, 255, 255, 0.25);
+    clear: both;
+    margin-bottom: 35px;
+
+}
+#main-content #content {
+  padding: 10px 15px 60px;
+}
+/**********************************************************
+ *                 Global Link Styles
+ **********************************************************/
+a {color:#fff;}
+a:link    {}
+a:visited {color:#eee;}
+a:hover   {}
+a:active  {}
+a.active  {}
+
+/* Set global a:active and a:focus styles. */
+a:active,
+a:focus {
+  /*color: red;
+  background:white;*/
+  text-decoration: none;
+}
+/**********************************************************
+ *                       Regions
+ **********************************************************/
+#block-block-9 {
+ /* background: none repeat scroll 0 0 white;*/
+  padding: 0;
+  position: absolute;
+  right: 20px;
+  width: 305px;
+}
+#block-block-9 .block-inner, #block-block-9 p {
+  line-height: 0;
+  margin: 0;
+  padding: 0;
+}
+
+#block-block-10{
+position: absolute;
+right: 100px;
+
+}
+
+/* Leaderboard is a full width region at the very top of the page. */
+#leaderboard {
+   /* font-size: 1.1em;
+    font-weight: bold;*/
+    margin: 0 0 15px;
+
+    /*Mozilla Firefox 3.6*/
+    background: -moz-linear-gradient(center top , #123F72 0%, #3871C2) repeat scroll 0 0 transparent;        
+
+        /*Opera???*/
+        background-image: -o-linear-gradient(rgb(18,65,117),rgb(39,129,226));
+        
+        /*Webkit aka Google Chrome*/
+        background-image: -webkit-gradient(linear,center top,center bottom,color-stop(0, #123F72 ),color-stop(1,#3871C2));
+
+
+        /*Internet Explorer 6,7 and 8*/
+        filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#123F72', endColorstr='#3871C2');
+
+        /*Internet Explorer 8 only*/
+        -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#123F72', endColorstr='#3871C2')";
+
+     -moz-border-radius: 0px 0px 20px 20px;
+    -webkit-border-radius: 0px 0px 20px 20px;
+    -khtml-border-radius: 0px 0px 20px 20px;
+    border-radius: 0px 0px 20px 20px;
+
+
+}
+#leaderboard .block{
+    margin: 0;
+    padding: 4px 10px 2px;
+
+}
+
+#user-login-form input{
+width:130px;
+}
+
+
+/* Header region is embedded in the header, floated between the logo/site_name
+   and the search box. */
+#header-region {
+  width:auto;
+  float:right
+}
+
+
+
+
+/**********************************************************
+ *                      Sidebars
+ **********************************************************/
+/* Target both sidebars with this low specifity selector. */
+.sidebar {}
+
+/* Target a specific sidebar. */
+#sidebar-first {}
+#sidebar-first .view-content ul{
+list-style:none;margin-left:1em;
+margin-right:1em;
+}
+#sidebar-first .view-content li {
+  list-style: none outside none;
+  margin: 15px 0;
+  padding: 0;
+  text-align: left;
+  border-bottom:2px solid rgba(255, 255, 255, 0.25);
+}
+
+#sidebar-first .view-content  li .field-fechaupdate-value{
+color:#8888D0;
+font-size:0.9em;
+font-weight:bold;
+text-align:right;
+}
+
+#sidebar-first .view-content li a
+{
+  text-decoration:none;
+  color:white;
+}
+#sidebar-first .view-content li a.active {
+  color: #EEEE44;
+  font-size: 1.1em;
+  font-style: oblique;
+  font-variant: normal;
+  text-shadow: 1px 1px 1px black;
+}
+
+/**********************************************************
+ *                      Tabs
+ **********************************************************/
+ul.tabs.secondary a{
+  color:#EEEEEE;
+}
+
+/**********************************************************
+ *                     Pager 
+ **********************************************************/
+/* The first 2 classes provide the base pager styles. */
+#sidebar-first ul.pager{
+margin:0px;
+}
+
+
+#sidebar-first ul.pager li,
+#sidebar-first ul.pager li.pager-item,
+#sidebar-first li.pager-current
+{
+ background:none;
+  border:none;
+  padding:0px;
+}
+
+.pager-item a,
+.pager li a,
+#sidebar-first ul.pager li a,
+#sidebar-first .pager-item a,
+#sidebar-first li.pager-item a.active,
+#sidebar-first li.pager-last a.active,
+#sidebar-first li.pager-next a.active
+{
+color:white;
+display:inline-block;
+position:relative;
+border:1px solid #97a7af;
+margin:0;padding:2px 5px;
+text-decoration:none;
+font-size:85%;
+line-height:14px;
+cursor:pointer;
+white-space:nowrap;
+}
+
+
+/**********************************************************
+ *               Footer, Footer Message
+ **********************************************************/
+#footer {
+  margin-top:50px;
+  background:#0066D0;
+  padding-top:5px;
+  padding-bottom:5px;
+  /*background-image:url('../../img/footer.jpg');
+  background-repeat:no-repeat;*/
+  font-weight:bold;
+  text-align:center;
+
+        /*Mozilla Firefox 3.6*/
+        background: -moz-linear-gradient(center top , #3871C2 0%, #123F72) repeat scroll 0 0 transparent;
+
+        /*Opera???*/
+        background-image: -o-linear-gradient(rgb(39,129,226),rgb(18,65,117));
+        
+        /*Webkit aka Google Chrome*/
+        background-image: -webkit-gradient(linear,center top,center bottom,color-stop(0, #3871C2),color-stop(1, #123F72));
+
+        /*Internet Explorer 6,7 and 8*/
+        filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#3871C2', endColorstr='#123F72');
+
+        /*Internet Explorer 8 only*/
+        -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#3871C2', endColorstr='#123F72')";
+
+     -moz-border-radius:20px 20px 0px 0px ;
+    -webkit-border-radius: 20px 20px 0px 0px;
+    -khtml-border-radius: 20px 20px 0px 0px;
+    border-radius: 20px 20px 0px 0px;
+
+
+}
+
+#footer .block{
+  padding:0;
+  margin:0;
+}
+#footer .block-inner{
+  padding:0;
+  margin:0;
+}
+#footer p{
+  padding:0;
+  margin:0;
+}
+/**********************************************************
+ *                     Comments
+ **********************************************************/
+/* Comment wrapper: wraps all comments and the comment form. */
+#comments-title {
+  margin:0 0 0px;
+  padding:5px 15px 5px;
+  font-size:1.2em;
+  font-weight:bold;
+  color:white;
+  text-align:left;
+
+        /*Mozilla Firefox 3.6*/
+        background: -moz-linear-gradient(center top , #3871C2 0%, #123F72) repeat scroll 0 0 transparent;
+
+        /*Opera???*/
+        background-image: -o-linear-gradient(rgb(39,129,226),rgb(18,65,117));
+        
+        /*Webkit aka Google Chrome*/
+        background-image: -webkit-gradient(linear,center top,center bottom,color-stop(0, #3871C2),color-stop(1, #123F72));
+
+        /*Internet Explorer 6,7 and 8*/
+        filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#3871C2', endColorstr='#123F72');
+
+        /*Internet Explorer 8 only*/
+        -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#3871C2', endColorstr='#123F72')";
+
+}
+
+/* Wrapper class for each individual comment. */
+.comment {
+  padding:0.5em 1.2em 0.9em;
+  text-align:left;
+    font-size:1em;
+    background:white;
+    border:1px solid #111;
+    color:#111;
+}
+.comment a{
+  color:#222;
+  font-weight:bold;
+}
+/* Title of each comment. */
+.comment h3 a{
+    color: #123F72;
+    font-size: 0.9em;
+    font-weight: bold;
+    text-decoration: none;
+}
+.comment .submitted .author a{
+  color:#222;
+}
+.comment .submitted .time {}
+
+/* Comment box wrapper below content. */
+#comments .box {text-align:left;}
+
+/**********************************************************
+ *                   Sidebar blocks
+ **********************************************************/
+/**
+ * You can target blocks in one or more regions and 
+ * style them differently. 
+ */
+#sidebar-first .block h2 {
+  background:none repeat scroll 0 0 #0066D0;
+  margin:0 0 15px;
+  padding:5px 15px 10px;
+}
+/* Menu Primario  - Menu Extra foros, paginas amigas, etc */
+.at-inline-menu ul.menu li a {
+  border-left: 1px solid black;
+  border-radius: 5px 5px 0 0;
+  border-right: 1px solid black;
+  border-top: 1px solid black;
+  display: block;
+  padding: 10px 10px;
+  text-shadow: 1px 1px 1px black;
+  font-weight:bold;
+  color:#FFFFFF;
+  text-decoration:none;
+}
+
+.at-inline-menu.primary-menu ul.menu li{
+ background:none; 
+ margin-right:12px
+} 
+
+
+
+
+.primary-menu .block-inner h2{
+ 
+  display:none;
+}
+#leaderboard .block-inner .content{
+  padding-top:8px;
+}
+
+
+/**********************************************************
+ *                   Helps Divs
+ **********************************************************/
+.a .help a{
+  color:#0066D0;
+}
+
+
+/**********************************************************
+ *                   Bloques Especiales
+ **********************************************************/
+
+/*+++++++++++++++++*/
+/* Bloques de Login*/
+.loginItem .form-item label{
+  display:inline;
+}
+.xeno-login ul.loginItem{
+  float:right;
+
+}
+
+ul.loginItem{
+  list-style:none;
+height: 18px;
+}
+#block-block-5 ul.loginItem li,
+.xeno-login  ul.loginItem li{
+  float:left;
+}
+ul.loginItem p{
+  padding:0;
+  margin:0;
+}
+ul.loginItem img{
+  vertical-align:text-bottom;
+}
+ul.loginItem div.form-item{
+  margin:0;
+  padding:0;
+}
+/* Bloques de Login - Pero no en el front*/
+.not-front #loginMessage{
+  margin-bottom:10px;
+  font-weight:bold;
+  display:block;
+}
+
+/*+++++++++++++++++++++*/
+/* Quaternary */
+/*+++++++++++++++++++++*/
+#cuaternary-content{
+    margin-top:25px;
+}
+
+#cuaternary-content .title{
+    font-size: 1em;
+}
+#cuaternary-content .views-row-unformatted {
+  border: 1px solid black;
+  box-shadow: 0 0 2px black;
+  clear: none;
+  float: left;
+  height: 400px;
+  margin-bottom: 5px;
+  margin-right: 5px;
+  width: 305px;
+}
+/*Hacer espacio para Facebook!*/
+#cuaternary-content .view-row-1{
+margin-right:20px;
+}
+
+#cuaternary-content .views-row-unformatted .body{
+    padding:10px;
+}
+
+#cuaternary-content .date {
+  float: right;
+  margin-right: 5px;
+  margin-top: 5px;
+}
+/*+++++++++++++++++++++*/
+/* Bloques de Noticias */
+
+#tertiary-content .date{
+    float:right;
+    margin-top:10px;
+    margin-right:5px;
+    border:1px solid black;
+}
+
+#tertiary-content .view-header p{
+  padding:0;
+  margin:0;
+}
+#tertiary-content .view-node,
+#tertiary-content .view-footer{
+  padding:0px 10px;
+  text-align:right;
+  display: block;
+}
+#tertiary-content .view-footer a{
+ /* font-weight:bold;*/
+}
+#tertiary-content .view-footer p{
+  padding:0px;
+margin:0px;
+}
+
+#tertiary-content h1,#tertiary-content h2{
+   font-size:1.5em;
+}
+
+#tertiary-content .title,#tertiary-content .subject
+{
+  font-weight:bold;
+  font-size:1.1em;
+text-shadow:1px -2px 1px black;  
+}
+
+
+#tertiary-content a:hover,,#tertiary-content .subject a:hover{
+text-shadow:1px -2px 1px blue;  
+}
+
+#block-views-front_Foro-block_1 .view-content .nothing,
+.front-noticias .view-content .field-thumbnail-fid{
+  float:right;
+  padding:6px 0 0 1.2em;
+}
+
+.front .item-list{
+  list-style:none;
+}
+.front .item-list li{
+  display:inline;
+  margin:0px 10px;
+}
+
+#block-views-front_Foro-block_1 .view-content .field-fechaupdate-value, 
+.front-noticias .view-content .field-fechaupdate-value{
+  color:#0088D0;
+  background:rgba(0,0,0,0.5);
+  font-size:0.9em;
+  text-align:right;
+  padding:2px 5px;
+  font-weight:bold;
+}
+#block-views-front_Foro-block_1,
+#block-views-front_Noticias-block_1,
+#block-views-comments_recent-block{
+ font-size:0.9em; 
+}
+
+#block-views-front_Foro-block_1 .views-row-unformatted,
+.front-noticias .views-row-unformatted{
+  /*padding-bottom:5px;*/
+  border-bottom:3px solid #0066D0;
+  /*padding-top:5px;*/
+margin-bottom:10px;
+}
+/*+++++++++++++++++++++++++++++++++++++++*****************************/
+/* Bloques de Registro : Bloque grande en el frontpage para registrar*/
+
+.front-registro{
+  float:right;
+}
+.frontpage-bglogin{
+  /*background-image:url('../../img/bglogin2.png'); 
+  background-repeat:no-repeat;*/
+  /*height:340px;*/  
+}
+.frontpage-bglogin-inner{
+  padding:6px 12px;
+}
+
+.frontpage-bglogin ul{
+  list-style:none;
+}
+
+.frontpage-bglogin-panel{
+  /* float:left; */
+  /*width:45%;*/
+  margin-right:5px;
+}
+.frontpage-bglogin-panel-inner.last{
+margin:0px;
+}
+.frontpage-bglogin-panel-inner.last span{
+font-weight:bold;
+}
+.frontpage-bglogin-panel-inner.first{
+margin:0px;
+}
+/*+++++++++++++++++++++++++++++++++++++++******/
+/* gameVersion, version del juego en el front */
+#gameVersion{
+    color: white;
+    font-weight: bold;
+    text-shadow: 1px 1px 0 #3871C2;
+}
+#gameVersion span{
+color:#ccc;
+text-shadow:none;
+}
+/*+++++++++++++++++++++++++++++++++++++++*/
+/* Register Status, estado del registro */
+#registerStatus{
+   background-image:url("../../img/bgstatus.png"); 
+   background-repeat:no-repeat;
+   width:600px;
+   clear:both;
+   height:34px;
+   padding-top:6px;
+   font-weight:bold;
+}
+#registerStatus-inner{
+  color:white;
+  /*margin-left:10px;*/
+}
+
+/*+++++++++++++++++++++++++++++++++++++++*/
+/* Bloques de Backend - 
+Cambiar para no repetir el css, aunque quizas esto no necesite mas css*/
+input{
+  margin:0;
+}
+input:focus, textarea:focus{
+  background-color: lightyellow;
+}
+#user-register input.form-text,
+.loginItem input.textInput {
+  margin:0 0px 0px 5px;
+  padding:1px;
+  /*width:60%;*/
+}
+input.blur {
+  color:#999999;
+}
+.form-icon{
+  vertical-align:middle;
+}
+/* Botones Links para jugar o registrarse*/
+#xenoPlay,
+#xenoDemo {
+  border-radius: 5px 5px 5px 5px;
+  color: white;
+  cursor: pointer;
+  display: block;
+  font-size: 17px;
+  font-variant: small-caps;
+  font-weight: bold;
+  margin: 0 0 15px;
+  padding: 15px 0;
+  text-decoration: none;
+  width: 175px;
+}
+#xenoPlay{
+  padding: 50px 0;
+}
+
+
+
+#xenoRegister {
+  display: block;
+  margin: 0;
+  padding: 8px 0;
+  width: 175px;
+}
+
+
+
+#xenoAdmin{
+  background-image:url("../../img/btnindex6.png");
+  background-repeat:no-repeat;
+  /*left:55px;
+  top:70px;*/
+  cursor:pointer;
+  display:block;
+  height:159px;
+  margin-bottom:10px;
+  /*margin-top:10px;*/
+  width:197px;
+  background-position:0px 0px;
+  color:#575B61;
+  padding-top:10px;
+  /*position:relative;*/
+}
+#xenoAdmin:hover{
+  background-position:-195px 0px;
+}
+
+
+/**********************************************************
+ *                   Paginas en General
+ **********************************************************/
+ .views-row-unformatted{
+   clear:both;
+   /*margin-bottom:20px;*/ /*Se elimino pra el frontpage, afecta otras cosas?*/
+ }
+.views-row-unformatted .title, .views-list-item .subject{
+  margin:0 0 5px;
+  padding:6px 15px 6px;
+  font-size:1.5em;
+  font-weight:bold;
+  color:white;
+  text-align:left;
+}
+
+
+
+
+.views-row-unformatted .title, .views-list-item .subject {
+  color: white;
+  font-weight: bold;
+  text-align: left;
+  text-shadow: 1px 1px 1px black;
+}
+
+
+.views-row-unformatted .title a, .views-list-item .subject a{
+text-decoration:none;
+}
+
+
+.views-row-unformatted .name{
+  background:rgba(0, 0, 0, 0.5);
+  margin:0 0 5px;
+  padding:5px 15px 5px;
+
+  font-weight:bold;
+  color:white;
+  text-align:left;
+  /*float:left;*/ /*Lo quite para que se vea bien el frontpage*/
+  font-size:0.9em;
+  padding:5px 5px 0 0;
+}
+#tertiary-content .block{
+  background:rgb(0, 0, 0) transparent;
+  background:rgba(0, 0, 0, 0.5);
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#7F000000, endColorstr=#7F000000);
+  /* For IE 8*/
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#7F000000, endColorstr=#7F000000)";
+  /* Replace 0.6 with your desired alpha level
+  Math.floor(0.6 * 255).toString(16);*/
+  width:270px; 
+  border:2px solid rgba(255, 255, 255, 0.25);
+  float:left;
+  margin: 5px 10px;
+  clear:none;
+  border-radius: 6px 6px 6px 6px;
+}
+
+#tertiary-content .block .block-inner{
+padding:10px 0px 20px;
+margin:0px;
+}
+
+.views-row-unformatted .field-fechaupdate-value{
+  text-align:right;
+  color:#aaaaff;
+  font-size:0.9em;
+  font-weight:bold;
+  background:rgba(0, 0, 0, 0.5)
+}
+.views-row-unformatted .body ul{
+  text-align:left;
+  margin:10px 0px 0 50px
+}
+.views-row-unformatted .body p{
+  text-align:justify;
+}
+.views-row-unformatted .body p.rtecenter{
+  text-align:center;
+}
+.views-row-unformatted .body img{
+  vertical-align:middle;
+}
+
+/*Comments creados*/
+.comments-overview{
+    background:rgba(0,0,0,0.7);
+    padding:3px;
+    margin-bottom:20px;
+    clear:both;
+}
+
+.comments-overview ul{
+margin:0px;
+  list-style:none;
+}
+.comments-overview ul li{
+  /*float:left;*/ /*Se elimino porque rayaba actualizaciones*/
+  padding-right:0px;
+  display:inline;
+}
+.comments-overview ul li a{
+  font-weight:bold;
+}
+
+
+/**********************************************************
+ *                   Paginas en Especifico
+ **********************************************************/
+ /*Imagenes del Juego*/
+ 
+.view-id-game_images_view .views-row-unformatted {
+  clear: none;
+  float: left;
+  padding: 0 10px 20px;
+  width: 162px;
+}
+ .view-id-game_images_view .title{
+     color: #FFFFFF;
+
+    font-weight: bold;
+
+    text-decoration: none;
+    text-shadow: 1px 1px 1px black;
+    font-size:0.9em;
+    text-align:center;
+ }
+ 
+ 
+ /*Contactos*/
+#edit-name-wrapper input,
+ #contact-mail-page input{
+ width:350px;
+ }
+ 
+ 
+/*Caracteristicas*/
+.view-id-Pagina_caracteristicas .field-gamechar-fid{
+  padding:10px;
+}
+.view-id-Pagina_caracteristicas .views-row-unformatted{
+background:none repeat scroll 0 0 rgba(0,0,0,0.5);
+color:#eee;
+float:left;
+margin-bottom:20px;
+margin-left:10px;
+margin-right:10px;
+width:435px;
+clear:none;
+}
+.view-id-Pagina_caracteristicas .title{
+  font-size:1.1em;
+  margin:0 0 0px;
+}
+.view-id-Pagina_caracteristicas .body{
+    padding:10px;
+}
+ /*Preguntas y Respuestas*/
+.view-id-Pagina_faq h3{
+  background:none repeat scroll 0 0 #0066D0;
+  color:white;
+  font-size:1.8em;
+  font-weight:bold;
+  margin:0 0 15px;
+  padding:5px 15px;
+  text-align:left;
+ } 
+.view-id-Pagina_faq .title{
+  background:none;
+  color:white;
+  font-size:1.1em;
+  font-weight:bold;
+  margin:0 0 5px;
+  text-align:left;
+}
+.view-id-Pagina_faq .view-content{
+  background:rgba(0,0,0,0.5);
+}
+.view-id-Pagina_faq .body{ 
+  padding:0 20px;
+  }
+  
+ /*Pagina de Trofeos*/  
+ 
+.view-id-Pagina_Trofeos .field-trofeo-fid{
+   float:right;
+   
+ } 
+.view-id-Pagina_Trofeos .views-list-item{
+  background:rgba(0,0,0,0.7);
+  list-style:none;
+ }  
+ 
+  /*Pagina de Registro de Usuarios*/  
+#user-register{
+  text-align:left;
+}
+
+/*Pagina de Amigos*/  
+.view-id-Pagina_sponsor,
+.view-id-Pagina_sponsor td,
+.view-id-Pagina_sponsor a,
+.view-id-Pagina_sponsor a:visited{
+  color:white;
+}  
+.view-id-Pagina_sponsor table,
+.view-id-Pagina_sponsor td,
+.view-id-Pagina_sponsor tr{
+  border:none;
+}
+.view-id-Pagina_sponsor .view-footer{
+  padding:10px;
+  background:#2286F5;
+  color:white;
+}
+.view-id-Pagina_sponsor .view-footer a{
+  color:white;
+}
+.view-id-Pagina_sponsor td{
+  vertical-align:text-top;
+}
+
+.view-id-Pagina_sponsor .title{
+  font-size:1.2em;
+  color:#2286F5;
+  font-weight:bold;
+}
+
+
+/* Actualizaciones*/
+ .view-id-Pagina_updates .body{
+  /*clear:both;*/
+}
+ .view-id-Pagina_updates .none{
+   clear:both;
+   width:100%;
+ }
+.view-id-Pagina_updates .views-row-unformatted {
+  clear: both;
+  margin-bottom: 25px;
+  padding: 10px 0;
+}
+.field, .view-id-Pagina_updates .field-thumbnail-fid {
+  float: left;
+  margin: 0 10px 10px 0;
+  width: 89px;
+}
+
+/* Roadmap*/
+.view-id-Bloque_Roadmap_Versiones_Actuale .name{
+    /*Mozilla Firefox 3.6*/
+    background: -moz-linear-gradient(center top , #123F72 0%, #3871C2) repeat scroll 0 0 transparent;        
+
+        /*Opera???*/
+        background-image: -o-linear-gradient(rgb(18,65,117),rgb(39,129,226));
+        
+        /*Webkit aka Google Chrome*/
+        background-image: -webkit-gradient(linear,center top,center bottom,color-stop(0, #123F72 ),color-stop(1,#3871C2));
+
+
+        /*Internet Explorer 6,7 and 8*/
+        filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#123F72', endColorstr='#3871C2');
+
+        /*Internet Explorer 8 only*/
+        -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#123F72', endColorstr='#3871C2')";
+
+   color:white;
+   font-weight:bold; 
+}
+
+.view-id-Bloque_Roadmap_Versiones_Desarro td {
+  background: none repeat scroll 0 0 #2286F5;
+  border: 5px solid black;
+  color: white;
+  text-align: center;
+  vertical-align: top;
+}
+
+.view-id-Bloque_Roadmap_Versiones_Desarro .title{
+  background:rgba(0, 0, 0, 0.5);
+  color:white;
+  font-weight:bold;
+  padding:6px 15px;
+  margin:0 0px 5px 0;
+}
+.view-id-Bloque_Roadmap_Versiones_Desarro .nothing {
+  background: none repeat scroll 0 0 #11437A;
+  border-left: 1px solid black;
+  border-radius: 25px 25px 0 0;
+  border-right: 1px solid black;
+  border-top: 1px solid black;
+  clear: both;
+  font-size: 0.9em;
+  margin-left: 125px;
+  text-align: center;
+  width: 200px;
+}
+.view-id-Pagina_roadMap  .title{
+    font-size:1.3em;
+    background:#11437A;
+    color: white;
+    font-weight: bold;
+    margin: 0 0 5px;
+    padding: 6px 15px;
+    border:1px solid black;
+}
+.view-id-Pagina_roadMap .roadmapinfo {
+  -moz-border-bottom-colors: none;
+  -moz-border-left-colors: none;
+  -moz-border-right-colors: none;
+  -moz-border-top-colors: none;
+  background: none repeat scroll 0 0 #11437A;
+  border-color: black black -moz-use-text-color;
+  border-image: none;
+  border-radius: 10px 42px 0 0;
+  border-style: solid solid none;
+  border-width: 1px 1px medium;
+  color: white;
+  display: inline-block;
+  padding: 10px 30px 10px 10px;
+}
+
+.view-id-Pagina_roadMap .roadmapinfo .workingdate,
+.view-id-Pagina_roadMap .roadmapinfo .workstate,
+.view-id-Pagina_roadMap .roadmapinfo .version{
+margin:0px 10px;
+}
+
+.view-id-Pagina_roadMap .roadmapinfo .state1 {
+  color: #FF6622;
+}
+.view-id-Pagina_roadMap .roadmapinfo .state2 {
+  color: #99CC33;
+  font-weight: bold;
+}
+.view-id-Pagina_roadMap .roadmapinfo .state3 {
+  color: #995599;
+}
+.view-id-Pagina_roadMap .roadmapinfo .state0{
+color:gray;
+}
+
+
+#quicktabs_container_view__Pagina_roadMap__page_1{
+min-height: 850px;
+}
+
+#block-views-acdefb7b12bf5194f64d95a4d9917a2a{
+width:960px;
+}
+#block-views-a5c00d9ca31f3f04d1863330d583face{
+width:960px;
+}
+
+/**********************************************************
+ *                   Utilitarios
+ **********************************************************/  
+.clear{
+  clear:both;
+  font-size:0;
+   color:black;
+margin:0px;
+padding:0px
+}  
+/**********************************************************
+ *                   Hidden Stuff
+ **********************************************************/
+.article-type-gallery-assist .article .submitted{display:none}
+
+/**********************************************************
+ *                  BOOK
+ **********************************************************/
+.book img{
+    margin-bottom:10px;
+}
+.book .book-navigation{
+    clear:both;
+}
+.book .book-navigation .menu a{
+    font-weight:bold;
+    font-size:111%;
+}
+.book .book-navigation .page-links{
+    /*background:none repeat scroll 0 0 #2286F5;*/
+    padding:6px 10px;
+}
+.book .book-navigation .page-links a{
+    font-weight:bold;
+    font-size:106%;
+}
+.book .book-navigation .page-links a.page-next{
+    background-image: url("../../img/adelante.png");
+    background-position: right center;
+    background-repeat: no-repeat;
+    padding-right: 50px;
+    width: auto;
+}
+.book .book-navigation .page-links a.page-previous{
+    background-image: url("../../img/atras.png");
+    background-position: lef center;
+    background-repeat: no-repeat;
+    padding-left: 50px;
+    width: auto;
+}
+
+
+.book .book-navigation .page-links a.page-up {
+    display: inline;
+    float: none;
+    margin: 0 5%;
+    width: 4%;
+}
+
+
+.book .links.inline{
+    margin-top:10px;
+    display:block;
+}
+.book .links.inline a{
+    font-weight:bold;
+    font-size:106%;
+}
+.book .note{
+    /*background:#0066D0;*/
+    border:2px solid #022796;
+    margin:0 0 1.5em;
+    padding:10px 10px 15px;
+    font-style: italic;
+}
+
+/**********************************************************
+ *                  FORUM
+ **********************************************************/
+.forum-post{
+  /*Color cambiado de negro a blanco para que se vea el resultado*/
+  color:#fff;
+}
+.comment.forum-post{
+  /*Color cambiado de negro a blanco para que se vea el resultado*/
+  color:#111;
+}
+
+/**********************************************************
+ *                  ESTILOS GENERALES
+ **********************************************************/
+#block-locale-0 ul{
+    list-style: none;
+}
+#block-locale-0 ul a,#block-locale-0 ul a.active{
+    color:white;
+    text-decoration: none;
+}
+#block-locale-0 ul a.active{
+    font-weight:bold;
+}
+
+/**********************************************************
+ *                  ESTILOS GENERALES
+ **********************************************************/
+/*Titulo de las Paginas*/
+#page-title{
+  color:white;
+  text-shadow: 1px 3px 5px #2286F5;
+  font-size:3em;
+}
+
+/*Barra de menus Simples*/ 
+#menu-bar .primary-menu{
+  margin:0px;
+}
+#menu-bar .block{
+  padding:0;
+  margin:0px;
+}
+
+.front #menu-bar{/*Para que se vizualice bien en el front*/
+  margin-bottom:30px;
+  border-bottom:10px solid #2286F5;
+}
+
+#breadcrumb {
+  background:none repeat scroll 0 0 white;
+  border:5px solid #2286F5;
+  color:black;
+  padding:1em;
+  text-align:left;
+  margin-bottom:30px;
+}
+#breadcrumb a,#breadcrumb a:visited{
+  color:black;
+  font-weight:bold;
+}
+/**********************************************************
+ *                  ESTILOS GENERALES FRONT
+ **********************************************************/
+#block-block-9,
+#cuaternary-content .views-row-unformatted{
+background:rgb(0, 0, 0) transparent;
+  background:rgba(0, 0, 0, 0.5);
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#7F000000, endColorstr=#7F000000);
+  /* For IE 8*/
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#7F000000, endColorstr=#7F000000)";
+}
+#block-views-comments_recent-block ul,#block-views-comments_recent-block li{
+  list-style:none;
+  padding:0px;
+  margin:0;
+}
+#block-views-comments_recent-block ul .article, .comment {
+    /*margin: 0 0 0.5em;*/
+}
+#block-views-comments_recent-block li.views-row-odd,
+#block-views-comments_recent-block li.views-row-odd a{
+  background:white;
+  color:black;
+}
+#block-views-comments_recent-block li.views-row-even,
+#block-views-comments_recent-block li.views-row-even a{
+  background:black;
+  color:white;
+}
+.front .view-header{
+  text-align:center;
+  
+}
+
+
+h4{
+    margin: 5px 0 12px;
+    border-bottom:1px solid #2486F5;
+    border-top:1px solid #2486F5;
+    padding:5px 0px;
+    clear:both;
+}
+
+#main-content-header{
+    text-align:center;
+}
+
+/**********************************************************
+ *                  UTILITARIOS
+ **********************************************************/
+.quicktabs-views-group:after,
+.not-front #main-content:after,
+.clearfix:after {
+	content: ".";
+	display: block;
+	clear: both;
+	visibility: hidden;
+	line-height: 0;
+	height: 0;
+}
+.quicktabs-views-group,
+.not-front #main-content,
+.clearfix {
+	display: inline-block;
+}
+html[xmlns] .quicktabs-views-group,
+html[xmlns] .not-front #main-content,
+html[xmlns] .clearfix {
+	display: block;
+}
+* html  .quicktabs-views-group,
+* html  .not-front #main-content,
+* html .clearfix {
+	height: 1%;
+}
+
+
+/*
+Hidden
+*/
+.submitted {
+    /*background: none repeat scroll 0 0 #2286F5;*/
+    color: white;
+    font-weight: bold;
+    margin: 0.375em 0 0.75em;
+    padding: 1px 15px;
+    text-align: right;
+    display:none;
+}

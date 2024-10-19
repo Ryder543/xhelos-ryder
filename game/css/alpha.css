@@ -1,0 +1,27 @@
+body {
+}
+div#ChoosePlayer{
+	width:800px;
+	text-align:center;
+	
+}
+div.player{
+	float:left;
+	margin:10px 5px;
+	width:350px;
+	border-left:15px groove red;
+	border-right:15px groove red;
+	border-top:5px groove red;
+	border-bottom:5px groove red;
+}
+div.player:hover{
+	border-left:15px groove white;
+	border-right:15px groove white;
+	border-top:5px groove white;
+	border-bottom:25px groove brown;
+}
+
+div.player a{
+	text-decoration:none;
+}
+div.

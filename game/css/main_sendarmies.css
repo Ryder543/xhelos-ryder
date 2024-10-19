@@ -1,0 +1,199 @@
+					/*******************************************************
+					 * MAIN.php SendArmies 
+					 ******************************************************/
+
+/*******************************************************
+ * Contenedores Available Armies
+ ******************************************************/
+#AvailableArmies{
+	width:940px;
+	height:220px;
+	float:left;
+}
+#AvailableArmies ul{
+	padding:0;
+	margin:0;
+}
+#AvailableArmies .unit .data{
+	background:green;
+	border-top:4px solid #8CC58C;
+	border-left:4px solid #8CC58C;
+	border-right:4px solid #005600;
+	border-bottom:4px solid #005600;
+}
+#AvailableArmies .unit .data .level{
+	border-bottom:4px solid #005600;
+	border-left:4px solid #8CC58C;
+	background:green;
+}
+#AvailableArmies .unit .data .region{
+	color:#bbb;
+}
+/*******************************************************
+ * Contenedores Armies to Send
+ ******************************************************/
+#ArmiesToSend{
+	/*clear:both;*/
+	width:750px;
+	height:220px;
+	float:left;	
+	margin-right:10px;
+}
+#ArmiesToSend ul{
+	padding:0;
+	margin:0;
+}
+#ArmiesToSend .unit .data{
+	background:#4FBADF;
+	border-top:4px solid #BAC3DF;
+	border-left:4px solid #BAC3DF;
+	border-right:4px solid #4B63AB;
+	border-bottom:4px solid #4B63AB;
+	color:#0D5995;
+}
+#ArmiesToSend .unit .data .level{
+	border-bottom:4px solid #4B63AB;
+	border-left:4px solid #BAC3DF;
+	background:#4FBADF;
+}
+#ArmiesToSend  .unit .data .region{
+	color:#4D59ee;
+}
+/*******************************************************
+ * Contenedores Sended Armies
+ ******************************************************/
+#SendedArmies{
+	/*clear:both;*/
+	width:750px;
+	height:240px;
+	float:left;	
+	margin-right:10px;
+	margin-bottom:20px;
+}
+#SendedArmies ul{
+	padding:0;
+	margin:0;
+}
+#SendedArmies .unit{
+	width:110px;
+}
+#SendedArmies .unit .data{
+	
+	height:170px;
+	background:#666;
+	border-top:4px solid #555;
+	border-left:4px solid #555;
+	border-right:4px solid #333;
+	border-bottom:4px solid #333;
+	color:#fff;
+}
+#SendedArmies .unit .data p{
+	padding:0px;
+	margin:0px;
+	color:#bbb;
+}
+#SendedArmies .unit .data .level{
+	border-bottom:4px solid #555;
+	border-left:4px solid #555;
+	background:#666;
+}
+#SendedArmies  .unit .data .region{
+	color:#fff;
+}
+/*******************************************************
+ * Contenedores Region
+ ******************************************************/
+#SelectRegion form{
+	margin-bottom:10px;
+}
+#SelectRegion{
+	float:right;
+	width:150px;
+}
+#SelectRegion input{
+	padding:10px;
+	width:120px;
+	margin-top:5px;
+	margin-bottom:5px;
+}
+
+#SelectRegion select{
+	padding:10px;
+	width:120px;
+	margin-top:5px;
+	margin-bottom:5px;
+}
+/*******************************************************
+ * Unidades
+ ******************************************************/
+.unit{
+	width:100px;
+	overflow:hidden;
+	float:left;
+	margin-left:10px;
+}
+
+.unit .data{
+	height:125px;
+	margin-bottom:2px;
+}
+.unit .data .level{
+	padding:1px 4px;
+	float:right;
+	font-size:0.7em;
+	
+}
+.unit .data .level span{
+	display:block;
+	font-size:1.2em;
+	font-weight:bolder;
+	margin:0;
+}
+.unit img{
+	margin:10px 0px 0px;
+}
+.unit h4{
+	margin:3px 0px 1px 0px;
+	padding:0;
+	
+}
+.unit .button{
+	display:block;
+	width:100px;
+	height:25px;
+	
+}
+.unit .down{
+	background-image:url('../img/web/btn_down.png');
+	background-repeat:no-repeat;
+	border:none;
+	text-decoration:none;
+	cursor:pointer;
+}
+.unit .down:hover{
+	background-image:url('../img/web/btn_down_hover.png');
+}
+.unit .up{
+	background-image:url('../img/web/btn_up.png');
+	background-repeat:no-repeat;
+	border:none;
+	text-decoration:none;
+	cursor:pointer;
+}
+.unit .up:hover{
+	background-image:url('../img/web/btn_up_hover.png');
+}
+
+/*******************************************************
+ * Ayuda
+ ******************************************************/
+.help_wrapper{
+	border-top:5px dashed black;
+	border-bottom:5px dashed #EEC618;
+}
+.help_message{
+	background:#EEC618;
+	color:black;
+	font-weight:bolder;
+	display:none;
+}

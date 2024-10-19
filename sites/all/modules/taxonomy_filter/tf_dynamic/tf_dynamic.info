@@ -1,0 +1,14 @@
+; $Id: tf_dynamic.info,v 1.2 2009/05/18 04:52:39 solotandem Exp $
+name = "Dynamic Tree Menu"
+description = "Provides an expandable tree menu template."
+dependencies[] = taxonomy_filter
+dependencies[] = tf_count
+package = Taxonomy Filter
+core = 6.x
+
+; Information added by drupal.org packaging script on 2010-10-17
+version = "6.x-1.x-dev"
+core = "6.x"
+project = "taxonomy_filter"
+datestamp = "1287274971"
+

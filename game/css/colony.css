@@ -1,0 +1,195 @@
+ /*******************************************************
+ * ESTILOS GENERALES
+ ******************************************************/ 
+ .building{
+     cursor:move;
+ }
+ .construction{
+     position:absolute;
+ }
+ 
+ .building_resources img{
+     vertical-align: middle;
+ }
+ .iconbutton:hover{
+    background:#2286F5; 
+    border-radius: 15px; 
+ }
+ .iconbutton{
+     border:2px solid #2286F5;
+      -webkit-border-radius: 2px;
+    -khtml-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px; 
+    background:white;
+    display:block;
+    cursor:pointer;
+ }
+ 
+ .countdown_row{
+     background:white;
+     border:1px solid black;
+     color:black;
+     display:block;
+     padding:1px;
+     overflow: visible;
+     position:absolute;
+     
+     -webkit-border-radius: 3px;
+    -khtml-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px; 
+    
+    font-size: 0.8em;
+    cursor:help;
+     
+ }
+ 
+/*******************************************************
+ * MAPA COLONIA
+ ******************************************************/ 
+#Colony .column{
+    border-left: 1px solid black;
+    border-top: 1px solid black;
+    float: left;
+    height: 24px;
+    width: 24px;
+ }
+ #Colony .row{
+     border-right:1px solid black;
+ }
+ #Colony .type1{
+background:#000072;
+ }
+#Colony .type2{
+background:#7A4422;
+ }
+ #Colony .type3{
+background:#4466AA;
+ }
+ 
+ #Colony .type1.active, #Colony .type2.active, #Colony .type3.active{
+     background:white;
+ }
+  
+  #Colony .type1.near-active, #Colony .type2.near-active, #Colony .type3.near-active{
+     background:#eee;
+  }
+  
+   #Colony .type1.near-active.builded, #Colony .type2.near-active.builded, #Colony .type3.near-active.builded,
+   #Colony .type1.active.builded, #Colony .type2.active.builded, #Colony .type3.active.builded{
+     background:red;
+     background-image:none;
+  }
+  
+ 
+  #Colony .type1.B1, #Colony .type2.B1, #Colony .type3.B1{
+      background-repeat: no-repeat;
+      background-position: 0px 0px;
+  }
+  #Colony .type1.B2, #Colony .type2.B2, #Colony .type3.B2{
+      background-repeat: no-repeat;
+      background-position: -26px 0px;
+  }
+  #Colony .type1.B3, #Colony .type2.B3, #Colony .type3.B3{
+      background-repeat: no-repeat;
+      background-position: -51px 0px;
+  }
+  #Colony .type1.B4, #Colony .type2.B4, #Colony .type3.B4{
+      background-repeat: no-repeat;
+      background-position: 0px -26px;
+  }
+  #Colony .type1.B5, #Colony .type2.B5, #Colony .type3.B5{
+      background-repeat: no-repeat;
+      background-position: -26px -26px;
+  }
+  #Colony .type1.B6, #Colony .type2.B6, #Colony .type3.B6{
+      background-repeat: no-repeat;
+      background-position: -51px -26px;
+  }
+  #Colony .type1.B7, #Colony .type2.B7, #Colony .type3.B7{
+      background-repeat: no-repeat;
+      background-position: 0px -51px;
+  }
+  #Colony .type1.B8, #Colony .type2.B8, #Colony .type3.B8{
+      background-repeat: no-repeat;
+      background-position: -26px -51px;
+  }
+  #Colony .type1.B9, #Colony .type2.B9, #Colony .type3.B9{
+      background-repeat: no-repeat;
+      background-position: -51px -51px;
+  }  
+  
+  .builded.ui-state-disabled{
+      opacity:1;
+  }
+  
+  
+  #Colony .type1.R1, #Colony .type2.R1, #Colony .type3.R1{
+      background-repeat: no-repeat;
+      background-position: 0px 0px;
+  }
+  #Colony .type1.R2, #Colony .type2.R2, #Colony .type3.R2{
+      background-repeat: no-repeat;
+      background-position: -26px 0px;
+  }
+  #Colony .type1.R3, #Colony .type2.R3, #Colony .type3.R3{
+      background-repeat: no-repeat;
+      background-position: -51px 0px;
+  }
+  #Colony .type1.R4, #Colony .type2.R4, #Colony .type3.R4{
+      background-repeat: no-repeat;
+      background-position: 0px -26px;
+  }
+  #Colony .type1.R5, #Colony .type2.R5, #Colony .type3.R5{
+      background-repeat: no-repeat;
+      background-position: -26px -26px;
+  }
+  #Colony .type1.R6, #Colony .type2.R6, #Colony .type3.R6{
+      background-repeat: no-repeat;
+      background-position: -51px -26px;
+  }
+  
+    #Colony .type1.L1, #Colony .type2.L1, #Colony .type3.L1{
+      background-repeat: no-repeat;
+      background-position: 0px 0px;
+  }
+  #Colony .type1.L2, #Colony .type2.L2, #Colony .type3.L2{
+      background-repeat: no-repeat;
+      background-position: -26px 0px;
+  }
+  #Colony .type1.L3, #Colony .type2.L3, #Colony .type3.L3{
+      background-repeat: no-repeat;
+      background-position: 0px -26px;
+  }
+  #Colony .type1.L4, #Colony .type2.L4, #Colony .type3.L4{
+      background-repeat: no-repeat;
+      background-position: -26px -26px;
+  }
+  #Colony .type1.L5, #Colony .type2.L5, #Colony .type3.L5{
+      background-repeat: no-repeat;
+      background-position: 0px -51px;
+  }
+  #Colony .type1.L6, #Colony .type2.L6, #Colony .type3.L6{
+      background-repeat: no-repeat;
+      background-position: -26px -51px;
+  }
+   
+ /*******************************************************
+ * Panel Secundario
+ ******************************************************/
+ #SecondaryPanel{
+     float:right;
+     width:200px;
+ }
+ 
+  #PrimaryPanel{
+     float:left;
+     /*width:600px;*/
+ }
+  #SecondaryPanel #BuildingsWrapper,#SecondaryPanel #AddonsWrapper{
+     float:left;
+     width:100px;
+ }
+
+ 

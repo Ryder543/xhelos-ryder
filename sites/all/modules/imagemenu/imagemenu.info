@@ -1,0 +1,12 @@
+name = Imagemenu
+description = Module to create menus from image files.
+core = 6.x
+package = Menu
+php = 5.0
+
+; Information added by drupal.org packaging script on 2012-09-19
+version = "6.x-1.4"
+core = "6.x"
+project = "imagemenu"
+datestamp = "1348044244"
+

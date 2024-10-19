@@ -1,0 +1,495 @@
+<html>
+	<head>
+		<title>Lab - Javascript Path Finding</title>
+<script src="../lib/js/pathfinding.js"></script>
+</head>
+<body>
+<a href="javascript:action='setWeight';//log.info('Click to set movement');void(0)">Set Movement Cost</a>
+| <a href="javascript:action='setStart';//log.info('Click to set start point');void(0)">Set Start</a>
+| <a href="javascript:action='findPath';quickPath();void(0)">Find Path</a>
+| <a href="javascript:action='stepThrough';nextStep();void(0)">Step</a>
+<P>
+
+<table>
+<tr>			<td width=25 height=25 valign=center align=center cellpadding=0 cellspacing=0
+			id="tile_0_0" weight=1				style="font-size:10px;
+				"
+				onClick="resetMap();tileClicked(0,0);">1</td>
+					<td width=25 height=25 valign=center align=center cellpadding=0 cellspacing=0
+			id="tile_1_0" weight=50				style="font-size:10px;
+				background:gray;"
+				onClick="resetMap();tileClicked(1,0);">50</td>
+					<td width=25 height=25 valign=center align=center cellpadding=0 cellspacing=0
+			id="tile_2_0" weight=1				style="font-size:10px;
+				"
+				onClick="resetMap();tileClicked(2,0);">1</td>
+					<td width=25 height=25 valign=center align=center cellpadding=0 cellspacing=0
+			id="tile_3_0" weight=1				style="font-size:10px;
+				"
+				onClick="resetMap();tileClicked(3,0);">1</td>
+					<td width=25 height=25 valign=center align=center cellpadding=0 cellspacing=0
+			id="tile_4_0" weight=1				style="font-size:10px;
+				"
+				onClick="resetMap();tileClicked(4,0);">1</td>
+					<td width=25 height=25 valign=center align=center cellpadding=0 cellspacing=0
+			id="tile_5_0" weight=1				style="font-size:10px;
+				"
+				onClick="resetMap();tileClicked(5,0);">1</td>
+
+					<td width=25 height=25 valign=center align=center cellpadding=0 cellspacing=0
+			id="tile_6_0" weight=1				style="font-size:10px;
+				"
+				onClick="resetMap();tileClicked(6,0);">1</td>
+					<td width=25 height=25 valign=center align=center cellpadding=0 cellspacing=0
+			id="tile_7_0" weight=1				style="font-size:10px;
+				"
+				onClick="resetMap();tileClicked(7,0);">1</td>
+					<td width=25 height=25 valign=center align=center cellpadding=0 cellspacing=0
+			id="tile_8_0" weight=1				style="font-size:10px;
+				"
+				onClick="resetMap();tileClicked(8,0);">1</td>
+					<td width=25 height=25 valign=center align=center cellpadding=0 cellspacing=0
+			id="tile_9_0" weight=1				style="font-size:10px;
+				"
+				onClick="resetMap();tileClicked(9,0);">1</td>
+					<td width=25 height=25 valign=center align=center cellpadding=0 cellspacing=0
+			id="tile_10_0" weight=1				style="font-size:10px;
+				"
+				onClick="resetMap();tileClicked(10,0);">1</td>
+					<td width=25 height=25 valign=center align=center cellpadding=0 cellspacing=0
+			id="tile_11_0" weight=1				style="font-size:10px;
+				"
+				onClick="resetMap();tileClicked(11,0);">1</td>
+
+					<td width=25 height=25 valign=center align=center cellpadding=0 cellspacing=0
+			id="tile_12_0" weight=1				style="font-size:10px;
+				"
+				onClick="resetMap();tileClicked(12,0);">1</td>
+					<td width=25 height=25 valign=center align=center cellpadding=0 cellspacing=0
+			id="tile_13_0" weight=1				style="font-size:10px;
+				"
+				onClick="resetMap();tileClicked(13,0);">1</td>
+					<td width=25 height=25 valign=center align=center cellpadding=0 cellspacing=0
+			id="tile_14_0" weight=1				style="font-size:10px;
+				"
+				onClick="resetMap();tileClicked(14,0);">1</td>
+		</tr><tr>			<td width=25 height=25 valign=center align=center cellpadding=0 cellspacing=0
+			id="tile_0_1" weight=1				style="font-size:10px;
+				"
+				onClick="resetMap();tileClicked(0,1);">1</td>
+					<td width=25 height=25 valign=center align=center cellpadding=0 cellspacing=0
+			id="tile_1_1" weight=50				style="font-size:10px;
+				background:gray;"
+				onClick="resetMap();tileClicked(1,1);">50</td>
+					<td width=25 height=25 valign=center align=center cellpadding=0 cellspacing=0
+			id="tile_2_1" weight=1				style="font-size:10px;
+				"
+				onClick="resetMap();tileClicked(2,1);">1</td>
+
+					<td width=25 height=25 valign=center align=center cellpadding=0 cellspacing=0
+			id="tile_3_1" weight=1				style="font-size:10px;
+				"
+				onClick="resetMap();tileClicked(3,1);">1</td>
+					<td width=25 height=25 valign=center align=center cellpadding=0 cellspacing=0
+			id="tile_4_1" weight=1				style="font-size:10px;
+				"
+				onClick="resetMap();tileClicked(4,1);">1</td>
+					<td width=25 height=25 valign=center align=center cellpadding=0 cellspacing=0
+			id="tile_5_1" weight=1				style="font-size:10px;
+				"
+				onClick="resetMap();tileClicked(5,1);">1</td>
+					<td width=25 height=25 valign=center align=center cellpadding=0 cellspacing=0
+			id="tile_6_1" weight=1				style="font-size:10px;
+				"
+				onClick="resetMap();tileClicked(6,1);">1</td>
+					<td width=25 height=25 valign=center align=center cellpadding=0 cellspacing=0
+			id="tile_7_1" weight=1				style="font-size:10px;
+				"
+				onClick="resetMap();tileClicked(7,1);">1</td>
+					<td width=25 height=25 valign=center align=center cellpadding=0 cellspacing=0
+			id="tile_8_1" weight=1				style="font-size:10px;
+				"
+				onClick="resetMap();tileClicked(8,1);">1</td>
+
+					<td width=25 height=25 valign=center align=center cellpadding=0 cellspacing=0
+			id="tile_9_1" weight=1				style="font-size:10px;
+				"
+				onClick="resetMap();tileClicked(9,1);">1</td>
+					<td width=25 height=25 valign=center align=center cellpadding=0 cellspacing=0
+			id="tile_10_1" weight=1				style="font-size:10px;
+				"
+				onClick="resetMap();tileClicked(10,1);">1</td>
+					<td width=25 height=25 valign=center align=center cellpadding=0 cellspacing=0
+			id="tile_11_1" weight=1				style="font-size:10px;
+				"
+				onClick="resetMap();tileClicked(11,1);">1</td>
+					<td width=25 height=25 valign=center align=center cellpadding=0 cellspacing=0
+			id="tile_12_1" weight=1				style="font-size:10px;
+				"
+				onClick="resetMap();tileClicked(12,1);">1</td>
+					<td width=25 height=25 valign=center align=center cellpadding=0 cellspacing=0
+			id="tile_13_1" weight=1				style="font-size:10px;
+				"
+				onClick="resetMap();tileClicked(13,1);">1</td>
+					<td width=25 height=25 valign=center align=center cellpadding=0 cellspacing=0
+			id="tile_14_1" weight=1				style="font-size:10px;
+				"
+				onClick="resetMap();tileClicked(14,1);">1</td>
+
+		</tr><tr>			<td width=25 height=25 valign=center align=center cellpadding=0 cellspacing=0
+			id="tile_0_2" weight=1				style="font-size:10px;
+				"
+				onClick="resetMap();tileClicked(0,2);">1</td>
+					<td width=25 height=25 valign=center align=center cellpadding=0 cellspacing=0
+			id="tile_1_2" weight=50				style="font-size:10px;
+				background:gray;"
+				onClick="resetMap();tileClicked(1,2);">50</td>
+					<td width=25 height=25 valign=center align=center cellpadding=0 cellspacing=0
+			id="tile_2_2" weight=1				style="font-size:10px;
+				"
+				onClick="resetMap();tileClicked(2,2);">1</td>
+					<td width=25 height=25 valign=center align=center cellpadding=0 cellspacing=0
+			id="tile_3_2" weight=50				style="font-size:10px;
+				background:gray;"
+				onClick="resetMap();tileClicked(3,2);">50</td>
+					<td width=25 height=25 valign=center align=center cellpadding=0 cellspacing=0
+			id="tile_4_2" weight=1				style="font-size:10px;
+				"
+				onClick="resetMap();tileClicked(4,2);">1</td>
+					<td width=25 height=25 valign=center align=center cellpadding=0 cellspacing=0
+			id="tile_5_2" weight=50				style="font-size:10px;
+				background:gray;"
+				onClick="resetMap();tileClicked(5,2);">50</td>
+
+					<td width=25 height=25 valign=center align=center cellpadding=0 cellspacing=0
+			id="tile_6_2" weight=50				style="font-size:10px;
+				background:gray;"
+				onClick="resetMap();tileClicked(6,2);">50</td>
+					<td width=25 height=25 valign=center align=center cellpadding=0 cellspacing=0
+			id="tile_7_2" weight=1				style="font-size:10px;
+				"
+				onClick="resetMap();tileClicked(7,2);">1</td>
+					<td width=25 height=25 valign=center align=center cellpadding=0 cellspacing=0
+			id="tile_8_2" weight=1				style="font-size:10px;
+				"
+				onClick="resetMap();tileClicked(8,2);">1</td>
+					<td width=25 height=25 valign=center align=center cellpadding=0 cellspacing=0
+			id="tile_9_2" weight=1				style="font-size:10px;
+				"
+				onClick="resetMap();tileClicked(9,2);">1</td>
+					<td width=25 height=25 valign=center align=center cellpadding=0 cellspacing=0
+			id="tile_10_2" weight=1				style="font-size:10px;
+				"
+				onClick="resetMap();tileClicked(10,2);">1</td>
+					<td width=25 height=25 valign=center align=center cellpadding=0 cellspacing=0
+			id="tile_11_2" weight=1				style="font-size:10px;
+				"
+				onClick="resetMap();tileClicked(11,2);">1</td>
+
+					<td width=25 height=25 valign=center align=center cellpadding=0 cellspacing=0
+			id="tile_12_2" weight=1				style="font-size:10px;
+				"
+				onClick="resetMap();tileClicked(12,2);">1</td>
+					<td width=25 height=25 valign=center align=center cellpadding=0 cellspacing=0
+			id="tile_13_2" weight=1				style="font-size:10px;
+				"
+				onClick="resetMap();tileClicked(13,2);">1</td>
+					<td width=25 height=25 valign=center align=center cellpadding=0 cellspacing=0
+			id="tile_14_2" weight=1				style="font-size:10px;
+				"
+				onClick="resetMap();tileClicked(14,2);">1</td>
+		</tr><tr>			<td width=25 height=25 valign=center align=center cellpadding=0 cellspacing=0
+			id="tile_0_3" weight=1				style="font-size:10px;
+				"
+				onClick="resetMap();tileClicked(0,3);">1</td>
+					<td width=25 height=25 valign=center align=center cellpadding=0 cellspacing=0
+			id="tile_1_3" weight=50				style="font-size:10px;
+				background:gray;"
+				onClick="resetMap();tileClicked(1,3);">50</td>
+					<td width=25 height=25 valign=center align=center cellpadding=0 cellspacing=0
+			id="tile_2_3" weight=1				style="font-size:10px;
+				"
+				onClick="resetMap();tileClicked(2,3);">1</td>
+
+					<td width=25 height=25 valign=center align=center cellpadding=0 cellspacing=0
+			id="tile_3_3" weight=50				style="font-size:10px;
+				background:gray;"
+				onClick="resetMap();tileClicked(3,3);">50</td>
+					<td width=25 height=25 valign=center align=center cellpadding=0 cellspacing=0
+			id="tile_4_3" weight=1				style="font-size:10px;
+				"
+				onClick="resetMap();tileClicked(4,3);">1</td>
+					<td width=25 height=25 valign=center align=center cellpadding=0 cellspacing=0
+			id="tile_5_3" weight=50				style="font-size:10px;
+				background:gray;"
+				onClick="resetMap();tileClicked(5,3);">50</td>
+					<td width=25 height=25 valign=center align=center cellpadding=0 cellspacing=0
+			id="tile_6_3" weight=50				style="font-size:10px;
+				background:gray;"
+				onClick="resetMap();tileClicked(6,3);">50</td>
+					<td width=25 height=25 valign=center align=center cellpadding=0 cellspacing=0
+			id="tile_7_3" weight=1				style="font-size:10px;
+				"
+				onClick="resetMap();tileClicked(7,3);">1</td>
+					<td width=25 height=25 valign=center align=center cellpadding=0 cellspacing=0
+			id="tile_8_3" weight=1				style="font-size:10px;
+				"
+				onClick="resetMap();tileClicked(8,3);">1</td>
+
+					<td width=25 height=25 valign=center align=center cellpadding=0 cellspacing=0
+			id="tile_9_3" weight=1				style="font-size:10px;
+				"
+				onClick="resetMap();tileClicked(9,3);">1</td>
+					<td width=25 height=25 valign=center align=center cellpadding=0 cellspacing=0
+			id="tile_10_3" weight=1				style="font-size:10px;
+				"
+				onClick="resetMap();tileClicked(10,3);">1</td>
+					<td width=25 height=25 valign=center align=center cellpadding=0 cellspacing=0
+			id="tile_11_3" weight=1				style="font-size:10px;
+				"
+				onClick="resetMap();tileClicked(11,3);">1</td>
+					<td width=25 height=25 valign=center align=center cellpadding=0 cellspacing=0
+			id="tile_12_3" weight=1				style="font-size:10px;
+				"
+				onClick="resetMap();tileClicked(12,3);">1</td>
+					<td width=25 height=25 valign=center align=center cellpadding=0 cellspacing=0
+			id="tile_13_3" weight=1				style="font-size:10px;
+				"
+				onClick="resetMap();tileClicked(13,3);">1</td>
+					<td width=25 height=25 valign=center align=center cellpadding=0 cellspacing=0
+			id="tile_14_3" weight=1				style="font-size:10px;
+				"
+				onClick="resetMap();tileClicked(14,3);">1</td>
+
+		</tr><tr>			<td width=25 height=25 valign=center align=center cellpadding=0 cellspacing=0
+			id="tile_0_4" weight=1				style="font-size:10px;
+				"
+				onClick="resetMap();tileClicked(0,4);">1</td>
+					<td width=25 height=25 valign=center align=center cellpadding=0 cellspacing=0
+			id="tile_1_4" weight=50				style="font-size:10px;
+				background:gray;"
+				onClick="resetMap();tileClicked(1,4);">50</td>
+					<td width=25 height=25 valign=center align=center cellpadding=0 cellspacing=0
+			id="tile_2_4" weight=1				style="font-size:10px;
+				"
+				onClick="resetMap();tileClicked(2,4);">1</td>
+					<td width=25 height=25 valign=center align=center cellpadding=0 cellspacing=0
+			id="tile_3_4" weight=1				style="font-size:10px;
+				"
+				onClick="resetMap();tileClicked(3,4);">1</td>
+					<td width=25 height=25 valign=center align=center cellpadding=0 cellspacing=0
+			id="tile_4_4" weight=1				style="font-size:10px;
+				"
+				onClick="resetMap();tileClicked(4,4);">1</td>
+					<td width=25 height=25 valign=center align=center cellpadding=0 cellspacing=0
+			id="tile_5_4" weight=1				style="font-size:10px;
+				"
+				onClick="resetMap();tileClicked(5,4);">1</td>
+
+					<td width=25 height=25 valign=center align=center cellpadding=0 cellspacing=0
+			id="tile_6_4" weight=1				style="font-size:10px;
+				"
+				onClick="resetMap();tileClicked(6,4);">1</td>
+					<td width=25 height=25 valign=center align=center cellpadding=0 cellspacing=0
+			id="tile_7_4" weight=1				style="font-size:10px;
+				"
+				onClick="resetMap();tileClicked(7,4);">1</td>
+					<td width=25 height=25 valign=center align=center cellpadding=0 cellspacing=0
+			id="tile_8_4" weight=1				style="font-size:10px;
+				"
+				onClick="resetMap();tileClicked(8,4);">1</td>
+					<td width=25 height=25 valign=center align=center cellpadding=0 cellspacing=0
+			id="tile_9_4" weight=1				style="font-size:10px;
+				"
+				onClick="resetMap();tileClicked(9,4);">1</td>
+					<td width=25 height=25 valign=center align=center cellpadding=0 cellspacing=0
+			id="tile_10_4" weight=1				style="font-size:10px;
+				"
+				onClick="resetMap();tileClicked(10,4);">1</td>
+					<td width=25 height=25 valign=center align=center cellpadding=0 cellspacing=0
+			id="tile_11_4" weight=1				style="font-size:10px;
+				"
+				onClick="resetMap();tileClicked(11,4);">1</td>
+
+					<td width=25 height=25 valign=center align=center cellpadding=0 cellspacing=0
+			id="tile_12_4" weight=1				style="font-size:10px;
+				"
+				onClick="resetMap();tileClicked(12,4);">1</td>
+					<td width=25 height=25 valign=center align=center cellpadding=0 cellspacing=0
+			id="tile_13_4" weight=1				style="font-size:10px;
+				"
+				onClick="resetMap();tileClicked(13,4);">1</td>
+					<td width=25 height=25 valign=center align=center cellpadding=0 cellspacing=0
+			id="tile_14_4" weight=1				style="font-size:10px;
+				"
+				onClick="resetMap();tileClicked(14,4);">1</td>
+		</tr><tr>			<td width=25 height=25 valign=center align=center cellpadding=0 cellspacing=0
+			id="tile_0_5" weight=1				style="font-size:10px;
+				"
+				onClick="resetMap();tileClicked(0,5);">1</td>
+					<td width=25 height=25 valign=center align=center cellpadding=0 cellspacing=0
+			id="tile_1_5" weight=50				style="font-size:10px;
+				background:gray;"
+				onClick="resetMap();tileClicked(1,5);">50</td>
+					<td width=25 height=25 valign=center align=center cellpadding=0 cellspacing=0
+			id="tile_2_5" weight=1				style="font-size:10px;
+				"
+				onClick="resetMap();tileClicked(2,5);">1</td>
+
+					<td width=25 height=25 valign=center align=center cellpadding=0 cellspacing=0
+			id="tile_3_5" weight=1				style="font-size:10px;
+				"
+				onClick="resetMap();tileClicked(3,5);">1</td>
+					<td width=25 height=25 valign=center align=center cellpadding=0 cellspacing=0
+			id="tile_4_5" weight=1				style="font-size:10px;
+				"
+				onClick="resetMap();tileClicked(4,5);">1</td>
+					<td width=25 height=25 valign=center align=center cellpadding=0 cellspacing=0
+			id="tile_5_5" weight=1				style="font-size:10px;
+				"
+				onClick="resetMap();tileClicked(5,5);">1</td>
+					<td width=25 height=25 valign=center align=center cellpadding=0 cellspacing=0
+			id="tile_6_5" weight=1				style="font-size:10px;
+				"
+				onClick="resetMap();tileClicked(6,5);">1</td>
+					<td width=25 height=25 valign=center align=center cellpadding=0 cellspacing=0
+			id="tile_7_5" weight=1				style="font-size:10px;
+				"
+				onClick="resetMap();tileClicked(7,5);">1</td>
+					<td width=25 height=25 valign=center align=center cellpadding=0 cellspacing=0
+			id="tile_8_5" weight=1				style="font-size:10px;
+				"
+				onClick="resetMap();tileClicked(8,5);">1</td>
+
+					<td width=25 height=25 valign=center align=center cellpadding=0 cellspacing=0
+			id="tile_9_5" weight=1				style="font-size:10px;
+				"
+				onClick="resetMap();tileClicked(9,5);">1</td>
+					<td width=25 height=25 valign=center align=center cellpadding=0 cellspacing=0
+			id="tile_10_5" weight=1				style="font-size:10px;
+				"
+				onClick="resetMap();tileClicked(10,5);">1</td>
+					<td width=25 height=25 valign=center align=center cellpadding=0 cellspacing=0
+			id="tile_11_5" weight=1				style="font-size:10px;
+				"
+				onClick="resetMap();tileClicked(11,5);">1</td>
+					<td width=25 height=25 valign=center align=center cellpadding=0 cellspacing=0
+			id="tile_12_5" weight=1				style="font-size:10px;
+				"
+				onClick="resetMap();tileClicked(12,5);">1</td>
+					<td width=25 height=25 valign=center align=center cellpadding=0 cellspacing=0
+			id="tile_13_5" weight=1				style="font-size:10px;
+				"
+				onClick="resetMap();tileClicked(13,5);">1</td>
+					<td width=25 height=25 valign=center align=center cellpadding=0 cellspacing=0
+			id="tile_14_5" weight=1				style="font-size:10px;
+				"
+				onClick="resetMap();tileClicked(14,5);">1</td>
+
+		</tr><tr>			<td width=25 height=25 valign=center align=center cellpadding=0 cellspacing=0
+			id="tile_0_6" weight=1				style="font-size:10px;
+				"
+				onClick="resetMap();tileClicked(0,6);">1</td>
+					<td width=25 height=25 valign=center align=center cellpadding=0 cellspacing=0
+			id="tile_1_6" weight=1				style="font-size:10px;
+				"
+				onClick="resetMap();tileClicked(1,6);">1</td>
+					<td width=25 height=25 valign=center align=center cellpadding=0 cellspacing=0
+			id="tile_2_6" weight=1				style="font-size:10px;
+				"
+				onClick="resetMap();tileClicked(2,6);">1</td>
+					<td width=25 height=25 valign=center align=center cellpadding=0 cellspacing=0
+			id="tile_3_6" weight=1				style="font-size:10px;
+				"
+				onClick="resetMap();tileClicked(3,6);">1</td>
+					<td width=25 height=25 valign=center align=center cellpadding=0 cellspacing=0
+			id="tile_4_6" weight=1				style="font-size:10px;
+				"
+				onClick="resetMap();tileClicked(4,6);">1</td>
+					<td width=25 height=25 valign=center align=center cellpadding=0 cellspacing=0
+			id="tile_5_6" weight=1				style="font-size:10px;
+				"
+				onClick="resetMap();tileClicked(5,6);">1</td>
+
+					<td width=25 height=25 valign=center align=center cellpadding=0 cellspacing=0
+			id="tile_6_6" weight=1				style="font-size:10px;
+				"
+				onClick="resetMap();tileClicked(6,6);">1</td>
+					<td width=25 height=25 valign=center align=center cellpadding=0 cellspacing=0
+			id="tile_7_6" weight=1				style="font-size:10px;
+				"
+				onClick="resetMap();tileClicked(7,6);">1</td>
+					<td width=25 height=25 valign=center align=center cellpadding=0 cellspacing=0
+			id="tile_8_6" weight=1				style="font-size:10px;
+				"
+				onClick="resetMap();tileClicked(8,6);">1</td>
+					<td width=25 height=25 valign=center align=center cellpadding=0 cellspacing=0
+			id="tile_9_6" weight=1				style="font-size:10px;
+				"
+				onClick="resetMap();tileClicked(9,6);">1</td>
+					<td width=25 height=25 valign=center align=center cellpadding=0 cellspacing=0
+			id="tile_10_6" weight=1				style="font-size:10px;
+				"
+				onClick="resetMap();tileClicked(10,6);">1</td>
+					<td width=25 height=25 valign=center align=center cellpadding=0 cellspacing=0
+			id="tile_11_6" weight=1				style="font-size:10px;
+				"
+				onClick="resetMap();tileClicked(11,6);">1</td>
+
+					<td width=25 height=25 valign=center align=center cellpadding=0 cellspacing=0
+			id="tile_12_6" weight=1				style="font-size:10px;
+				"
+				onClick="resetMap();tileClicked(12,6);">1</td>
+					<td width=25 height=25 valign=center align=center cellpadding=0 cellspacing=0
+			id="tile_13_6" weight=1				style="font-size:10px;
+				"
+				onClick="resetMap();tileClicked(13,6);">1</td>
+					<td width=25 height=25 valign=center align=center cellpadding=0 cellspacing=0
+			id="tile_14_6" weight=1				style="font-size:10px;
+				"
+				onClick="resetMap();tileClicked(14,6);">1</td>
+		</tr></table>
+
+<table>
+<tr>
+	<td style="width:25px; height:25px;background:#DDD">&nbsp;</td>
+	<td valign=top style="background:#000;color:white;"> Examined but not chosen<br> Cost is displayed.</td>
+
+</tr>
+<tr>
+	<td style="width:25px; height:25px;background:#green">&nbsp;</td>
+	<td valign=top style="background:#000;color:white;"> Open pastures, <br> Cost is displayed.</td>
+</tr>
+<tr>
+	<td style="width:25px; height:25px;background:gray">&nbsp;</td>
+	<td valign=top style="background:black;color:white;">Blocking</td>
+
+</tr>
+<tr>
+	<td style="width:25px; height:25px;background:#FFF999">&nbsp;</td>
+	<td valign=top style="background:black;color:white;">Found Path, <br>Movement number is displayed.</td>
+</tr>
+<tr>
+	<td style="width:25px; height:25px;background:yellow">&nbsp;</td>
+	<td valign=top style="background:black;color:white;">Next Best choice, <br>Movement number is displayed.</td>
+</tr>
+
+<tr>
+	<td colspan=2 valign=top style="background:black;color:white;">
+	<b>
+	<P>&nbsp;<br>
+	This is a path finding algorithm, written in javascript.
+	<P>
+	You can view source to save the code.
+	<P>
+	It's not the fastest, nore does it find the shortest path.
+	<P>
+
+	But it does find a path.
+	<P>
+	Free for any use you can find for it. I can not be held repsponsible for any miss-use of this code.
+	</b>
+</tr>
+</table>
+</body>
+</html>

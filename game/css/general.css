@@ -1,0 +1,807 @@
+/**********************************
+* BODY GENERAL
+*********************************/
+body {
+  background:black;
+  /*background-image:url('../img/web/lateral.jpg');*/
+  /*background-image:url("../img/web/fondo.jpg");*/
+  background-position: center;
+  background-repeat: no-repeat;
+  color:white;
+  padding:0px;
+  margin:0px;
+  font-family:"Arial","Helvetica";
+  text-align:center;
+  /*font-size: 75.01%;*/
+}
+div#Wrapper{
+  width:960px;
+  margin:auto;
+}
+
+div#MainContainer {
+ clear:both;
+}
+
+h4{
+    text-transform: capitalize;
+}
+
+/**********************************************************
+ * ESTILOS GENERALES DE CLASES
+ **********************************************************/
+span.title{
+  /*padding:5px 10px 5px 10px;*/
+  /*font-variant:small-caps;*/
+  font-weight:bolder;
+  /*font-family:Arial;*/
+}
+.textAdvice{
+    font-size:200%;
+    text-align:center;
+    font-weight:bold;
+    text-shadow: 1px -4px 7px black;
+    color:white;
+}
+.damageText{
+    color:red;
+    font-weight:bold;
+    font-size:125%;
+    text-shadow: 1px -4px 7px #2286F5;
+}
+
+.waitIcon{
+   /* position:absolute;*/
+    vertical-align: middle;
+   /* margin-right: 5px;*/
+}
+.waitActionIcon{
+    /*margin-top: 7px;*/
+    /*top:13px;*/ /* http://www.quirksmode.org/css/mozilla_table.html Bug de Firefox que no permite poner
+    un elemento absoluto dentro de una tabla*/ 
+    /*display:inline;*/
+    padding: 3px 3px;
+}
+.waitActionIcon img{
+    margin:0px 3px;
+    
+}
+#Msg .waitIcon {
+  margin: 0;
+}
+.hidden{
+  display:none;
+}
+.clear{
+  clear:both;
+  float:none;
+  font-size:1px;
+  color:white;
+}
+
+
+.button{
+    -moz-border-bottom-colors: none;
+    -moz-border-image: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    border: 1px solid #3871C2;
+    border-radius: 7px 7px 7px 7px;
+    -moz-border-radius: 7px 7px 7px 7px;
+    -webkit-border-radius: 7px 7px 7px 7px;
+    -khtml-border-radius: 7px 7px 7px 7px;
+
+    box-shadow: 0 1px 10px rgba(0, 0, 0, 0.5), 0 0 1px rgba(255, 255, 255, 0.7) inset;
+    color: #FFFFFF;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.3), 0 1px 0 rgba(255, 255, 255, 0.3);
+    text-transform: uppercase;
+    display: inline-block;
+    /*float: right;*/  /*Se elimno por el paginado que habia en Actualizaciones*/
+    font-size: 0.846em;
+    line-height: 2;
+
+    text-decoration: none;
+    cursor:pointer;
+    font-weight:bold;
+    
+    margin: 5px 0px;
+    padding: 5px 10px;
+    
+
+    /*Mozilla Firefox 3.6*/
+    background: -moz-linear-gradient(center top , #3871C2 0%, #123F72) repeat scroll 0 0 transparent;
+    /*Opera???*/
+    
+    background-image: -o-linear-gradient(rgb(39,129,226),rgb(18,65,117));
+    /*Webkit aka Google Chrome*/
+    background-image: -webkit-gradient(linear,center top,center bottom,color-stop(0, #3871C2),color-stop(1, #123F72));
+    /*Internet Explorer 6,7 and 8*/
+    filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#3871C2', endColorstr='#123F72');
+    /*Internet Explorer 8 only*/
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#3871C2', endColorstr='#123F72')";
+}
+.button-off{
+    -moz-border-bottom-colors: none;
+    -moz-border-image: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    border: 1px solid #3871C2;
+    border-radius: 7px 7px 7px 7px;
+    -moz-border-radius: 7px 7px 7px 7px;
+    -webkit-border-radius: 7px 7px 7px 7px;
+    -khtml-border-radius: 7px 7px 7px 7px;
+
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5), 0 0 1px rgba(255, 255, 255, 0.7) inset;
+    color: #FFFFFF;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.3), 0 1px 0 rgba(255, 255, 255, 0.3);
+    text-transform: uppercase;
+    display: inline-block;
+    /*float: right;*/  /*Se elimno por el paginado que habia en Actualizaciones*/
+    font-size: 0.846em;
+    line-height: 20px;
+
+    text-decoration: none;
+    cursor:pointer;
+    font-weight:bold;
+    
+    margin: 0px 0px;
+    padding: 0px 5px;
+    
+
+    /*Mozilla Firefox 3.6*/
+    background: -moz-linear-gradient(center top , #777777 0%, #333333) repeat scroll 0 0 transparent;
+    /*Opera???*/
+    
+    background-image: -o-linear-gradient(rgb(119, 119, 119),rgb(51,51,51));
+    /*Webkit aka Google Chrome*/
+    background-image: -webkit-gradient(linear,center top,center bottom,color-stop(0, #777777),color-stop(1, #333333));
+    /*Internet Explorer 6,7 and 8*/
+    filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#777777', endColorstr='#333333');
+    /*Internet Explorer 8 only*/
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#777777', endColorstr='#333333')";
+}
+.button-off:hover{
+/*Mozilla Firefox 3.6*/
+    background: -moz-linear-gradient(center top , #3871C2 0%, #123F72) repeat scroll 0 0 transparent;
+    /*Opera???*/
+    
+    background-image: -o-linear-gradient(rgb(39,129,226),rgb(18,65,117));
+    /*Webkit aka Google Chrome*/
+    background-image: -webkit-gradient(linear,center top,center bottom,color-stop(0, #3871C2),color-stop(1, #123F72));
+    /*Internet Explorer 6,7 and 8*/
+    filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#3871C2', endColorstr='#123F72');
+    /*Internet Explorer 8 only*/
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#3871C2', endColorstr='#123F72')";
+}
+
+.button-on{
+    -moz-border-bottom-colors: none;
+    -moz-border-image: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    border: 1px solid #3871C2;
+    border-radius: 7px 7px 7px 7px;
+    -moz-border-radius: 7px 7px 7px 7px;
+    -webkit-border-radius: 7px 7px 7px 7px;
+    -khtml-border-radius: 7px 7px 7px 7px;
+
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5), 0 0 1px rgba(255, 255, 255, 0.7) inset;
+    color: #FFFFFF;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.3), 0 1px 0 rgba(255, 255, 255, 0.3);
+    text-transform: uppercase;
+    display: inline-block;
+    /*float: right;*/  /*Se elimno por el paginado que habia en Actualizaciones*/
+    font-size: 0.846em;
+    line-height: 20px;
+
+    text-decoration: none;
+    cursor:pointer;
+    font-weight:bold;
+    
+    margin: 0px 0px;
+    padding: 0px 5px;
+    
+
+    /*Mozilla Firefox 3.6*/
+    background: -moz-linear-gradient(center top , #3871C2 0%, #123F72) repeat scroll 0 0 transparent;
+    /*Opera???*/
+    
+    background-image: -o-linear-gradient(rgb(39,129,226),rgb(18,65,117));
+    /*Webkit aka Google Chrome*/
+    background-image: -webkit-gradient(linear,center top,center bottom,color-stop(0, #3871C2),color-stop(1, #123F72));
+    /*Internet Explorer 6,7 and 8*/
+    filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#3871C2', endColorstr='#123F72');
+    /*Internet Explorer 8 only*/
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#3871C2', endColorstr='#123F72')";
+}
+.button-on:hover{
+
+    /*Mozilla Firefox 3.6*/
+    background: -moz-linear-gradient(center top , #777777 0%, #333333) repeat scroll 0 0 transparent;
+    /*Opera???*/
+    
+    background-image: -o-linear-gradient(rgb(119, 119, 119),rgb(51,51,51));
+    /*Webkit aka Google Chrome*/
+    background-image: -webkit-gradient(linear,center top,center bottom,color-stop(0, #777777),color-stop(1, #333333));
+    /*Internet Explorer 6,7 and 8*/
+    filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#777777', endColorstr='#333333');
+    /*Internet Explorer 8 only*/
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#777777', endColorstr='#333333')";
+}
+
+.left{
+float:left;
+}
+
+.right{
+float:right;
+}
+
+.inline-block{
+    display:inline-block;
+}
+
+/**********************************************************
+ * ESTILOS GENERALES - LEADERBOARD 
+ **********************************************************/
+.colonyid{
+    cursor:pointer;
+    /*border-bottom: 1px solid black;
+    border-right: 1px solid black;*/
+    cursor: pointer;
+    margin-bottom: 5px;
+    padding: 2px 5px;
+}
+
+ /*.highlight:hover {
+   background:#2286F5;
+    color:white;
+}*/
+ 
+#ColonySelector{
+    border:1px solid black;
+    /*background: none repeat scroll 0 0 white;*/
+    border: 1px solid black;
+    padding: 5px 10px;
+    position: absolute;
+}
+/**********************************************************
+ * PRIMARY MENU - LEADERBOARD 
+ **********************************************************/
+/* Leaderboard is a full width region at the very top of the page. */
+#leaderboard {
+  /*background-image:url('../img/web/logintitle.jpg');
+  background-repeat:no-repeat;*/
+  font-weight:normal;
+  padding: 8px 10px;
+  margin:0 0 1.2em 0;
+  /*height:42px;*/
+  /*font-size:16px;*/
+}
+
+#leaderboard a#TutorialOff{
+color:#999999;
+}
+
+#leaderboard a,#leaderboard a:visited {
+    font-weight:bold;
+    color:white;
+}
+
+
+
+ul.loginItem{
+  /*float:right;*/
+  list-style:none;
+  margin:0px;
+  padding:0px;
+}
+
+ul.loginItem li{
+  /*float:left;*/
+  margin:0 0 0 0.5em;
+}
+ul.loginItem p{
+  padding:0;
+  margin:0;
+}
+
+#TutorialOn,#TutorialOff{
+margin-right:5px;
+}
+#TutorialOn a{
+color: #ccc;
+}
+
+/**********************************************************
+ * RESETEADORES EN GENERAL 
+ **********************************************************/
+/* Reseteador de TD*/
+td,div{
+	padding:0;
+	margin:0;
+       
+}
+
+table{
+	border-spacing:0;
+}
+
+/**********************************
+        Header
+*********************************/
+#Header{
+    margin-bottom:10px;
+  /*height:75px;*/
+}
+/**********************************
+        Menu Principal
+*********************************/
+
+/* Menu Principal*/
+#MenuContainer{
+  text-align:left;
+  float:left;
+}
+.menu{
+  list-style:none;
+  margin:0;
+  padding:0;
+}
+
+.menu li{
+  float:left;
+  /*background:white;*/
+  /*color:#2286F5;*/
+  border-top:2px solid #123F72;
+  border-left:2px solid #123F72;
+  border-right:2px solid #123F72;
+  /*border-top:0 solid #2286F5;*/
+  padding:5px;
+  margin: 0 15px 0 0;
+  font-weight:bold;
+  cursor:pointer;
+}
+.menu li.active,.menu li.active .title{
+  background:#2286F5;
+  color:white;
+  border:none;
+}
+.menu li img{
+  vertical-align:text-bottom;
+}
+/* SubMenu Principal*/
+.submenu{
+  list-style:none;
+  margin:0;
+  padding:2px;
+  clear:both;
+  background:#123F72;
+}
+.submenu li.extra{
+    width:135px;
+}
+
+.submenu li{
+  width:125px;
+  float:left;
+  padding:0px 0px 0px 0;
+  font-weight:bold;
+  overflow:hidden;
+}
+.submenu li span.container,
+.submenu li a {
+  display: block;
+  height: 40px;
+  padding: 7px 7px 7px 0;
+}
+
+.submenu .subtitle{
+  font-size:1em;
+  font-family:Tahoma;
+}
+.submenu img{
+  float:left;
+  margin:0 3px 0 4px;
+}
+.submenu .title{
+  font-size:0.9em;
+  font-weight:normal;
+  display:block;
+  background:none;
+  border:none;
+}
+
+/**********************************
+    Panel Player Information
+*********************************/
+#DataCenter{
+  color:black;
+  float:right;
+  width:290px;
+}
+#DataCenter img{
+  vertical-align:text-bottom;
+}
+/*Recursos Normales*/
+#DataCenter h1{
+  font-size:0.9em;
+  font-weight:bold;
+  padding:0;
+  margin:0;
+  
+}
+#DataCenter h2{
+  font-size:0.8em;
+  font-weight:bold;
+  padding:0;
+  margin:0;
+}
+#DataCenter h3{
+  font-size:0.8em;
+  font-weight:normal;
+  padding:0;
+  margin:0;
+  
+  background:none;
+  padding:0px;
+  color:inherit;
+  clear:inherit;
+}
+/*Info Player*/
+#PlayerInfo{
+ float:left;
+ width: 190px;
+ overflow:hidden;
+ padding:4px;
+ border-top:1px solid #2286F5;
+ border-left:1px solid #2286F5;
+ border-right:1px solid black;
+ min-height:60px;
+ 
+}
+#PlayerInfo .user-small{
+  float:left;
+}
+
+/*Recursos Normales*/
+#NormalRes{
+ border-top:1px solid black;
+ border-left:1px solid #2286F5;
+ border-right:1px solid #2286F5;
+ clear:both;
+}
+
+#NormalRes ul{
+    list-style: none outside none;
+    margin: 0 10px;
+    padding: 5px;
+    text-align: left;
+}
+
+#NormalRes ul li{
+    display: inline;
+    font-weight: normal;
+    font-size:10px;
+    height: 25px;
+    margin-right: 10px;
+    width: 40px;
+}
+/*Recursos Extraibles*/
+#ExtractedRes{
+  float:right;
+  width: 75px;
+  overflow:hidden;
+  padding:5px;
+  min-height:83px;
+  border-top:1px solid #2286F5;
+ border-left:1px solid black;
+ border-right:1px solid #2286F5;
+ font-size:0.8em;
+  }
+#ExtractedRes ul{
+  list-style:none;  
+    margin:0;
+  padding:0;
+}
+/*Estilos Comunes*/
+#Header a{
+  font-size:0.9em;
+}
+#Header .active a{
+  color:white;
+}
+ #MoveToColony{
+     width:150px;
+ }
+ #SelectColony span.ui-button-text{
+     padding:0.1em 0 0.3em;
+}
+
+#HeaderTitle h1{
+    text-shadow: 1px 0px 0px #000;
+    margin:6px 00px;
+    padding:0px;
+}
+ 
+#HeaderTitle{
+    border: 2px solid #123F72;
+    text-align: center;
+}
+/**********************************
+        /Utilitarios
+*********************************/
+
+/* COUNTDOWNS*/
+.countdown_row{
+  display:inline;
+}
+
+.block{
+    margin-top:1em;
+}
+
+
+/***************************************
+Armies
+***************************************/
+.teamWrapper li.armyWrapper,
+li.armyWrapper {
+  /*border-bottom: 1px solid black;
+    border-left: 1px solid black;
+    border-right: 1px solid black;*/
+    float: left;
+    height: 45px;
+    margin:2px;
+    text-align: center;
+    width: 30px;
+    list-style: none;
+}
+
+li.armyWrapper p{
+    margin:0px;
+    padding:0px;
+    text-align:center;
+        
+}
+
+/**********************************
+        Players
+**********************************/                   
+.enemy,.tile.enemy{
+    background:red;
+    background: -moz-linear-gradient(center top , #ff0501 0%, #660011) repeat scroll 0 0 transparent;
+    background-image: -o-linear-gradient(rgb(255,5,1),rgb(102,0,17));
+    background-image: -webkit-gradient(linear,center top,center bottom,color-stop(0, #ff0501),color-stop(1, #660011));
+    filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0501', endColorstr='#660011');
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0501', endColorstr='#660011')";
+    color:white
+}
+.AI,.tile.AI{
+    background:#990066;
+    background: -moz-linear-gradient(center top , #990066 0%, #330033) repeat scroll 0 0 transparent;
+    background-image: -o-linear-gradient(rgb(153, 0, 102),rgb(51,0,51));
+    background-image: -webkit-gradient(linear,center top,center bottom,color-stop(0, #990066),color-stop(1, #330033));
+    filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#990066', endColorstr='#330033');
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#990066', endColorstr='#330033')";
+    color:white;}
+.myself,.tile.myself{
+    background:#2286F5;
+    background: -moz-linear-gradient(center top , #2286F5 0%, #112244) repeat scroll 0 0 transparent;
+    background-image: -o-linear-gradient(rgb(17, 34, 68),rgb(34, 134, 245));
+    background-image: -webkit-gradient(linear,center top,center bottom,color-stop(0, #2286F5),color-stop(1, #112244));
+    filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#2286F5', endColorstr='#112244');
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#2286F5', endColorstr='#112244')";
+    color:white;
+}
+
+.player{color:white;font-weight:bold;padding:3px;margin-left:2px;margin-right:2px}
+/*.player.myself.arriving{border:2px solid #2286F5;padding:1px;background:rgba(0, 0, 0, 0.6)}
+.player.enemy.arriving{border:2px solid red;padding:1px;background:rgba(0, 0, 0, 0.6)}
+.player.AI.arriving{border:2px solid #990066;padding:1px;background:rgba(0, 0, 0, 0.6)}*/
+/*.players{text-align:left;margin:10px;}*/
+
+.small{background-color:white;padding:2px;vertical-align:middle}
+.myself.small{background-color:white;border:2px solid #2286F5}
+.enemy.small{background-color:white;border:2px solid red}
+.AI.small{background-color:white;border:2px solid #990066}
+
+/**********************************
+        Mensajes de Batalla
+*********************************/
+#Msg{background:#333322;border:1px solid black;font-size:0.9em;height:45px;zoom:1;}
+#Msg p{padding:2px 3px 2px 32px;margin:0px;height:34px;font-weight:bolder;display: table-cell;vertical-align: middle;width: 903px;}
+#Msg p.success{color:white;border:4px solid green;background-image:url("../img/web/success.png");background-position:8px 4px;background-repeat:no-repeat;}
+#Msg p.error{color:white;border:4px solid red;background-image:url("../img/web/error.png");background-position:8px 4px;background-repeat:no-repeat;}
+#Msg p.warning{color:white;border:4px solid #AA0;background-image:url("../img/web/warning.png");background-position:8px 4px;background-repeat:no-repeat;}
+#Msg p img{vertical-align:text-bottom}
+#HistorialMsg{list-style:none;padding:0;margin:0}
+#HistorialMsg li{border:1px solid gray;margin:2px;padding:3px;}
+#HistorialMsg li img{margin-right: 10px;vertical-align:text-bottom}
+#HistorialMsg label{font-weight:bold;}
+#ToggleHistorial{display:none; margin:6px 10px 0 0;float:right;}/* Por defecto ocultar este oton en region.php y planet.php*/
+#MsgWrapper{padding:5px}
+
+/**********************************
+        PANELES
+**********************************/
+/*******************Panel de Informacion***************************/
+/*******************Jugadores En Infopanel***************************/
+
+.small-inner{
+    padding:5px;
+}
+
+
+.inner .players{color:black;list-style:none;margin:0;}
+.inner .players li{font-weight:bold;color:white; padding:2px; margin:2px;float:left;}
+.inner{
+    padding: 15px 14px 15px;
+}
+
+.infopanel{background:none repeat scroll 0 0 white;border:1px solid #2277F5;font-weight:bolder;/*padding-bottom:10px;*/text-align:center;/*margin-bottom:10px;*/color:black}
+.infopanel-inner{color:black;font-weight:normal;margin-top:10px}
+.infopanel h1{font-size:1.1em;color:black;padding:10px 5px 10px;margin:0;}
+.infopanel h2{clear:both;font-size:1em;/*background:#2277F5;*/color:white;padding:5px;  margin:0;}
+.infopanel h3{margin:5px 0;}
+
+.infopanel .info{padding:0px 15px 15px 15px}
+.infopanel img{margin:0 0px 0px;}
+.infopanel .desc{color:black;font-weight:normal;margin:0;padding:0;text-align:justify;}
+
+.infopanel-players .myself{background:#2286F5;  color:white;}
+.infopanel-players .enemy{background:red;  color:white;}
+.infopanel-players .AI{  background:#990066;  color:white;}
+.infopanel p{margin:15px 5px;}
+/************************ Formularios **********************************/
+.infopanel fieldset{
+    margin:0 5px 10px;
+    padding:4px;
+    border:2px dashed #2277F5;
+}
+.infopanel select{
+    margin:5px 0px;
+}
+
+.infopanel .left{
+    float:left;
+}
+.infopanel .right{
+    float:right;
+}
+.infopanel .box{
+    min-height: 20px;
+    min-width: 20px;
+    padding:4px;
+}
+
+/*******************infopanel-inner***************************/
+.infopanel-inner ul{list-style:none;padding:0;margin:0;text-align:left;}
+
+/*********************** Panel Principal ***************************/
+.mainpanel{background:none;padding:10px;margin-bottom:10px}
+.mainpanel h1{color:white;text-shadow:1px -4px 3px #2286F5}
+.mainpanel h1.title{font-size:1.5em;}
+/*********************** SubPanel Principal ***************************/
+.mainpanel .first{float:left} 
+.mainpanel .last{float:right}
+/*********************** Botones en MainPanel ***************************/
+.mainpanel .button{/*background:#2277F5;*/color:white;padding:5px;margin:0 10px 0 0}
+.mainpanel a.button {text-decoration:none;font-weight:bold;text-shadow:1px 2px 3px black;}
+.mainpanel a.button:hover{text-decoration:none;font-weight:bold;text-shadow:1px 2px 10px black;background:#000088}
+
+
+
+/**********************************
+        COLORES Y SABORES
+**********************************/
+/*******************blackie: colores grises con fondo blanco***************************/
+.blackie{
+    border:1px solid black;
+    background:#45423E;
+    background-image:url("../img/web/battle-mc.png");
+    background-repeat:repeat-x;
+    background-position:top;
+    margin:5px 0px;
+    -moz-border-radius:5px;
+    -webkit-border-radius:5px;
+}
+
+.blackie h2{background:#2377F5;padding:5px 10px;color:white;clear:both;border-bottom:2px solid black;border-top:1px solid black}
+.blackie h3{background:#2377F5;padding:5px 10px;color:white;clear:both;margin:8px 0;}
+.blackie h4{font-weight: bold; padding:0; margin:0; text-align:center;}
+.blackie form{text-align:center;}
+
+.blackie-inner{padding:0px 10px; text-align: justify;}
+.blackie .button{background:#8C8B8B;color:white;padding:5px;margin:10px 10px 0 0;}
+.blackie .button{text-decoration:none;font-weight:bold;text-shadow:1px 2px 3px black;}
+.blackie .button:hover{text-decoration:none;font-weight:bold;text-shadow:1px 2px 10px black;background:#000088}
+
+.blackie li{  list-style:none;}
+.blackie ul{ margin:0;padding:0}
+.blackie .ui-accordion-header{background-image:url("../img/web/accordion-bg.png");background-repeat:repeat-x;color:white;}
+.blackie .ui-accordion-header.ui-state-hover{background-image:url("../img/web/accordion-bg-hover.png")}
+.blackie h3.myself{background-color:#2286F5;background-image:url("../img/web/accordion-bg.png")}
+.blackie h3.myself.ui-state-hover{background-image:url("../img/web/accordion-bg-hover.png")}
+.blackie h3.enemy{background-color:red;background-image:url("../img/web/accordion-bg-enemy.png")}
+.blackie h3.enemy.ui-state-hover{background-image:url("../img/web/accordion-bg-enemy-hover.png")}
+
+.blackie h3.AI{background-color: #990066;background-image:url("../img/web/accordion-bg-ai.png")}
+.blackie h3.AI.ui-state-hover{background-image:url("../img/web/accordion-bg-ai-hover.png")}
+
+.blackie p{margin:15px 5px;}
+/* .blackie form{margin:15px 5px;}*/
+.blackie input{padding:5px 3px;}
+
+/********************************************
+***********   JQUERY UI *****************
+********************************************/
+.ui-dialog ul{
+    text-align: left;
+    
+    
+}
+.ui-dialog ul li{
+    list-style: disc;
+    margin-left:25px;
+    
+}
+
+.ui-accordion-header {cursor: pointer;}
+.ui-accordion-header a {display: block;font-weight: normal;text-decoration: none;}
+.selected .ui-accordion-header, .selected .ui-accordion-header:hover {background-color:white;}
+.selected .ui-accordion-header a, .selected .ui-accordion-header a:hover {}
+
+.ui-icon{
+    /*background-color: white;*/
+   /* background-image:url("../img/web/triangle-left.png");
+    display: inline-block;
+    float: left;
+    height: 16px;
+    width: 16px;*/
+}
+.ui-tooltip-content img{
+    vertical-align: text-bottom;
+}
+
+.info .ui-state-default{
+    font-weight: normal;
+    color:#aaa;
+}
+.actual .info .ui-state-default{
+    font-weight: bold;
+    color:#fff;
+}
+.ui-icon.ui-icon-triangle-1-s,#SelectColony.ui-state-default .ui-icon{
+   /* background-image:url("../img/web/triangle-bottom.png");
+    background-position: 0 0;*/
+}
+
+#ColoniesSelectionWrapper{
+    clear:both;
+    margin:8px 0 2px;
+}
+#MoveToColony{
+    border:1px solid black;
+}
+
+.xdebug-error{
+color:black;
+}
+
+
+/* new clearfix */
+ .clearfix:after { visibility: hidden; display: block; font-size: 0; content: " "; clear: both; height: 0; }
+ * html .clearfix { zoom: 1; } /* IE6 */
+ *:first-child+html .clearfix { zoom: 1; } /* IE7 */
+
+ #Options{
+     display:none;
+ }
+ 
+ .waitActionIcon{
+     position:absolute;
+ }

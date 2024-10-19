@@ -1,0 +1,11 @@
+/* 
+    Document   : admin
+    Created on : 17/01/2013, 01:22:19 AM
+    Author     : windows7
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+ul.menu li{
+    float:left;
+}

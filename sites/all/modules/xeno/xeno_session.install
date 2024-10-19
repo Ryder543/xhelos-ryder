@@ -1,0 +1,42 @@
+<?php
+// $Id$
+/**
+* Implementation of hook_install().
+*/
+function xeno_session_install() {
+// Use schema API to create database table.
+drupal_install_schema('xeno_session');
+}
+/**
+* Implementation of hook_uninstall().
+*/
+function xeno_session_uninstall() {
+// Use schema API to delete database table.
+drupal_uninstall_schema('xeno_sesssion');
+// Delete our module's variable from the variables table.
+}
+/**
+* Implementation of hook_schema().
+*/
+function xeno_session_schema() {
+$schema['xeno_session'] = array(
+    'description' => t('Stores the mapping to Xeno User.'),
+    'fields' => array(
+        'uid' => array('type' => 'int',
+                        'unsigned' => TRUE,
+                        'not null' => TRUE,
+                        'default' => 0,
+                        'description' => t('The {user}.uid to which the Xeno User applies.'),
+        ),
+        'xid' => array(
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+        'description' => t('The Xeno User id mapped to the Drupal user.')
+        ),
+),
+'primary key' => array('uid'),
+'unique keys' => array('xid' => array('xid'),));
+return $schema;
+}
