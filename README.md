@@ -14,6 +14,18 @@ Actualmente los usuarios se registran a traves de la pagina web pero vamos a cam
 tenga su propio sistema de Login. Despues de eso mejoraremos la seguridad del Login para evitar todo
 tipo de ataque a su seguridad, incluyendo un sistema ReCaptcha.
 
+## Forma de Trabajo con Git
+Como vamos a trabajar en equipo con GIT nuestro branch main sera donde se guarde la versión live del juego. Esta no se debe de usar hasta que estemos seguros que queremos deployar codigo ya probado. Nosotros trabajaremos en equipo trabajando en nuestro propio branch basado en el branch develop. Una ves que terminemos nuestro codigo lo subimos al repositorio en su propio branch  hacemos un pull request a develop.
+
+*** Lista de Branchs ***
+- **main:** Branch principal para subirlo a Live
+- **staging:** Branch para hacer prepruebas antes de subirlo a Live
+- **develop:** Nuestro Branch principal de trabajo, aqui mezclaremos todos nuestros desarrollos
+- **feat_##_nombredelamejora:** Branch de trabajo para cuando queramos añadir algo nuevo. Por ejemplo feat_04_mejoradelogin. El numero esta asociado a la tarjeta en Trello del proyecto.
+- **bug_##_nombredelbug:** Branch de trabajo para cuando queramos arreglar un problema. Por ejemplo bug_11_arreglosesiones. El numero estara asociado a la tarjeta de Trello del proyecto. 
+
+![alt text](img/image.png)
+
 ## Instalación
 
 Si lo estas copiando desde cero tan solo:
