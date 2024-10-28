@@ -9,20 +9,21 @@ class player extends identity {
     //////////////////////////////////////////////////////////////////////////////////
     //CAMPOS
     //////////////////////////////////////////////////////////////////////////////////  
+    private $removePassword;
     //////////////////////////////////////////////////////////////////////////////////
     //CONSTRCUTOR
     //////////////////////////////////////////////////////////////////////////////////
-    public function __construct() {
+    public function __construct($removePassword = true) {
         /* $args = func_get_args();
           if(!empty($args)){
           debug::error('player se inicio con argumentos','player con argumentos');
           } */
         parent::__construct();
+        $this->removePassword = $removePassword;
     }
 
     public function postRefresh() {
-        //debug::log($this->raw,"raw");
-        if (isset($this->raw['password'])) {
+        if ($this->removePassword && isset($this->raw['password'])) {
             unset($this->raw['password']);
         }
     }
@@ -299,6 +300,24 @@ class player extends identity {
             $preparedRaw['res2'] = floor($preparedRaw['res2']);
             $preparedRaw['res3'] = floor($preparedRaw['res3']);
             return $preparedRaw;
+        }
+
+        public function validatePassword($password) {
+            // Hash the provided password using MD5
+            $hashedPassword = md5($password);
+    
+            // Get the stored password from player data
+            $storedPassword = $this->getParam('password');
+            if(empty($storedPassword)){
+                debug::log($this,"player.class no tiene password");
+            }
+    
+            // Compare the hashed password to the stored one
+            if ($hashedPassword === $storedPassword) {
+                return true;
+            } else {
+                return false;
+            }
         }
     
 

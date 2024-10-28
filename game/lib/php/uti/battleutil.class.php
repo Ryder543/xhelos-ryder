@@ -372,13 +372,18 @@ class battleutil extends util {
             }
 
             if ($continue) {
-                if ($oObjectPlayer->getId() == $oActualPlayer->getId()) {
-                    $type = 'myself';
-                } elseif ($oObjectPlayer->isArtificial()) {
-                    $type = 'AI';
-                } else {
-                    $type = 'enemy';
+                if(!$oObjectPlayer->isEmpty()){
+                    if ($oObjectPlayer->getId() == $oActualPlayer->getId()) {
+                        $type = 'myself';
+                    } elseif ($oObjectPlayer->isArtificial()) {
+                        $type = 'AI';
+                    } else {
+                        $type = 'enemy';
+                    }
+                }else{
+                    $type = 'inactive';
                 }
+
             }
             return $type;
         }

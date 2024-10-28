@@ -45,11 +45,12 @@ abstract class identitymap {
      * ******************************************************************************* */
 
     public function &findById($id) {
-       // debug::log($id,'indentitymap findById');
+        debug::log($id,'indentitymap findById');
         //20ene2013 jeeba, como al final vamos a devolver un objeto, hemos creado un arreglo de objetos. Solo si esta defileado o no existe obtenemos de find la data
 
         if ((isset($this->status)) && (isset($this->status[$id])) && (!$this->isDefiled($id)) && isset($this->oraw[$id])) {
             $obj = $this->getObj($id);
+            debug::log($this,'identitymap->findbyId 1');
             return $obj;
         } else {
             $sql = $this->defaultsql($id);
@@ -57,7 +58,7 @@ abstract class identitymap {
             /* if($this->class=='planet'){*/
             //debug::log($sql,'identitymap->findbyId sql');
             //  debug::log($raw,'identitymap->findbyId');
-             // debug::log($this,'identitymap->findbyId');
+            debug::log($this,'identitymap->findbyId 2');
              /* } */
             $obj = $this->wrap($raw);
         }

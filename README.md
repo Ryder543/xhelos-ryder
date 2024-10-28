@@ -68,12 +68,16 @@ Para el juego no se puede ejecutar directamente db-import, primero tienes que cr
 Muy importante, lando usa por defecto la nombre de servidor **database** en lugar de **localhost** como hace Wamp o Xamp. Cuando vayan a crear el usuario y darle todos los permisos asegurense de darle los permisos adecuados para todo tipo de servidor y no solo para localhost o database. Es mejor asegurarse. 
 
 ### 4) Probar el juego
-Ya debe de estar todo instalado asi que queda continuar nomas. Entren a la dirección de su servidor local. La [web en drupal6](https://4xhelos.lndo.site/) o al [demo del juego](https://4xhelos.lndo.site/game/region.php) del juego para probarlo. Estas direcciónes son de Lando. Si estan usando Wamp o similares lo mas seguro es que tengan que cambiar a localhost/nombredelacarpeta donde este puesto su juego. No es lo ideal. 
+Ya debe de estar todo instalado asi que queda continuar nomas. Entren a la dirección de su servidor local. La [web en drupal6](https://4xhelos.lndo.site/) o al [demo del juego](https://4xhelos.lndo.site/game/index.php) del juego para probarlo. Estas direcciónes son de Lando. Si estan usando Wamp o similares lo mas seguro es que tengan que cambiar a localhost/nombredelacarpeta donde este puesto su juego. No es lo ideal. 
+
+El juego tiene por ahora 2 usuarios para pruebas
+- Xelos con password Xelos
+- Nort con password Nort
 
 ## Autores y reconocimiento
-Lider del Proyecto y Game Designer - Jose Carlos Tamayo
-Lider de Equipo - Daniel
-FrontEnd y Design - Daniel Tysoc
+- Lider del Proyecto y Game Designer - Jose Carlos Tamayo
+- Lider de Equipo - Daniel Ampuero Zea
+- FrontEnd y Design - Daniel Tysoc
 
 
 ## Licencia
