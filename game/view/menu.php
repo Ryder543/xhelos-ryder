@@ -76,6 +76,23 @@ global $firephp;
         <div class="ui-buttonset" id="ColoniesSelectionWrapper"><a href="colony.php?colony_id=<?php echo $menu->getColonyId() ?>" id="MoveToColony"><?php echo $menu->getColonyName() ?></a><button id="SelectColony">Seleccionar</button></div>
         
     </div>
+
+    <?php
+    $activeArmies = 0;
+    $controlledPlanets = 0;
+    $unitCounts = [];
+
+    if ($menu->getPlayer()) {
+      $player = $menu->getPlayer();
+
+      $activeArmies = method_exists($player, 'getActiveArmies') ? $player->getActiveArmies() : 0;
+      $controlledPlanets = method_exists($player, 'getControlledPlanets') ? $player->getControlledPlanets() : 0;
+      $unitCounts = method_exists($player, 'getUnitCounts') ? $player->getUnitCounts() : [];
+    }
+    ?>
+
+    <?php include(dirname(__FILE__) . '/../player_view.php'); ?>
+    
       <!-- <div class="clear">.</div> -->
      <div id="NormalRes" class="ui-state-active ui-helper-clearfix">
         <ul>

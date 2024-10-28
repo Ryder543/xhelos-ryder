@@ -1,0 +1,64 @@
+#PlayerViewPanel {
+    background-color: #0b2f5a;
+    border: 1px solid #2f71b1;
+    border-radius: 6px;
+    color: white;
+    font-size: 12px;
+    display: inline-block;
+    width: 250px;
+    margin: 20px auto 0 auto;
+    position: relative;
+    z-index: 999;
+}
+
+#PlayerViewPanel h2.ui-widget-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+    padding: 4px 8px;
+    margin: 0;
+    color: white;
+    background: linear-gradient(to bottom, #0058a0, #003b73);
+    border: 1px solid #1e5799;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#PlayerViewPanel h2.ui-widget-header::after {
+    content: "▼";
+    font-size: 12px;
+    margin-left: 8px;
+    transition: transform 0.2s ease;
+}
+
+#PlayerViewPanel.open h2.ui-widget-header::after {
+    content: "▲";
+}
+
+#PlayerViewPanelContent {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #0b2f5a;
+    border: 1px solid #2f71b1;
+    border-radius: 6px;
+    padding: 10px 15px;
+    z-index: 10000;
+    display: none;
+    width: max-content;
+    min-width: 220px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+    line-height: 1.5;
+}
+
+#PlayerViewPanel ul {
+    padding-left: 15px;
+    margin: 0;
+}
+
+#PlayerViewPanel li {
+    margin-bottom: 6px;
+}
+
+

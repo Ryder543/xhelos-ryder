@@ -123,6 +123,15 @@ $db_url = 'mysqli://drupal7:drupal7@database/drupal7';
 
 $db_prefix = '';
 
+$databases['default']['default'] = array(
+  'driver' => 'mysql',
+  'database' => 'drupal7',
+  'username' => 'drupal7',
+  'password' => 'drupal7',
+  'host' => 'database',
+  'port' => 3306,
+);
+
 /**
  * Access control for update.php script
  *

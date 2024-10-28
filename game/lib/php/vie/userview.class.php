@@ -26,7 +26,12 @@ require_once(dirname(__FILE__) . '/security.php'); //Advertencia de Seguridad
      * EXTRA: Obtener la lista de arg $args = func_get_args(); 
     ********************************************/  
     public function __construct(){
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
+        
         //$this->menu = new menu();
+        $_SESSION['xid'] = 1;
         
         $this->oPlayer = $this->man("player")->findById($_SESSION['xid']);
         $this->db = db::singleton();

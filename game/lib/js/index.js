@@ -1,16 +1,38 @@
   $(document).ready(function() { 
    $("#loginAjax").hide();
    $("#registerAjax").hide();
-   $('#edit-submit').click(ingresar);
-   $('#xenoRegister').click(registrar);
-   $(".textInput").hint();  
+   //$('#xhelosLogin').click(ingresar);
+   //$('#xhelosRegister').click(registrar);
+   
+    $('#login-tab').click(function() {
+        $('.tab').removeClass('active');
+        $(this).addClass('active');
+        $('#register-form').addClass('hidden');
+        $('#login-form').removeClass('hidden');
+    });
+
+    $('#register-tab').click(function() {
+        $('.tab').removeClass('active');
+        $(this).addClass('active');
+        $('#login-form').addClass('hidden');
+        $('#register-form').removeClass('hidden');
+    });
+
+	 // Initialize tippy.js for input buttons with class textInput
+	 tippy('.textInput', {
+        content(reference) {
+            return reference.getAttribute('title');
+        }
+    });
+
 });
 
 function ingresar(){
+	
 	var name = $('#loginName').val();
 	var pass = $('#loginPass').val();
 	loginImageStart();
-	/*
+	
 	$.ajax({ //Envio hacia el server
 		type: "POST",
 		url: 'game/lib/ajaxLogin.php',
@@ -38,14 +60,14 @@ function ingresar(){
 		  loginMessage('Error en sl Server');
 		}
 	});
-	*/
+	
 }
 function registrar(){
 	var name = $('#registerName').val();
 	var pass = $('#registerPass').val();
 	var mail = $('#registerMail').val();
 	registerImageStart();
-	/*
+	
 	$.ajax({ //Envio hacia el server
 		type: "POST",
 		url: 'game/lib/ajaxRegister.php',
@@ -75,7 +97,7 @@ function registrar(){
 			
 		}
 	});
-	return false;*/
+	return false;
 }
 function loginImageStart(){
    $('#loginMessage').hide();  
@@ -99,3 +121,7 @@ function registerImageEnd(){
 function registerMessage(texto){
   $('#registerMessage').show().text(texto);
 }
+
+$.getScript('lib/js/player_view.js');
+
+console.log("JS cargado correctamente");

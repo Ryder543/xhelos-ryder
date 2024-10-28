@@ -2,14 +2,17 @@ name: 4xhelos
 recipe: drupal7
 config:
   # Set Xdebug off by default. We use the tooling below to turn it on as needed.
+  php: 7.4
   xdebug: false
 
 services:
   appserver:
+    type: php:7.4
     overrides:
       environment:
         XDEBUG_MODE: 'debug,develop'
-  
+    build_as_root:
+      - cp /app/.lando/php.ini /usr/local/etc/php/conf.d/php-custom.ini  
   database:
     type: mysql:5.7
     creds:
