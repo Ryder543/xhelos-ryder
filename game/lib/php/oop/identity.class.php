@@ -42,11 +42,17 @@
     * initByArray: Le pasamos un arreglo del tipo battle, no llama a la bd
     *********************************************************************************/
     public function initByArray(&$raw){
-      //debug::trace('identity->initByArray');
-      //debug::log($raw,'identity->initByArray');
-      $this->setDataClean();
-      $this->raw = &$raw;
-      $this->ext_id = $raw['id'];
+      if($raw && !empty($raw)){
+        //debug::trace('identity->initByArray');
+        //debug::log($raw,'identity->initByArray');
+        $this->setDataClean();
+        $this->raw = &$raw;
+        $this->ext_id = $raw['id'];
+      }
+      else{
+        debug::warning($this,"identity.class.php->initByArray raw esta vacio");
+      }
+
       //[WHY] Las iniciadas por array no aparecen en nuestro mapa por defecto
       //[UPDATE] Deberiamos de impedir esto, haciendo que todas las llamadas
       //a initByArray sean hechas igualando a identitymap identity = identitymap->findByWhatever
@@ -190,6 +196,17 @@
     public function isDataDirty(){
       return $this->rawIsOld;
     }
+
+    // Inside the identity class
+    public function isEmpty(): bool
+    {
+        // Check if the raw property is empty or uninitialized
+        if (empty($this->raw) || !is_array($this->raw)) {
+            return true; // raw is empty or not set
+        }
+        return false; // raw contains data
+    }
+
      
   }
   

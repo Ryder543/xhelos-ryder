@@ -19,6 +19,9 @@
     public $dt; //Aqui se almacenan llamadas anteriores hechas a $dt, si hay error no continuar
     private $actual_army;
     private $maputil;
+    private $battle;
+    private $regionsresources;
+    private $armies;
 
     
     ///////////////////////////////////////////////////////////////////////////////////////
@@ -37,6 +40,7 @@
       $this->dt = new datatransfer();
       $this->actual_army = false;
       $this->maputil = $this->getRegion()->getCachedMapUtil();
+
       //debug::log($this->maputil,'regionstate cosntructor');
       //debug::trace('region_id['.$region_id.'] player_id['.$player_id.']','constructor regionstate.class.php');
       //debug::log($this,'constructor regionstate.class.php');
@@ -91,58 +95,67 @@
       
       //7) Estado de la Batalla
       $battle = $this->getBattle();
-      //debug::info($battle,'regionstate->getRegionState->getBattle');
-      $_xeno['battle']['turn'] = $battle->getTurn();
-      $_xeno['battle']['phase'] = $battle->getPhase();
-      $_xeno['battle']['id'] = $battle->getId();
-      $_xeno['battle']['sended'] = $this->initGoingToRegion();
+      if($battle){
+        $_xeno['battle']['turn'] = $battle->getTurn();
+        $_xeno['battle']['phase'] = $battle->getPhase();
+        $_xeno['battle']['id'] = $battle->getId();
+        $_xeno['battle']['sended'] = $this->initGoingToRegion();
+        /****************************************************
+         * BATALLAS
+        ****************************************************/
+        //8) Estado de los Jugadores en la batalla
+        
+        if($battle->getPhase()==_X_BATTLE_PHASE_TACTIC){
+          $_xeno['battle']['player_status'] = $this->getPlayersStatus($battle->getId());
+          $_xeno['battle']['armies_turn'] = array();
+          $_xeno['battle']['battle_seconds'] = $battle->getBattleSeconds();
 
-      /****************************************************
-       * BATALLAS
-      ****************************************************/
-      //8) Estado de los Jugadores en la batalla
-      
-      if($battle->getPhase()==_X_BATTLE_PHASE_TACTIC){
-        $_xeno['battle']['player_status'] = $this->getPlayersStatus($battle->getId());
-        $_xeno['battle']['armies_turn'] = array();
-        $_xeno['battle']['battle_seconds'] = $battle->getBattleSeconds();
+          //$_xeno['battle']['battle_seconds'] = 120;
+        }
+        elseif($battle->getPhase()==_X_BATTLE_PHASE_BATTLE){
+          $_xeno['battle']['player_status'] = array();
+          $_xeno['battle']['armies_turn'] = $this->getArmiesCycleTurn($battle->getId());
+          $nextArmy = $this->getNextArmyInBattle();
+          if(!$nextArmy->exist()){
+              debug::error("NextArmy no existe pero se sigue en batalla",'regionstate->prepareState Batalla Fase Batalla');
+          }
+          else{
+          $_xeno['battle']['battle_seconds'] = $nextArmy->getBattleSeconds();
+          //debug::warning($_xeno['battle'],'regionstate->getRegionState Batalla Fase Batalla');
+          //debug::warning($nextArmy,'regionstate->getRegionState Batalla Fase Batalla');
+          $_xeno['movements'] = $this->getLastMovements();
+          //debug::warning($this->actionman,'regionsstate->getRegionState->movement');
+          //debug::warning($_xeno['movements'],'regionsstate->getRegionState->movements');
+          $_xeno['movement'] = $this->getLastMovementOfPlayer($_xeno['movements']);
+          }
 
-        //$_xeno['battle']['battle_seconds'] = 120;
-      }
-      elseif($battle->getPhase()==_X_BATTLE_PHASE_BATTLE){
-        $_xeno['battle']['player_status'] = array();
-        $_xeno['battle']['armies_turn'] = $this->getArmiesCycleTurn($battle->getId());
-        $nextArmy = $this->getNextArmyInBattle();
-        if(!$nextArmy->exist()){
-            debug::error("NextArmy no existe pero se sigue en batalla",'regionstate->prepareState Batalla Fase Batalla');
+          
+        }
+        elseif($battle->getPhase() == _X_BATTLE_PHASE_END){
+          $_xeno['battle']['player_status'] = array();
+          $_xeno['battle']['armies_turn'] = array();
+          $_xeno['movements'] = $this->getLastMovements();
+          //debug::warning($this->actionman,'regionsstate->getRegionState->movement');
+          $_xeno['movement'] = $this->getLastMovementOfPlayer($_xeno['movements']);
+          //debug::warning('La batalla finalizo','regionstate->getRegionState BatallaEnd?');
         }
         else{
-        $_xeno['battle']['battle_seconds'] = $nextArmy->getBattleSeconds();
-        //debug::warning($_xeno['battle'],'regionstate->getRegionState Batalla Fase Batalla');
-        //debug::warning($nextArmy,'regionstate->getRegionState Batalla Fase Batalla');
-        $_xeno['movements'] = $this->getLastMovements();
-        //debug::warning($this->actionman,'regionsstate->getRegionState->movement');
-        //debug::warning($_xeno['movements'],'regionsstate->getRegionState->movements');
-        $_xeno['movement'] = $this->getLastMovementOfPlayer($_xeno['movements']);
+          $_xeno['battle']['player_status'] = array();
+          $_xeno['battle']['armies_turn'] = array();
+          //debug::warning('La batalla no esta ni T ni B ni E','regionstate getRegionState 292');
         }
-
-        
-      }
-      elseif($battle->getPhase() == _X_BATTLE_PHASE_END){
-        $_xeno['battle']['player_status'] = array();
-        $_xeno['battle']['armies_turn'] = array();
-        $_xeno['movements'] = $this->getLastMovements();
-        //debug::warning($this->actionman,'regionsstate->getRegionState->movement');
-        $_xeno['movement'] = $this->getLastMovementOfPlayer($_xeno['movements']);
-        //debug::warning('La batalla finalizo','regionstate->getRegionState BatallaEnd?');
-      }
-      else{
-        $_xeno['battle']['player_status'] = array();
-        $_xeno['battle']['armies_turn'] = array();
-        //debug::warning('La batalla no esta ni T ni B ni E','regionstate getRegionState 292');
-      }
-     return $_xeno;
     }
+    else{
+      $_xeno['battle']['turn'] = -1;
+      $_xeno['battle']['phase'] = -1;
+      $_xeno['battle']['id'] = -1;
+      $_xeno['battle']['sended'] = -1;
+      $_xeno['battle']['player_status'] = -1;
+      $_xeno['battle']['armies_turn'] = -1;
+      $_xeno['battle']['battle_seconds'] = -1;
+    }
+    return $_xeno;
+  }
 
   public function initGoingToRegion(){
         $planet_id = $this->getPlanet()->getId();
@@ -177,13 +190,12 @@
       $sql = "SELECT last_movement FROM battles_players WHERE player_id = ".$this->getPlayer()->getId()." AND battle_id=".$this->getBattle()->getId();
       //debug::log($sql);
       $player_last = $this->db->fetch($sql);
-      $player_last_id = $player_last['last_movement'];
-
       if(empty($player_last)){
         debug::error('No existe un ultimo movimiento, lo cual es casi imposible','regionstate->getLastMovementOfPlayer');
         return false;
       }
       else{
+          $player_last_id = $player_last['last_movement'];
           //Comparar si el movimiento actual es mayor al del player
           //debug::info('last_player_id['.$player_last_id.'] <>= last_id['.$last_id.']','regionstate->getRegionState->verificacion');
           if($player_last_id < $last_id ){
@@ -327,25 +339,27 @@
     /********************************************
     * getBattle: Obtiene la Batalla
     ********************************************/
-    public function getBattle(){
-      if(empty($this->battle)){
-        //debug::trace('getBattle va a obtener su data','getBattle regionstate.class.php');
-        //debug::warning($this->battleman,'battleman getBattle regionstate.class.php');
-          //debug::info('getBattle va a obtener una batalla de battleman en la region['.$this->getRegionId().']','regionstate->getBattle');
-        $this->battle = $this->man("battle")->findByRegionId($this->getRegionId());   
-        if(empty($this->battle)){//[TODO 27dic2012] Deberiamos de cambiarlo a this->exist?
-
-          //debug::info('La batalla a pesar de la busqueda en battleman de la region['.$this->getRegionId().'] no pudo ser cargada','getBattle regionstate.class.php');
-          $this->battle = new battle();
+    public function getBattle()
+    {
+        // If battle is null, it means it has not been initialized yet
+        if ($this->battle === null) {
+            if (empty($this->battle) || !$this->battle->exist()) {
+                // Attempt to fetch the battle from the database
+                $this->battle = $this->man("battle")->findByRegionId($this->getRegionId());
+                if (empty($this->battle) || !$this->battle->exist()) {
+                    // If no battle is found, set it to false to indicate that we've tried
+                    $this->battle = false;
+                    return false;
+                } else {
+                    return $this->battle;
+                }
+            }
+        } else {
+            // If battle is already false or contains data, just return it
+            return $this->battle;
         }
-        else{
-          //debug::info('getBattle obtuvo de battleman una batalla en la region['.$this->getRegionId().']','regionstate->getBattle');
-          //debug::log($this->battle,"regionstate->getBattle battle:");
-        }
-      }
-      //debug::trace($this->battle->getRaw(),'regionstate->getBattle->return');
-      return $this->battle;
     }
+    
   /*  public function getDeathArmies(){
         $sql="SELECT * FROM armies WHERE region_id= ".$this->getRegionId()." AND state = '"._X_ARMY_STATE_DEAD."' ORDER BY id";
         $army_creature_raw=$this->db->query($sql);
@@ -366,86 +380,72 @@
     ********************************************/
     public function getArmies($movId=_X_MOV_NOMOV){
 
-     $army_actual = $this->getNextArmyInBattle();
+    $army_actual = $this->getNextArmyInBattle();
+    $dt = new datatransfer();
 
-     //debug::trace($army_actual,'regionstate->getArmies->army_actual');
-//      if(!$army_actual){
-//          //Hay la posibilidad de que no haya ninguna unidad viva
-//          $this->armies = $this->getDeathArmies();
-//          return $this->amies;
-//          //return false;
-//      }
-      //else{
-          //debug::warning($army_actual,'regionstate->getArmies->army_actual');
-          //(0.8)Obtencion de Jugadores
-          $dt = new datatransfer();
-          // $this->getPlayersInMap();
+    $this->armies = false;
+    $sql="SELECT * FROM armies WHERE region_id= ".$this->getRegionId()." ORDER BY id";
+    //debug::log($sql);
+    $army_creature_raw=$this->db->query($sql);
 
-          //(2)Obtener Armies
-          //[TODO] USar algo de armyman
-          $this->armies = false;
-          $sql="SELECT * FROM armies WHERE region_id= ".$this->getRegionId()." ORDER BY id";
-          //debug::log($sql);
-          $army_creature_raw=$this->db->query($sql);
-
-          if($army_creature_raw)
-          {
-            while($army_creature = mysqli_fetch_assoc($army_creature_raw))
-            {
-               $oArmy = $this->man("army")->wrap($army_creature);
-               $army_creature['is_actual'] = false;
-               $army_creature['life_total'] = $oArmy->getTotalLife() ;
-               $army_creature['max_life'] = $oArmy->getMaxLife() ;
-               $army_creature['life_percent'] = $oArmy->getPercentLife();
-               $army_creature['life_total_percent'] = $oArmy->getTotalPercentLife();
-               $army_creature['life_residual'] = $oArmy->getResidualLife();
-               $army_creature['energy_total_percent'] = $oArmy->getTotalPercentEnergy();
-               $battleutil = new battleutil();
-               $army_creature['allegiance'] = $battleutil->getAllegiance($oArmy->getId(),"army");
-               if(($army_creature['player_id']==$this->getPlayer()->getId()) || _X_DEBUG_MODE){
-                 // Si no existe army actual entonces es por gusto esto
-                 if( ($army_actual && $army_actual->getId()==$army_creature['id']) || _X_DEBUG_MODE ) {
-                   $army_creature['is_actual'] = true;
-                   //(3) Obtener las Acciones de la Unidades solo del jugador
-                    //debug::warning($this->getBattle(),'1regionstate->getArmies()');
-                    //debug::warning($this->getBattle()->getId(),'2regionstate->getArmies()');
-                     
-                    //$actions_raw = $this->actionman->getArmyActionsByPosition($army_creature['id'],$army_creature['next_position']);
-                    $actions = new actions();
-                    $actions->initByArmyIdByArmyPosition($army_creature['id'], $army_creature['next_position']);
-                    $actions_raw = $actions->getRaw();
-                    if($actions_raw){
-                      foreach($actions_raw AS $index => $action)
-                      {
-                        $action_id = $action['action_id'];
-                        $army_creature['actions'][$action_id] = $action;
-                        $startIndex = $this->maputil->mapIndex($army_creature['position_x'],$army_creature['position_y']);                       
-                        $indexes = $this->maputil->getIndexesByPath($action['path'], $startIndex,$action['minrange'],$action['maxrange'],$army_creature['id']);
-                        $army_creature['actions'][$action_id]['indexes'] = array();
-                        foreach($indexes AS $i => $index ){
-                            $army_creature['actions'][$action_id]['indexes'][$index] = array();
-                            $army_creature['actions'][$action_id]['indexes'][$index]['x'] = $this->maputil->getXByIndex($index);
-                            $army_creature['actions'][$action_id]['indexes'][$index]['y'] = $this->maputil->getYByIndex($index);
-                        }
-                        
-                      }
-                    }
-                    
+    if($army_creature_raw)
+    {
+      while($army_creature = mysqli_fetch_assoc($army_creature_raw))
+      {
+          $oArmy = $this->man("army")->wrap($army_creature);
+          $army_creature['is_actual'] = false;
+          $army_creature['life_total'] = $oArmy->getTotalLife() ;
+          $army_creature['max_life'] = $oArmy->getMaxLife() ;
+          $army_creature['life_percent'] = $oArmy->getPercentLife();
+          $army_creature['life_total_percent'] = $oArmy->getTotalPercentLife();
+          $army_creature['life_residual'] = $oArmy->getResidualLife();
+          $army_creature['energy_total_percent'] = $oArmy->getTotalPercentEnergy();
+          $battleutil = new battleutil();
+          $army_creature['allegiance'] = $battleutil->getAllegiance($oArmy->getId(),"army");
+          if(($army_creature['player_id']==$this->getPlayer()->getId()) || _X_DEBUG_MODE){
+            // Si no existe army actual entonces es por gusto esto
+            if( ($army_actual && $army_actual->getId()==$army_creature['id']) || _X_DEBUG_MODE ) {
+              $army_creature['is_actual'] = true;
+              //(3) Obtener las Acciones de la Unidades solo del jugador
+              //debug::warning($this->getBattle(),'1regionstate->getArmies()');
+              //debug::warning($this->getBattle()->getId(),'2regionstate->getArmies()');
+                
+              //$actions_raw = $this->actionman->getArmyActionsByPosition($army_creature['id'],$army_creature['next_position']);
+              $actions = new actions();
+              $actions->initByArmyIdByArmyPosition($army_creature['id'], $army_creature['next_position']);
+              $actions_raw = $actions->getRaw();
+              if($actions_raw){
+                foreach($actions_raw AS $index => $action)
+                {
+                  $action_id = $action['action_id'];
+                  $army_creature['actions'][$action_id] = $action;
+                  $startIndex = $this->maputil->mapIndex($army_creature['position_x'],$army_creature['position_y']);                       
+                  $indexes = $this->maputil->getIndexesByPath($action['path'], $startIndex,$action['minrange'],$action['maxrange'],$army_creature['id']);
+                  $army_creature['actions'][$action_id]['indexes'] = array();
+                  foreach($indexes AS $i => $index ){
+                      $army_creature['actions'][$action_id]['indexes'][$index] = array();
+                      $army_creature['actions'][$action_id]['indexes'][$index]['x'] = $this->maputil->getXByIndex($index);
+                      $army_creature['actions'][$action_id]['indexes'][$index]['y'] = $this->maputil->getYByIndex($index);
                   }
+                  
                 }
-              /////////////////(5) Obtener la velocidad
-              $this->armies[$army_creature['id']] = $army_creature;
-              $speed = $this->armies[$army_creature['id']]['speed'];
-              $this->armies[$army_creature['id']]['speed']= str2array($speed);
+              }
               
             }
           }
-          
-          $dt->success('getArmies regionstate->Sucess Temporal');
-          //debug::log($this->armies,'regionstate->getArmies');
-          //return $dt;
-          return $this->armies;
-      //} else de death armies
+        /////////////////(5) Obtener la velocidad
+        $this->armies[$army_creature['id']] = $army_creature;
+        $speed = $this->armies[$army_creature['id']]['speed'];
+        $this->armies[$army_creature['id']]['speed']= str2array($speed);
+        
+      }
+    }
+    
+    $dt->success('getArmies regionstate->Sucess Temporal');
+    //debug::log($this->armies,'regionstate->getArmies');
+    //return $dt;
+    return $this->armies;
+    //} else de death armies
     } 
   ///////////////////////////////////////////////////////////////////////////////////////
   //UTILITARIOS
@@ -465,7 +465,7 @@
     $region_id = $this->getRegionId();  
     $battle = $this->getBattle();
 
-      if($battle->isActive()){
+      if(!empty($battle) && $battle->exist() && $battle->isActive()){
           //debug::warning($battle->getPhase(),'regionstate->updateBattleInRegion battle phase');
           switch($battle->getPhase()){
               case _X_BATTLE_PHASE_TACTIC:
@@ -550,8 +550,7 @@
                           //$this->sendError('No existe algun armies disponible en el ciclo de turno [R001]');
                         }
                 }
-
-             break;
+                break;
     //          case _X_BATTLE_PHASE_END:
     //            //debug::error('Inicializacion Imposible, una batalla no puede inicializarse en Fase END','regionstate.class updateBattleInRegion 101');
     //            break;
@@ -754,7 +753,8 @@
           return $this->actual_army;
       }
       else{
-           //debug::info($this->getBattle(),'beforegetturn getNextArmyInBattle regionstate');
+          if(!empty($this->getBattle()) && $this->getBattle()->exist()){
+                       //debug::info($this->getBattle(),'beforegetturn getNextArmyInBattle regionstate');
           $turn = $this->getBattle()->getTurn();
           //debug::info($this->getBattle(),'aftergetturn getNextArmyInBattle regionstate');
           //debug::trace('turno['.$turn.']','getNextArmyInBattle regionstate');
@@ -802,6 +802,11 @@
           $this->actual_army = $army;
           //debug::trace($this->actual_army,'regionstate->getNextArmyInBattle army dela persistencia');
           return $this->actual_army;
+          }
+          else{
+            return false;
+          }
+
       }
 
     }  

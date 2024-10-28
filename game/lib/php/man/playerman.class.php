@@ -51,6 +51,20 @@ class playerman extends identitymap
       $this->raw = $players_raw;
       return $this->raw;
     }
+/*
+    public function &findById($id, $removePassword = true) {
+      if ((isset($this->status)) && (isset($this->status[$id])) && (!$this->isDefiled($id)) && isset($this->oraw[$id])) {
+          $obj = $this->getObj($id);
+          return $obj;
+      } else {
+          $sql = $this->defaultsql($id);
+          $raw = &$this->find($id, $sql);
+          $obj = $this->wrap($raw, $removePassword);
+      }
+      debug::log($obj,'playerman->findById obj');
+      return $obj;
+  }*/
+  
     /*
     public function findById($id){
         debug::log($this,'playerman->findById before');
@@ -113,7 +127,7 @@ class playerman extends identitymap
     
 
     public function findByUsername($username){
-        $sql = "SELECT username FROM players as p WHERE p.username =  '" . $username . "'";
+        $sql = "SELECT * FROM players as p WHERE p.username =  '" . $username . "'";
         $rawUser = $this->db->fetch($sql);
         if(empty($rawUser)){
             return false;
@@ -166,6 +180,15 @@ class playerman extends identitymap
         $dt->setDataIfValid($data);
         return $dt;
    }
+
+   public function wrap(&$data, $removePassword = true) {
+    // Create a new player instance with the $removePassword parameter
+    $obj = new $this->class($removePassword);
+    $obj->initByArray($data);
+    $this->setObj($obj->getId(), $obj);
+    return $obj;
+}
+
    
    ///////////////////////////////////////////////////////////////////////////////////////
    //UTILITARIOS

@@ -191,7 +191,7 @@ class ajaxutil {
     }
 
     static function sendError(datatransfer $dt) {
-        $state = ajaxutil::json_encode($sdt);
+        $state = ajaxutil::json_encode($dt);
         echo ajaxutil::php2js($state, 'xeno');
     }
 
