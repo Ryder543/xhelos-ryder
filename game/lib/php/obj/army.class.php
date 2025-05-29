@@ -319,6 +319,28 @@ class army extends identity { //[TODO]Deberiamos de instanciarlo de una interfac
         return $dt;
     }
 
+    public function recoverEnergy() {
+        $recoveryAmount = 200; // Por ejemplo, recupera 10 puntos de energía
+        $currentEnergy = $this->getActualEnergy();
+        $maxEnergy = $this->getParam('max_energy'); // o el método que uses para obtener el máximo
+    
+        $newEnergy = min($currentEnergy + $recoveryAmount, $maxEnergy);
+    
+        // Actualizar en base de datos
+        $sql = "UPDATE armies SET actual_energy = $newEnergy WHERE id = " . $this->getId();
+        $this->db->query($sql);
+    
+        $this->setDataDirty();
+    
+        return $newEnergy - $currentEnergy; // Cantidad realmente recuperada
+    }
+    
+    public function setActualEnergy($value) {
+        $this->setParam('actual_energy', $value);
+    }
+    
+    
+
     /*     * ***********************************************************
      * calculateDeath: La Unidad Recibe da�o
      * ************************************************************ */

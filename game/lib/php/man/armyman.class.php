@@ -82,6 +82,24 @@ class armyman extends identitymap {
         $dt->success('Cazamos ' . round($totEnemyDeads) . ' unidad(es) enemigas');
         return $dt;
     }
+    public function recoverEnergy($myArmy, $report) {
+        $dt = new datatransfer();
+    
+        $energyRecovered = $myArmy->recoverEnergy();
+    
+        if ($energyRecovered > 0) {
+            $report->addEffectEnergy($myArmy->getId(), $energyRecovered);
+            $dt->success("La unidad ha recuperado $energyRecovered puntos de energía.");
+        } else {
+            $dt->success("La unidad ya tiene la energía al máximo. No se recuperó energía.");
+        }
+        
+        // Indicar que esta acción debe pasar el turno automáticamente
+        $dt->setData(array('pass_turn' => true));
+    
+        return $dt;
+    }
+
 
     public function simpleAttackTD($myArmy, $enemyArmy, $report) {
         $dt = new datatransfer();

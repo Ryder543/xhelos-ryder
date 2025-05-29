@@ -265,7 +265,7 @@ class actionman extends identitymap {
                     if ($originArmy->isInPosition(_X_POSITION_SUPERFICIE)) {
                         $originArmy->setPosition(_X_POSITION_ORBIT); //[TODO] cero significa que estara en la esquina
 
-                        $td->success($report_id, "La unidad Orbito con exito");
+                        $dt->success($report_id, "La unidad Orbito con exito");
                     } else {
                         $dt->error('El Army se prepara a salir de la region', 'success');
                     }
@@ -280,17 +280,44 @@ class actionman extends identitymap {
                     $dt->success('El Cañon repartio su daño a todas las unidades en su rango de ataque');
                     break;
 
-                case 10://Mover la Unidad rapidamente, army_id,x_in,y_in,x_out,y_out
-                    $this->report->addCauseMovement($originArmy->getId(), $m['ox'], $m['oy']);
-                    $dt->success('La Unidad procede a moverse rapidamente', 'success');
+                //case 10://Mover la Unidad rapidamente, army_id,x_in,y_in,x_out,y_out
+                   // $this->report->addCauseMovement($originArmy->getId(), $m['ox'], $m['oy']);
+                   // $dt->success('La Unidad procede a moverse rapidamente', 'success');
                     //debug::info($dt,'actionman->workTempActionTD->dt after mov[10]');
+                   // break;
+                   case 10: // Recuperar Energía
+                    if (!$originArmy->exist()) {
+                        $dt->error('La unidad no existe en la posición [' . $m['x_in'] . '][' . $m['y_in'] . ']');
+                        break;
+                    }
+                
+                    $recoveredEnergy = $originArmy->recoverEnergy(); // ✔️ Asume que devuelve int
+                    
+                    $this->report->addEffectArmies($originArmy->getId(), "Recuperó $recoveredEnergy de energía"); // ✔️ Reporte opcional
+                
+                    $dt->success("La unidad recuperó $recoveredEnergy de energía");
                     break;
-
-                case 11://Mover la Unidad lentamente, army_id,x_in,y_in,x_out,y_out
-                    $this->report->addCauseMovement($originArmy->getId(), $m['ox'], $m['oy']);
-                    $dt->success('La Unidad procede a moverse lentamente', 'success');
+                    
+                   case 11: // Ataque Especial
+                    if (!$enemyArmy->exist()) {
+                        $dt->error('Army Enemiga no existe en posicion:' . $m['x_in'] . ' y:' . $m['y_in']);
+                        break;
+                    }
+                    if (!$originArmy->exist()) {
+                        $dt->error('Mi Army no existe en posicion x:' . $m['x_in'] . ' y:' . $m['y_in']);
+                        break;
+                    }
+                    if (($enemyArmy->exist()) && ($originArmy->exist())) {
+                        // Usar el mismo método de ataque pero con un efecto especial en el frontend
+                        $dt = $this->armyman->simpleAttackTD($originArmy, $enemyArmy, $this->getReport());
+                    }
+                    break;
+                
+                //case 11://Mover la Unidad lentamente, army_id,x_in,y_in,x_out,y_out
+                   // $this->report->addCauseMovement($originArmy->getId(), $m['ox'], $m['oy']);
+                  //  $dt->success('La Unidad procede a moverse lentamente', 'success');
                     //debug::info($dt,'actionman->workTempActionTD->dt after mov[11]');
-                    break;
+                  //  break;
             }
         } else {
             debug::warning($dt, 'actionman->workTempActionTD->no se entro al bucle particular');

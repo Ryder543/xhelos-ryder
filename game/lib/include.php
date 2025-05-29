@@ -87,7 +87,7 @@ copiaremos un poco el funcionamiento*/
 
 //require_once($game_lib_include_directory . '/lib/php/session.class.php');
 $sessionHandler = new XhelosSessionHandler(db::singleton());
-session_set_save_handler($sessionHandler, true);
+//session_set_save_handler($sessionHandler, true);
 session_start(); // Start the session here!
 
 

@@ -304,22 +304,37 @@ function reactionManager(movement,callback){
                             var yOut =movement['y_out'];
                             eRay(tileIn,xIn,yIn,xOut,yOut,callback);
                             break;
-                    case '10': //Mover Rapidamente
-
-                           var tile_in = getTile();
-                            var army_in = getArmyInCoord(movement['x_in'],movement['y_in']);
-                            var tile_out = getTile(movement['x_out'],movement['y_out']);
-                           // console.log(army_in,'reactionManager->armyin');
-                            $(army_in).effect("transfer", {to:tile_out}, 1500,callback);
+                      case '10': // Recuperar Energía
+                            var army_in = getArmyInCoord(movement['x_in'], movement['y_in']);
+                            var unit_id = getId(army_in);
+                            // Asumimos que movement.effect.army[unit_id][3] guarda la energía recuperada,
+                            // o pásala como parte de `movement`, p.ej. movement['recoveredEnergy']
+                            var recovered = movement['recoveredEnergy'] || 200; 
+                            eRecover(unit_id, recovered, movement, callback);
+                            break;   
+                      
+                      case '11': // Ataque Especial
+                            var army_id = getId(getArmyInCoord(movement['x_in'],movement['y_in']));
+                            var enemy_id = getId(getArmyInCoord(movement['x_out'],movement['y_out']));
+                            eSpecialAttack(army_id,enemy_id,movement,callback);
                             break;
+                            
+                    //case '10': //Mover Rapidamente
 
-                    case '11': //Mover Lentamente
-                            var tile_in = getTile();
-                            var army_in = getArmyInCoord(movement['x_in'],movement['y_in']);
-                            var tile_out = getTile(movement['x_out'],movement['y_out']);
+                           //var tile_in = getTile();
+                           // var army_in = getArmyInCoord(movement['x_in'],movement['y_in']);
+                           // var tile_out = getTile(movement['x_out'],movement['y_out']);
                            // console.log(army_in,'reactionManager->armyin');
-                            $(army_in).effect("transfer", {to:tile_out}, 1500,callback);
-                            break;
+                          //  $(army_in).effect("transfer", {to:tile_out}, 1500,callback);
+                          //  break;
+
+                    //case '11': //Mover Lentamente
+                            //var tile_in = getTile();
+                            //var army_in = getArmyInCoord(movement['x_in'],movement['y_in']);
+                            //var tile_out = getTile(movement['x_out'],movement['y_out']);
+                           // console.log(army_in,'reactionManager->armyin');
+                            //$(army_in).effect("transfer", {to:tile_out}, 1500,callback);
+                            //break;
 
                     default:
                             callback();

@@ -327,18 +327,48 @@
           $this->report->addEffectArmies($damagedArmies);
           $dt->success('El Cañon repartio su daño a todas las unidades en su rango de ataque');
         break;
-
-        case 10://Mover la Unidad rapidamente, army_id,x_in,y_in,x_out,y_out
-          $this->report->addCauseMovement($originArmy->getId(),$this->getOX(),$this->getOY());
-          $dt->success('La Unidad procede a moverse rapidamente', 'success');
+        case 10: // Recuperar Energía
+          if (!$originArmy->exist()) {
+              $dt->error('La unidad no existe en la posición [' . $this->getOX() . '][' . $this->getOY() . ']');
+              break;
+          }
+      
+          $recoveredEnergy = $originArmy->recoverEnergy(); // ✔ Método encargado de recuperar energía
+          
+          if ($recoveredEnergy > 0) {
+              $this->report->addEffectArmies($originArmy->getId(), "Recuperó $recoveredEnergy de energía");
+              $dt->success("La unidad recuperó $recoveredEnergy de energía", 'success');
+          } else {
+              $dt->success("La unidad ya tiene la energía al máximo. No se recuperó energía.", 'info');
+          }
+          break;
+          
+        case 11: // Ataque Especial
+          if(!$enemyArmy->exist()){
+            $dt->error('Criatura Enemiga no existe en posicion ['.$this->getTX().']['.$this->getTY().']');
+            break;
+          }
+          if(!$originArmy->exist()){
+            $dt->error('Criatura Mia no existe en posicion ['.$this->getOX().']['.$this->getOY().']');
+            break;
+          }
+          if(($enemyArmy->exist())&&($originArmy->exist())){
+            // Usar el mismo método de ataque pero con un efecto especial en el frontend
+            $dt = $this->man("army")->simpleAttackTD($originArmy,$enemyArmy,$this->getReport());
+          }
+          break;
+      
+        //case 10://Mover la Unidad rapidamente, army_id,x_in,y_in,x_out,y_out
+         // $this->report->addCauseMovement($originArmy->getId(),$this->getOX(),$this->getOY());
+          //$dt->success('La Unidad procede a moverse rapidamente', 'success');
           //debug::info($dt,'actionman->workTempActionTD->dt after mov[10]');
-        break;
+        //break;
 
-        case 11://Mover la Unidad lentamente, army_id,x_in,y_in,x_out,y_out
-          $this->report->addCauseMovement($originArmy->getId(),$this->getOX(),$this->getOY());
-          $dt->success('La Unidad procede a moverse lentamente', 'success');
+       // case 11://Mover la Unidad lentamente, army_id,x_in,y_in,x_out,y_out
+      //    $this->report->addCauseMovement($originArmy->getId(),$this->getOX(),$this->getOY());
+         // $dt->success('La Unidad procede a moverse lentamente', 'success');
           //debug::info($dt,'actionman->workTempActionTD->dt after mov[11]');
-        break;
+       // break;
       }
 
     }

@@ -14,6 +14,51 @@ function damageText(text,unit){
     $(textDom).position( {my:"center center",at:"center center",of:$(unit)} );
     $(textDom).animate({top:'-=50'},2000).fadeOut(1000,function(){$('.damageText').remove()});
 }
+
+function eRecover(unit_id, recoveredAmount, movement, callback) {
+	var unit = getArmy(unit_id);
+	var parent = $(unit).parent();
+  
+	// Crear y mostrar texto flotante "+X"
+	var txt = $("<div class='recover-text'>+" + recoveredAmount + "</div>")
+	  .css({
+		position: 'absolute',
+		left: parent.offset().left + parent.width() / 2,
+		top: parent.offset().top - 10,
+		color: '#00cc00',
+		'font-weight': 'bold',
+		'pointer-events': 'none',
+		'z-index': 999,
+		transform: 'translateX(-50%)'
+	  })
+	  .appendTo('body');
+  
+	// Mostrar ícono de recuperación (imagen estática)
+	var imgId = 'recovering-icon';
+	var img = $('#' + imgId);
+  
+	if (!img.length) {
+	  var img_raw = `<img id="${imgId}" src="img/action/energy.png" alt="recover icon" style="position:absolute; width:32px; height:32px; z-index:998;">`;
+	  $('body').append(img_raw);
+	  img = $('#' + imgId);
+	}
+  
+	// Posicionar el ícono encima de la unidad
+	$(img).show().position({
+	  my: "center bottom",
+	  at: "center top",
+	  of: $(parent)
+	});
+  
+	// Animar el texto y luego limpiar
+	txt.animate({ top: '-=30', opacity: 0 }, 1000, function () {
+	  txt.remove();
+	});
+  
+	// Ocultar el ícono después de un rato
+	img.delay(1500).fadeOut(100, callback);
+  }
+
 function eRangeAttack(attacker_id,defender_id,effect,callback){
     //console.log(effect,'effects->eAttack');
 
@@ -61,6 +106,37 @@ function eAttack(attacker_id,defender_id,effect,callback){
         $('body').append(img_raw);
         img = $('#attacking');
     }
+    $(img).show().position({my:"left top",at:"left top",of:$(defender_parent)}).delay(2500).fadeOut(13,callback);
+}
+
+function eSpecialAttack(attacker_id,defender_id,effect,callback){
+    //console.log(effect,'effects->eSpecialAttack');
+
+    var defender =  getArmy(defender_id);
+    var attacker =  getArmy(attacker_id);
+    var defender_parent = $(defender).parent();
+
+    var attacker_death = effect['movement_raw']['effect']['army'][attacker_id][4];
+    var defender_death = effect['movement_raw']['effect']['army'][defender_id][4];
+
+    damageText(attacker_death,attacker);
+    damageText(defender_death,defender);
+    
+    // Usar un ID diferente para el ataque especial
+    var imgId = 'attacking_special';
+    var img = $('#' + imgId);
+    if ($(img).length){
+        img.attr('src',img.attr('src'));
+    }
+    else{
+        // Usar la misma imagen pero con un ID diferente para distinguirlo
+        var img_raw = `<img id="${imgId}" src="img/action/energy.png" alt="atack icon" style="position:absolute; width:32px; height:32px; z-index:998;">`;
+        $('body').append(img_raw);
+        img = $('#' + imgId);
+    }
+    
+    // Añadir un efecto visual adicional para diferenciar del ataque normal
+    $(defender_parent).effect("highlight", {color: "#ff0000"}, 1000);
     $(img).show().position({my:"left top",at:"left top",of:$(defender_parent)}).delay(2500).fadeOut(13,callback);
 }
 

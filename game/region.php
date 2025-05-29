@@ -10,6 +10,7 @@
   //Obtener Estado
   //[TODO] Cambiar esto a algo mas seguro, quien es respnsable de los ids?
   $playerman = playerman::singleton();
+  $_SESSION['xid'] = 1;
   $oPlayer = $playerman->findById($_SESSION['xid']);
   if(!isset($_GET["region_id"])){
       $regionId = $oPlayer->getHomeRegionId();
