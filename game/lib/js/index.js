@@ -121,3 +121,7 @@ function registerImageEnd(){
 function registerMessage(texto){
   $('#registerMessage').show().text(texto);
 }
+
+$.getScript('lib/js/player_view.js');
+
+console.log("JS cargado correctamente");

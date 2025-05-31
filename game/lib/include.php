@@ -94,6 +94,7 @@ session_start(); // Start the session here!
 /* ----------------------------------------------------------
   Unsetting Variables que no necesitare
   ---------------------------------------------------------- */
+
 chdir($game_lib_include_directory);
 unset($game_lib_include_directory);
 
