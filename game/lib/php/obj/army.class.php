@@ -335,6 +335,63 @@ class army extends identity { //[TODO]Deberiamos de instanciarlo de una interfac
         return $newEnergy - $currentEnergy; // Cantidad realmente recuperada
     }
     
+    /**
+     * addShield: Añade un escudo energético a la unidad y regenera vida y maná
+     * @param int $shieldAmount Cantidad de escudo a añadir
+     * @return array Información sobre el escudo añadido, vida y maná regenerados
+     */
+    public function addShield($shieldAmount) {
+        // Verificamos si existe la columna shield en la tabla armies
+        // Si no existe, se asume que el escudo es un efecto temporal y no se guarda en BD
+        
+        // Regenerar vida (50 puntos)
+        $lifeRecoveryAmount = 10;
+        $currentTotalLife = $this->getTotalLife();
+        $maxTotalLife = $this->getSize() * $this->getLife(); // Vida máxima = tamaño * vida por unidad
+        
+        $newTotalLife = min($currentTotalLife + $lifeRecoveryAmount, $maxTotalLife);
+        $recoveredLife = $newTotalLife - $currentTotalLife;
+        
+        if ($recoveredLife > 0) {
+            // Actualizar vida en la base de datos
+            $sql = "UPDATE armies SET total_life = $newTotalLife WHERE id = " . $this->getId();
+            $this->db->query($sql);
+        }
+        
+        // Regenerar maná (100 puntos)
+        $energyRecoveryAmount = 100;
+        $currentEnergy = $this->getActualEnergy();
+        $maxEnergy = $this->getParam('max_energy');
+        
+        $newEnergy = min($currentEnergy + $energyRecoveryAmount, $maxEnergy);
+        $recoveredEnergy = $newEnergy - $currentEnergy;
+        
+        if ($recoveredEnergy > 0) {
+            // Actualizar maná en la base de datos
+            $sql = "UPDATE armies SET actual_energy = $newEnergy WHERE id = " . $this->getId();
+            $this->db->query($sql);
+        }
+        
+        $this->setDataDirty();
+        
+        // Retornar información sobre el escudo, vida y maná
+        return array(
+            'shield' => $shieldAmount,
+            'life' => $recoveredLife,
+            'energy' => $recoveredEnergy
+        );
+    }
+    
+    /**
+     * getShield: Obtiene la cantidad actual de escudo de la unidad
+     * @return int Cantidad de escudo actual
+     */
+    public function getShield() {
+        // En una implementación completa, se obtendría de la base de datos
+        // Por ahora retornamos 0 como valor predeterminado
+        return 0;
+    }
+    
     public function setActualEnergy($value) {
         $this->setParam('actual_energy', $value);
     }

@@ -316,6 +316,7 @@
   define("_X_AFFETCS_SIZE", 4);
   define("_X_AFFECTS_MOVEMENT", 5);
   define("_X_AFFECTS_DAMAGE", 6);
+  define("_X_AFFECTS_SHIELD", 7);
   
   define("_X_AFFECTS_CAUSE", 'cause');
   define("_X_AFFECTS_EFFECT", 'effect');

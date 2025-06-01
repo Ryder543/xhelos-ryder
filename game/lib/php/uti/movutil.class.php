@@ -357,6 +357,39 @@
             $dt = $this->man("army")->simpleAttackTD($originArmy,$enemyArmy,$this->getReport());
           }
           break;
+          
+        case 12: // Escudo Energético
+          if(!$originArmy->exist()){
+            $dt->error('La unidad no existe en posicion ['.$this->getOX().']['.$this->getOY().']');
+            break;
+          }
+          
+          // Cantidad fija de escudo a añadir
+          $shieldAmount = 200;
+          
+          // Añadir el escudo a la unidad y regenerar vida y maná
+          $result = $originArmy->addShield($shieldAmount);
+          
+          // Extraer valores del resultado
+          $addedShield = $result['shield'];
+          $recoveredLife = $result['life'];
+          $recoveredEnergy = $result['energy'];
+          
+          // Crear array de efectos para el reporte
+          $effectArray = array(
+            $originArmy->getId() => array(
+              _X_AFFECTS_SHIELD => $addedShield,
+              _X_AFFECTS_LIFE => $recoveredLife,
+              _X_AFFECTS_DAMAGE => -$recoveredLife, // Valor negativo para indicar curación
+              _X_AFFECTS_ATTACK => $recoveredEnergy // Usamos ATTACK para representar la energía
+            )
+          );
+          
+          // Añadir efecto al reporte para que se muestre en el frontend
+          $this->report->addEffectArmies($effectArray);
+          
+          $dt->success("La unidad activó un escudo energético de $addedShield, recuperó $recoveredLife de vida y $recoveredEnergy de energía", 'success');
+          break;
       
         //case 10://Mover la Unidad rapidamente, army_id,x_in,y_in,x_out,y_out
          // $this->report->addCauseMovement($originArmy->getId(),$this->getOX(),$this->getOY());

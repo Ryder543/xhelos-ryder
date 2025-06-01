@@ -116,10 +116,10 @@ function eSpecialAttack(attacker_id,defender_id,effect,callback){
     var attacker =  getArmy(attacker_id);
     var defender_parent = $(defender).parent();
 
-    var attacker_death = effect['movement_raw']['effect']['army'][attacker_id][4];
+    // Solo aplicamos daño al defensor, no al atacante
     var defender_death = effect['movement_raw']['effect']['army'][defender_id][4];
 
-    damageText(attacker_death,attacker);
+    // Solo mostramos el texto de daño para el defensor
     damageText(defender_death,defender);
     
     // Usar un ID diferente para el ataque especial
@@ -138,6 +138,95 @@ function eSpecialAttack(attacker_id,defender_id,effect,callback){
     // Añadir un efecto visual adicional para diferenciar del ataque normal
     $(defender_parent).effect("highlight", {color: "#ff0000"}, 1000);
     $(img).show().position({my:"left top",at:"left top",of:$(defender_parent)}).delay(2500).fadeOut(13,callback);
+}
+
+// Nuevo poder: Escudo Energético
+function eEnergyShield(unit_id, shieldAmount, movement, callback) {
+    var unit = getArmy(unit_id);
+    var parent = $(unit).parent();
+    
+    // Crear y mostrar texto flotante "¡ESCUDO!"
+    var txt = $("<div class='shield-text'>¡ESCUDO!</div>")
+      .css({
+        position: 'absolute',
+        left: parent.offset().left + parent.width() / 2,
+        top: parent.offset().top - 20,
+        color: '#0088ff',
+        'font-weight': 'bold',
+        'font-size': '16px',
+        'pointer-events': 'none',
+        'z-index': 999,
+        transform: 'translateX(-50%)'
+      })
+      .appendTo('body');
+    
+    // Mostrar valor del escudo
+    var valueTxt = $("<div class='shield-value'>+" + shieldAmount + "</div>")
+      .css({
+        position: 'absolute',
+        left: parent.offset().left + parent.width() / 2,
+        top: parent.offset().top,
+        color: '#0088ff',
+        'font-weight': 'bold',
+        'pointer-events': 'none',
+        'z-index': 999,
+        transform: 'translateX(-50%)'
+      })
+      .appendTo('body');
+    
+    // Mostrar ícono de escudo
+    var imgId = 'shield-icon';
+    var img = $('#' + imgId);
+    
+    if (!img.length) {
+      // Usar una imagen de escudo (puedes cambiarla por una más apropiada)
+      var img_raw = `<img id="${imgId}" src="img/action/energy.png" alt="shield icon" style="position:absolute; width:32px; height:32px; z-index:998;">`;
+      $('body').append(img_raw);
+      img = $('#' + imgId);
+    }
+    
+    // Posicionar el ícono encima de la unidad
+    $(img).show().position({
+      my: "center bottom",
+      at: "center top",
+      of: $(parent)
+    });
+    
+    // Añadir efecto de brillo azul alrededor de la unidad
+    $(parent).effect("highlight", {color: "#0088ff"}, 2000);
+    
+    // Crear un efecto de escudo (círculo) alrededor de la unidad
+    var shield = $("<div class='energy-shield'></div>")
+      .css({
+        position: 'absolute',
+        left: parent.offset().left + parent.width() / 2 - 30,
+        top: parent.offset().top + parent.height() / 2 - 30,
+        width: '60px',
+        height: '60px',
+        'border-radius': '50%',
+        'border': '3px solid #0088ff',
+        'box-shadow': '0 0 10px #0088ff',
+        'pointer-events': 'none',
+        'z-index': 997,
+        opacity: 0.7
+      })
+      .appendTo('body');
+    
+    // Animar el texto y luego limpiar
+    txt.animate({ top: '-=20', opacity: 0 }, 1500);
+    valueTxt.animate({ top: '+=20', opacity: 0 }, 1500, function () {
+      txt.remove();
+      valueTxt.remove();
+    });
+    
+    // Animar el escudo (pulsar)
+    shield.animate({ width: '70px', height: '70px', left: '-=5px', top: '-=5px', opacity: 0.3 }, 1000)
+          .animate({ width: '60px', height: '60px', left: '+=5px', top: '+=5px', opacity: 0.7 }, 1000, function() {
+              shield.remove();
+          });
+    
+    // Ocultar el ícono después de un rato
+    img.delay(2000).fadeOut(500, callback);
 }
 
 function eRay(parent,xIn,yIn,xOut,yOut,callback){
@@ -198,6 +287,7 @@ function eRay(parent,xIn,yIn,xOut,yOut,callback){
 	//paper.rect(1, , 50, 50, 10);
 	c.animate({r: 20,"stroke-width":"5"},'1000',function(){secondAnim(c,idRandom,x_animation,y_animation,callback);});
 }
+
 function secondAnim(c,idRandom,x_animation,y_animation,callback){
 	//c.animate({r:50});
 	c.animate({cy: y_animation+25,cx:x_animation+25,"stroke-width":"20",stroke:"#FF0000",fill:"#FFFF00"}, 3000,"<",function(){eTimeOut(idRandom,callback);})

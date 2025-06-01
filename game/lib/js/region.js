@@ -307,9 +307,9 @@ function reactionManager(movement,callback){
                       case '10': // Recuperar Energía
                             var army_in = getArmyInCoord(movement['x_in'], movement['y_in']);
                             var unit_id = getId(army_in);
-                            // Asumimos que movement.effect.army[unit_id][3] guarda la energía recuperada,
-                            // o pásala como parte de `movement`, p.ej. movement['recoveredEnergy']
-                            var recovered = movement['recoveredEnergy'] || 200; 
+                            // Obtenemos la energía recuperada del efecto
+                            var recovered = movement['effect'] && movement['effect']['army'] && movement['effect']['army'][unit_id] ? 
+                                           movement['effect']['army'][unit_id][3] : 0;
                             eRecover(unit_id, recovered, movement, callback);
                             break;   
                       
@@ -317,6 +317,78 @@ function reactionManager(movement,callback){
                             var army_id = getId(getArmyInCoord(movement['x_in'],movement['y_in']));
                             var enemy_id = getId(getArmyInCoord(movement['x_out'],movement['y_out']));
                             eSpecialAttack(army_id,enemy_id,movement,callback);
+                            break;
+                      
+                      case '12': // Escudo Energético
+                            var army_in = getArmyInCoord(movement['x_in'], movement['y_in']);
+                            var unit_id = getId(army_in);
+                            
+                            // Obtenemos los valores de los efectos
+                            var effects = movement['effect'] && movement['effect']['army'] && movement['effect']['army'][unit_id] ? movement['effect']['army'][unit_id] : {};
+                            
+                            // Valor del escudo (índice 7 corresponde a _X_AFFECTS_SHIELD)
+                            var shieldAmount = effects[7] || 100;
+                            
+                            // Valor de vida recuperada (índice 3 corresponde a _X_AFFECTS_LIFE)
+                            var lifeAmount = effects[3] || 0;
+                            
+                            // Valor de energía recuperada (índice 0 corresponde a _X_AFFECTS_ATTACK que usamos para energía)
+                            var energyAmount = effects[0] || 0;
+                            
+                            // Mostrar efecto de escudo
+                            eEnergyShield(unit_id, shieldAmount, movement, function() {
+                                // Después del efecto de escudo, mostrar efectos de regeneración si hay valores
+                                if (lifeAmount > 0) {
+                                    // Mostrar efecto de regeneración de vida
+                                    $(army_in).effect("highlight", {color: "#00ff00"}, 1000);
+                                    
+                                    // Mostrar texto flotante con la cantidad de vida recuperada
+                                    var lifeTxt = $("<div class='life-text'>+" + lifeAmount + " HP</div>")
+                                      .css({
+                                        position: 'absolute',
+                                        left: $(army_in).parent().offset().left + $(army_in).parent().width() / 2,
+                                        top: $(army_in).parent().offset().top - 40,
+                                        color: '#00ff00',
+                                        'font-weight': 'bold',
+                                        'font-size': '14px',
+                                        'pointer-events': 'none',
+                                        'z-index': 999,
+                                        transform: 'translateX(-50%)'
+                                      })
+                                      .appendTo('body');
+                                    
+                                    lifeTxt.animate({ top: '-=20', opacity: 0 }, 1500, function() {
+                                        lifeTxt.remove();
+                                    });
+                                }
+                                
+                                if (energyAmount > 0) {
+                                    // Mostrar efecto de regeneración de energía
+                                    $(army_in).effect("highlight", {color: "#0000ff"}, 1000);
+                                    
+                                    // Mostrar texto flotante con la cantidad de energía recuperada
+                                    var energyTxt = $("<div class='energy-text'>+" + energyAmount + " MP</div>")
+                                      .css({
+                                        position: 'absolute',
+                                        left: $(army_in).parent().offset().left + $(army_in).parent().width() / 2,
+                                        top: $(army_in).parent().offset().top - 20,
+                                        color: '#0000ff',
+                                        'font-weight': 'bold',
+                                        'font-size': '14px',
+                                        'pointer-events': 'none',
+                                        'z-index': 999,
+                                        transform: 'translateX(-50%)'
+                                      })
+                                      .appendTo('body');
+                                    
+                                    energyTxt.animate({ top: '-=20', opacity: 0 }, 1500, function() {
+                                        energyTxt.remove();
+                                        if (callback) callback();
+                                    });
+                                } else {
+                                    if (callback) callback();
+                                }
+                            });
                             break;
                             
                     //case '10': //Mover Rapidamente
