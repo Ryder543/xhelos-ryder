@@ -133,6 +133,15 @@ $db_prefix = '';
  * and change the TRUE back to a FALSE!
  */
 $update_free_access = FALSE;
+$databases['default']['default'] = array(
+  'driver' => 'mysql',
+  'database' => 'drupal7',
+  'username' => 'drupal7',
+  'password' => 'drupal7',
+  'host' => 'database',  // <-- CAMBIAR ESTO
+  'prefix' => '',
+  'collation' => 'utf8mb4_general_ci',
+);
 
 /**
  * Base URL (optional).

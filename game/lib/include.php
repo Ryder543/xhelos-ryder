@@ -81,7 +81,7 @@ define("_X_FILE_ROOT", $currentServerUrl . _X_FILE_EXTRA_URL . "/");
 //////////////////////VARIABLES BD/////////////////////////////
 define("BD_TRUE", "t");
 define("BD_FALSE", "f");
-define("SERVER_PSGR", "localhost");
+define("SERVER_PSGR", "database");
 
 //Nuevo
 define("USER_PSGR", "xhelos_xhelos2");
