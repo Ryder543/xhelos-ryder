@@ -26,20 +26,23 @@ class movearmytoregionwork extends work {
     }
 
     public function execute() {
-        $dt = null;
-        $this->setIfOldDtIsOkWithCallback("executeSendArmiesToRegionDt");
-        $this->setIfOldDtIsOkWithCallback("executeChangeTeamRegionIdDt");
+    $armyIds = $_POST['army_ids'] ?? [];
 
-        $this->setParam(_X_VAR_REGION_ID, $this->getOriginRegion()->getId() );
-        $this->doInnerWork(new regiondeowningwork());
+    $this->validate();
 
-        //Ya no se actualiza la region aqui, si no cuando recien llega en battleutil
-        //$this->setParam(_X_VAR_REGION_ID, $this->getTargetRegion()->getId() );
-        //$this->doInnerWork(new regionowningwork());
-
-        $this->setIfAllOkText("El Equipo procede a moverse a la nueva region");
-        return $dt;
+    foreach ($armyIds as $armyId) {
+        $army = $this->armyman->getArmy($armyId);
+        if ($army && $army->getTeamId() == $this->team->getId()) {
+            $army->enterRegion($this->targetRegion->getId(), rand(0, 9), rand(0, 9));
+        }
     }
+
+    $this->result['success'] = true;
+}
+
+    $this->result['success'] = true;
+}
+
 
     protected function executeSendArmiesToRegionDt() {
         $dt = new datatransfer();
