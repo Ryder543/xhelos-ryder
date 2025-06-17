@@ -347,21 +347,42 @@
   }
   ?>  
 <div id="contenedor-mapa">
-  <!-- Aquí se muestra el mapa con tropas -->
-
-  <div id="mover-tropas-ui" style="color: white; margin-top: 20px;">
+  <div id="mover-tropas-ui">
     <h4>Selecciona tropas a mover</h4>
     <div id="lista-tropas"></div>
 
     <label for="region_destino">Región vecina:</label>
-    <select id="region_destino"></select>
+    <select id="region_destino" class="abrir-hacia-arriba"></select>
 
     <button id="mover-btn">Mover Tropas</button>
   </div>
 </div>
 
+<style>
+  #mover-tropas-ui {
+    position: relative;
+    z-index: 9999;
+    background-color: rgba(0, 0, 0, 0.9);
+    padding: 10px;
+    border-radius: 8px;
+    color: white;
+    margin-top: 20px;
+  }
+
+  /* Truco: limita altura para que el desplegable tenga espacio hacia arriba */
+  .abrir-hacia-arriba {
+    position: relative;
+    max-height: 200px;
+  }
+
+  /* Si el dropdown se oculta por el contenedor padre, permite overflow */
+  #contenedor-mapa {
+    overflow: visible;
+  }
+</style>
+
 <script>
-  const regionOrigenId = <?php echo $regionId; ?>;
+  const regionOrigenId = <?= $regionId ?>;
 
   function cargarTropas() {
     $.getJSON("api/get_team_units.php", { region_id: regionOrigenId }, function(data) {
@@ -427,15 +448,8 @@
     $("#mover-btn").click(enviarTropasSeleccionadas);
   });
 </script>
- 
-<?php include("ui/mover_tropas_panel.html"); ?>
-   
-<script>
-  window.CURRENT_REGION_ID = <?= $regionId ?>;
-  window.CURRENT_TEAM_ID = <?= $_SESSION['team_id'] ?? 1 ?>;
-</script>
-<script src="js/mover_tropas.js"></script>    
-    
+
+<!-- Scripts auxiliares -->
 
         
         
