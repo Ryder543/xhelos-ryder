@@ -15,7 +15,7 @@ if ($equipo_id <= 0 || $region_id <= 0) {
     echo "Parámetros inválidos.";
     exit;
 }
-
+//prueba 2
 try {
     $query = $pdo->prepare("SELECT id, name FROM game_army_units WHERE region_id = :region_id AND (team_id IS NULL OR team_id = 0)");
     $query->execute(['region_id' => $region_id]);
