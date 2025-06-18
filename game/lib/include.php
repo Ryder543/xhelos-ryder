@@ -56,16 +56,18 @@ define("_X_FILE_ROOT", $currentServerUrl . _X_FILE_EXTRA_URL . "/");
 //////////////////////VARIABLES BD/////////////////////////////
 define("BD_TRUE", "t");
 define("BD_FALSE", "f");
+// PostgreSQL: Puedes eliminar o ignorar esto si no lo usas
 define("SERVER_PSGR", "localhost");
-define("USER_PSGR", "xhelos_xhelos2");
-define("PASSWORD_PSGR", "l=f6oLV^qU+6");
-define("DATABASE_PSGR", "xhelos_xhelos");
+define("USER_PSGR", "xhelos_user");
+define("PASSWORD_PSGR", "contraseguraXD");
+define("DATABASE_PSGR", "xhelos_xhelos"); // puedes quitarlo si no usas PostgreSQL
 define("PORT_PSGR", "5432");
 
-define("USER_MYSQL", "xhelos");
-define("PASSWORD_MYSQL", "xhelos");
-define("SERVER_MYSQL", "database");
-define("DATABASE_MYSQL", "xhelos");
+// ✅ MySQL en cPanel 
+define("SERVER_MYSQL", "localhost");
+define("USER_MYSQL", "gamaru_xhelos_user");
+define("PASSWORD_MYSQL", "contraseguraXD");
+define("DATABASE_MYSQL", "gamaru_xhelos_user");
 define("PORT_MYSQL", "3306");
 
 /* ----------------------------------------------------------

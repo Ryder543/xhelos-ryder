@@ -1,20 +1,15 @@
 <?php
-  session_start();
-
-  $_SESSION['xid'] = 1; 
-
-
   if(!defined('_X_SECURE')){define("_X_SECURE",true);}
   require_once("lib/include.php"); 
   /*****************************************************
   *  DATOS INICIO
   *****************************************************/
 
-
+ 
+ 
   //Obtener Estado
   //[TODO] Cambiar esto a algo mas seguro, quien es respnsable de los ids?
   $playerman = playerman::singleton();
-  $_SESSION['xid'] = 1;
   $oPlayer = $playerman->findById($_SESSION['xid']);
   if(!isset($_GET["region_id"])){
       $regionId = $oPlayer->getHomeRegionId();
@@ -24,7 +19,9 @@
   }
    
   $gs = new globalview($regionId,"region");
-  ?>
+  
+
+?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
@@ -341,6 +338,7 @@
             <a href="#" class="button finalizar" >Finalizar</a>
             </div>
         </div>
+
     
     
     
@@ -348,9 +346,95 @@
   <?php
   }
   ?>  
+<div id="contenedor-mapa">
+  <!-- Aquí se muestra el mapa con tropas -->
+
+  <div id="mover-tropas-ui" style="color: white; margin-top: 20px;">
+    <h4>Selecciona tropas a mover</h4>
+    <div id="lista-tropas"></div>
+
+    <label for="region_destino">Región vecina:</label>
+    <select id="region_destino"></select>
+
+    <button id="mover-btn">Mover Tropas</button>
+  </div>
+</div>
+
+<script>
+  const regionOrigenId = <?php echo $regionId; ?>;
+
+  function cargarTropas() {
+    $.getJSON("api/get_team_units.php", { region_id: regionOrigenId }, function(data) {
+      const container = $("#lista-tropas");
+      container.empty();
+      data.forEach(unit => {
+        container.append(`
+          <label>
+            <input type="checkbox" class="unidad" value="${unit.id}" />
+            ${unit.name} (Nivel ${unit.level})
+          </label><br>
+        `);
+      });
+    });
+  }
+
+  function cargarRegionesVecinas() {
+    $.getJSON("api/get_adjacent_regions.php", { region_id: regionOrigenId }, function(data) {
+      const select = $("#region_destino");
+      select.empty();
+      data.forEach(region => {
+        select.append(`<option value="${region.id}">${region.name}</option>`);
+      });
+    });
+  }
+
+  function enviarTropasSeleccionadas() {
+    const regionDestinoId = $("#region_destino").val();
+    const tropasSeleccionadas = $(".unidad:checked").map(function () {
+      return $(this).val();
+    }).get();
+
+    if (tropasSeleccionadas.length === 0) {
+      alert("Selecciona al menos una tropa.");
+      return;
+    }
+
+    $.post("workentry.php", {
+      work: "movearmytoregionwork",
+      origin_region_id: regionOrigenId,
+      target_region_id: regionDestinoId,
+      army_ids: tropasSeleccionadas
+    }, function(response) {
+      if (response.success) {
+        alert("Tropas movidas exitosamente.");
+        actualizarMapa();
+        cargarTropas();
+      } else {
+        alert("Error: " + (response.message || "No se pudo mover las tropas"));
+      }
+    }, "json");
+  }
+
+  function actualizarMapa() {
+    $.get("region.php?region_id=" + regionOrigenId + "&ajax=1", function(html) {
+      $("#contenedor-mapa").html($(html).find("#contenedor-mapa").html());
+    });
+  }
+
+  $(document).ready(function () {
+    cargarRegionesVecinas();
+    cargarTropas();
+    $("#mover-btn").click(enviarTropasSeleccionadas);
+  });
+</script>
  
+<?php include("ui/mover_tropas_panel.html"); ?>
    
-    
+<script>
+  window.CURRENT_REGION_ID = <?= $regionId ?>;
+  window.CURRENT_TEAM_ID = <?= $_SESSION['team_id'] ?? 1 ?>;
+</script>
+<script src="js/mover_tropas.js"></script>    
     
 
         
